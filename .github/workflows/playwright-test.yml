@@ -1,0 +1,121 @@
+name: Playwright Test
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  docker-setup: 
+    name: Docker Setup
+    runs-on: ubuntu-latest
+
+    steps: 
+      - uses: actions/checkout@v3
+      
+      - name: Build Docker Compose services
+        if: ${{ !env.ACT }}
+        run: docker compose build
+      
+      - name: Start Docker Compose services
+        run: docker compose up -d
+      
+      - name: Check running containers
+        run: docker ps -a
+        
+      - name: Wait for PostgreSQL to be ready
+        run: |
+          echo 'Waiting for PostgreSQL to be ready...'
+          # Try to connect to PostgreSQL with increasing delays between attempts
+          for i in {1..30}; do
+            if docker exec qe-spree-technical-assessment-postgres-1 pg_isready -U postgres 2>/dev/null; then
+              echo 'PostgreSQL is ready!'
+              exit 0
+            fi
+            echo 'PostgreSQL is not ready yet. Waiting...'
+            sleep 2
+          done
+          echo 'PostgreSQL failed to become ready in time.'
+          exit 1
+        
+      - name: Ensure libvips is installed in container
+        if: ${{ !env.ACT }} 
+        run: |
+          docker compose exec -T app bash -c "
+            if ! command -v vips &> /dev/null; then
+              echo 'libvips not found, installing...'
+              apt-get update && apt-get install -y libvips42 libvips-dev
+            else
+              echo 'libvips is already installed'
+              vips -v
+            fi
+          "
+      - name: Run setup script
+        if: ${{ !env.ACT }} 
+        run: docker compose exec -T app ./bin/setup
+
+        
+  load-sample-data:
+    name: Load Sample Data 
+    needs: docker-setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup test database
+        if: ${{ !env.ACT }} 
+        run: docker compose exec -T app bundle exec rails db:setup RAILS_ENV=test
+        
+      - name: Load Spree sample data
+        if: ${{ !env.ACT }} 
+        run: docker compose exec -T app bin/rake spree_sample:load RAILS_ENV=test
+
+
+  test:
+    name: Run Playwright Tests
+    needs: load-sample-data
+    runs-on: ubuntu-latest
+    defaults:
+        run:
+            working-directory: ./playwright
+
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    
+    - name: Install dependencies
+      if: ${{ !env.ACT }} 
+      run: docker compose exec -T app npm ci
+
+    - name: Install Playwright dependencies
+      if: ${{ !env.ACT }} 
+      run: docker compose exec -T app npx playwright install --with-deps
+    
+    - name: Run Playwright Tests
+      if: ${{ !env.ACT }}   
+      run: docker compose exec -T app npx playwright test --config=playwright/playwright.config.js
+      env:
+        BASE_URL: http://localhost:3000
+    
+    - name: Stop Docker Compose services
+      if: always()
+      run: docker compose down
+    
+    - name: Upload test artifacts
+      if: ${{ !cancelled() }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: |
+          playwright/test-results
+          playwright/playwright-report
+        retention-days: 1
+        if-no-files-found: ignore
+
+
+
