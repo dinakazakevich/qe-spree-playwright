@@ -1,1 +1,8 @@
 /tmp/ 
+
+# Playwright
+/playwright/node_modules/
+/playwright/test-results/
+/playwright/playwright-report/
+/playwright/blob-report/
+/playwright/playwright/.cache/
