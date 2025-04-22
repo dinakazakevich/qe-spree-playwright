@@ -9,12 +9,31 @@ on:
       - main
 
 jobs:
+  environment-setup:
+    name: Set Up Environment 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v3
+
+      - name: Install dependencies 
+        run: apt-get install libvips-dev libpq-dev
+
+      - name: Install Ruby 
+        uses: ruby/setup-ruby@v1
+        with: 
+            ruby-version: '3.3.0'
+            bundler-cache: true
+      - run: bundle exec rake
+        
+
   docker-setup: 
     name: Docker Setup
     runs-on: ubuntu-latest
 
     steps: 
-      - uses: actions/checkout@v3
+      - name: Checkout  
+        uses: actions/checkout@v3
       
       - name: Build Docker Compose services
         if: ${{ !env.ACT }}
