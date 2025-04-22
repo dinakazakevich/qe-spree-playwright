@@ -5,4 +5,4 @@ test('has title', async ({ page }) => {
 
   // Expect a page title to be "Shop".
   await expect(page).toHaveTitle('Shop');
-})
+});
