@@ -29,6 +29,7 @@ jobs:
 
   docker-setup: 
     name: Docker Setup
+    needs: environment-setup
     runs-on: ubuntu-latest
 
     steps: 
