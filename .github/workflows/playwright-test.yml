@@ -41,18 +41,18 @@ jobs:
           echo 'PostgreSQL failed to become ready in time.'
           exit 1
         
-      - name: Ensure libvips is installed in container
-        if: ${{ !env.ACT }} 
-        run: |
-          docker compose exec -T app bash -c "
-            if ! command -v vips &> /dev/null; then
-              echo 'libvips not found, installing...'
-              apt-get update && apt-get install -y libvips42 libvips-dev
-            else
-              echo 'libvips is already installed'
-              vips -v
-            fi
-          "
+    #   - name: Ensure libvips is installed in container
+    #     if: ${{ !env.ACT }} 
+    #     run: |
+    #       docker compose exec -T app bash -c "
+    #         if ! command -v vips &> /dev/null; then
+    #           echo 'libvips not found, installing...'
+    #           apt-get update && apt-get install -y libvips42 libvips-dev
+    #         else
+    #           echo 'libvips is already installed'
+    #           vips -v
+    #         fi
+    #       "
       - name: Run setup script
         if: ${{ !env.ACT }} 
         run: docker compose exec -T app ./bin/setup
