@@ -13,7 +13,7 @@ jobs:
     name: Set Up Environment 
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Install dependencies 
@@ -32,12 +32,12 @@ jobs:
           gem -v
           bundle -v
 
-      - name: Set Up Services With Docker Compose
+      - name: Set up services with Docker Compose
         uses: docker/setup-compose-action@v1
         with: 
           version: latest
 
-      - name: Start Docker Compose Services
+      - name: Start Docker Compose services
         run: docker compose up -d
 
       - name: Check running containers
@@ -57,31 +57,45 @@ jobs:
         run: bin/rake spree_sample:load
 
 
-  test:
+  playwright:
     name: Run Playwright Tests
     needs: environment-setup
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
+      options: --user 1001
     defaults:
         run:
             working-directory: ./playwright
 
     steps:
-    - uses: actions/checkout@v3
+    # - uses: actions/checkout@v3
+    # - uses: actions/setup-node@v4
+    #   with:
+    #     node-version: lts/*
+    
+    # - name: Install dependencies
+    #   run: npm ci
+
+    # - name: Install Playwright dependencies
+    #   run: npx playwright install --with-deps
+    
+    # - name: Run Playwright tests
+    #   run: npx playwright test --config=playwright/playwright.config.js
+    #   env:
+    #     BASE_URL: http://localhost:3000
+
+    - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
-    
-    - name: Install dependencies
-      run: docker compose exec -T app npm ci
 
-    - name: Install Playwright dependencies
-      run: docker compose exec -T app npx playwright install --with-deps
-    
-    - name: Run Playwright Tests
-      run: docker compose exec -T app npx playwright test --config=playwright/playwright.config.js
-      env:
-        BASE_URL: http://localhost:3000
-    
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run your tests
+      run: npx playwright test
+
     - name: Stop Docker Compose services
       if: always()
       run: docker compose down
