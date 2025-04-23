@@ -32,14 +32,6 @@ jobs:
           gem -v
           bundle -v
 
-  # docker-setup: 
-  #   name: Docker Setup
-  #   needs: environment-setup
-  #   runs-on: ubuntu-latest
-  #   steps: 
-      # - name: Checkout  
-      #   uses: actions/checkout@v3
-
       - name: Set Up Services With Docker Compose
         uses: docker/setup-compose-action@v1
         with: 
@@ -51,53 +43,27 @@ jobs:
       - name: Check running containers
         run: docker ps -a
 
-      # - name: Wait for PostgreSQL to be ready
-      #   run: |
-      #     echo 'Waiting for PostgreSQL to be ready...'
-      #     # Try to connect to PostgreSQL with increasing delays between attempts
-      #     for i in {1..30}; do
-      #       if docker exec qe-spree-technical-assessment-postgres-1 pg_isready -U postgres 2>/dev/null; then
-      #         echo 'PostgreSQL is ready!'
-      #         exit 0
-      #       fi
-      #       echo 'PostgreSQL is not ready yet. Waiting...'
-      #       sleep 2
-      #     done
-      #     echo 'PostgreSQL failed to become ready in time.'
-      #     exit 1
-        
       - name: Setup application setup
-        if: ${{ !env.ACT }} 
         run: ./bin/setup
 
       - name: Run application services
-        if: ${{ !env.ACT }} 
         run: ./bin/dev   
-
-        
-  load-sample-data:
-    name: Load Sample Data 
-    needs: environment-setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup test database
-        if: ${{ !env.ACT }} 
-        run: docker compose exec -T app bundle exec rails db:setup RAILS_ENV=test
+    
+      # - name: Setup test database
+      #   if: ${{ !env.ACT }} 
+      #   run: bundle exec rails db:setup RAILS_ENV=test
         
       - name: Load Spree sample data
-        if: ${{ !env.ACT }} 
-        run: docker compose exec -T app bin/rake spree_sample:load RAILS_ENV=test
+        run: bin/rake spree_sample:load
 
 
   test:
     name: Run Playwright Tests
-    needs: load-sample-data
+    needs: environment-setup
     runs-on: ubuntu-latest
     defaults:
         run:
             working-directory: ./playwright
-
 
     steps:
     - uses: actions/checkout@v3
@@ -106,15 +72,12 @@ jobs:
         node-version: lts/*
     
     - name: Install dependencies
-      if: ${{ !env.ACT }} 
       run: docker compose exec -T app npm ci
 
     - name: Install Playwright dependencies
-      if: ${{ !env.ACT }} 
       run: docker compose exec -T app npx playwright install --with-deps
     
     - name: Run Playwright Tests
-      if: ${{ !env.ACT }}   
       run: docker compose exec -T app npx playwright test --config=playwright/playwright.config.js
       env:
         BASE_URL: http://localhost:3000
