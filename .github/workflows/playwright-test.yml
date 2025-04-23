@@ -48,7 +48,10 @@ jobs:
         run: ./bin/setup
 
       - name: Run application services
-        run: ./bin/dev &
+        run: |
+          ./bin/dev &
+          sleep 10
+
     
       # - name: Setup test database
       #   if: ${{ !env.ACT }} 
@@ -76,34 +79,36 @@ jobs:
   #     with:
   #       node-version: lts/*
     
-    # - name: Install dependencies
-    #   run: npm ci
+      - name: Install dependencies
+        working-directory: ./playwright
+        run: npm ci
 
-    # - name: Install Playwright dependencies
-    #   run: npx playwright install --with-deps
-    
-    # - name: Run Playwright tests
-    #   run: npx playwright test --config=playwright/playwright.config.js
-    #   env:
-    #     BASE_URL: http://localhost:3000
+      - name: Install Playwright dependencies
+        working-directory: ./playwright
+        run: npx playwright install --with-deps
+      
+      - name: Run Playwright tests
+        run: npx playwright test --config=playwright/playwright.config.js
+        env:
+          BASE_URL: http://localhost:3000
 
 
       # Install Node.js dependencies on the host (outside the container)
-      - name: Install Node.js and npm dependencies
-        working-directory: ./playwright
-        run: |
-          npm ci
+      # - name: Install Node.js and npm dependencies
+      #   working-directory: ./playwright
+      #   run: |
+      #     npm ci
 
       # Now run Playwright in a container that can access the host
-      - name: Run Playwright Tests in Container
-        run: |
-          docker run --network host \
-            -v ${{ github.workspace }}:/work \
-            -w /work/playwright \
-            mcr.microsoft.com/playwright:v1.52.0-noble \
-            npx playwright test
-        env:
-          BASE_URL: http://localhost:3000
+      # - name: Run Playwright Tests in Container
+      #   run: |
+      #     docker run --network host \
+      #       -v ${{ github.workspace }}:/work \
+      #       -w /work/playwright \
+      #       mcr.microsoft.com/playwright:v1.52.0-noble \
+      #       npx playwright test
+      #   env:
+      #     BASE_URL: http://localhost:3000
 
       # - uses: actions/checkout@v4
         
