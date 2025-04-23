@@ -70,13 +70,21 @@ jobs:
       - name: Setup application setup
         if: ${{ !env.ACT }} 
         run: |
-          pwd
-          ls -al 
-          ls -al bin
-          cat bin/setup
-          export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
-          export PATH="$HOME/.gem/ruby/3.2.0/bin:$PATH"
-          bin/setup
+          # Install dependencies
+          gem install bundler --conservative
+          bundle install
+          
+          # Setup database
+          bin/rails db:prepare
+          bin/rails db:seed
+          
+          # Setup credentials
+          bin/rails g master_key
+          bin/rails g credentials
+          
+          # Cleanup
+          bin/rails log:clear tmp:clear
+          bin/rails restart
 
       - name: Run application services
         if: ${{ !env.ACT }} 
