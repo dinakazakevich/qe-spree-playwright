@@ -52,7 +52,6 @@ jobs:
           ./bin/dev &
           sleep 10 
 
-    
   playwright:
     name: Run Playwright Tests
     needs: environment-setup
@@ -64,22 +63,19 @@ jobs:
       with:
         node-version: lts/*
 
-    - name: Start Playwright container via Docker Compose
-      run: docker compose run --rm playwright
-
-    # - name: Install dependencies
-    #   working-directory: ./playwright
-    #   run: npm ci
+    - name: Install dependencies
+      working-directory: ./playwright
+      run: npm ci
       
-    # - name: Install Playwright Browsers
-    #   working-directory: ./playwright
-    #   run: npx playwright install --with-deps    
+    - name: Install Playwright Browsers
+      working-directory: ./playwright
+      run: npx playwright install --with-deps    
 
-    # - name: Run your tests
-    #   run: npx playwright test
-    #   working-directory: ./playwright
-    #   env:
-    #     BASE_URL: http://web:3000  
+    - name: Run your tests
+      run: npx playwright test
+      working-directory: ./playwright
+      env:
+        BASE_URL: http://localhost:3000
 
     - name: Stop Docker Compose services
       if: always()
@@ -96,6 +92,3 @@ jobs:
         path: playwright/test-results
         retention-days: 1
         if-no-files-found: ignore
-
-
-

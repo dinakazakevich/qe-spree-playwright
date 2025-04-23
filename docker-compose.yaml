@@ -17,16 +17,7 @@ services:
       - 'postgres_queue:/var/lib/postgresql/data'
     ports:
       - "5433:5432"
-  playwright:
-    image: mcr.microsoft.com/playwright:v1.52.0-noble
-    depends_on:
-      - web  
-    working_dir: /tests
-    volumes:
-      - ./playwright-tests:/tests
-    command: ["npx", "playwright", "test"]
-
 volumes:
   postgres:
   postgres_queue:
-  playwright:
+  
