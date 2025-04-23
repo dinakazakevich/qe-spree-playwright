@@ -45,104 +45,65 @@ jobs:
         run: docker ps -a
 
       - name: Setup application setup
-        run: ./bin/setup
+        run: bin/setup
 
       - name: Run application services
         run: |
           ./bin/dev &
-          sleep 10
+          sleep 10 
 
     
-      # - name: Setup test database
-      #   if: ${{ !env.ACT }} 
-      #   run: bundle exec rails db:setup RAILS_ENV=test
-        
-      # - name: Load Spree sample data
-      #   run: bin/rake spree_sample:load
+  playwright:
+    name: Run Playwright Tests
+    needs: environment-setup
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
+      options: 
+        --user 1001
+    defaults:
+        run:
+            working-directory: ./playwright
 
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
 
-  # playwright:
-  #   name: Run Playwright Tests
-  #   needs: environment-setup
-  #   runs-on: ubuntu-latest
-  #   container:
-  #     image: mcr.microsoft.com/playwright:v1.52.0-noble
-  #     options: 
-  #       --user 1001
-  #   defaults:
-  #       run:
-  #           working-directory: ./playwright
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps    
 
-  #   steps:
-  #   - uses: actions/checkout@v3
-  #   - uses: actions/setup-node@v4
-  #     with:
-  #       node-version: lts/*
+    - name: Run your tests
+      # run: npx playwright test --config=playwright/playwright.config.js
+      run: |
+        docker run --rm \
+          --network=qe-spree-technical-assessment_default \
+          -v "./playwright:/tests" \
+          -w /tests \
+          mcr.microsoft.com/playwright:v1.52.0-noble \
+          npx playwright test
+      env:
+        BASE_URL: http://web:3000  
+
+    - name: Stop Docker Compose services
+      if: always()
+      run: |
+        pwd
+        docker compose down
+      working-directory: .
     
-      - name: Install dependencies
-        working-directory: ./playwright
-        run: npm ci
-
-      - name: Install Playwright dependencies
-        working-directory: ./playwright
-        run: npx playwright install --with-deps
-      
-      - name: Run Playwright tests
-        run: npx playwright test --config=playwright/playwright.config.js
-        env:
-          BASE_URL: http://localhost:3000
-
-
-      # Install Node.js dependencies on the host (outside the container)
-      # - name: Install Node.js and npm dependencies
-      #   working-directory: ./playwright
-      #   run: |
-      #     npm ci
-
-      # Now run Playwright in a container that can access the host
-      # - name: Run Playwright Tests in Container
-      #   run: |
-      #     docker run --network host \
-      #       -v ${{ github.workspace }}:/work \
-      #       -w /work/playwright \
-      #       mcr.microsoft.com/playwright:v1.52.0-noble \
-      #       npx playwright test
-      #   env:
-      #     BASE_URL: http://localhost:3000
-
-      # - uses: actions/checkout@v4
-        
-      # - uses: actions/setup-node@v4
-      #   with:
-      #     node-version: lts/*
-
-      # - name: Install dependencies
-      #   working-directory: ./playwright
-      #   run: npm ci
-        
-      # - name: Install Playwright Browsers
-      #   working-directory: ./playwright
-      #   run: npx playwright install --with-deps  
-
-      # - name: Run your tests
-      #   working-directory: ./playwright
-        # run: npx playwright test
-
-      - name: Stop Docker Compose services
-        if: always()
-        run: |
-          pwd
-          docker compose down
-        # working-directory: .
-      
-      - name: Upload test artifacts
-        if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: playwright/test-results
-          retention-days: 1
-          if-no-files-found: ignore
+    - name: Upload test artifacts
+      if: ${{ !cancelled() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: playwright/test-results
+        retention-days: 1
+        if-no-files-found: ignore
 
 
 
