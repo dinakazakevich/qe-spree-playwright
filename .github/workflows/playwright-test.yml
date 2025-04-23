@@ -72,6 +72,7 @@ jobs:
         run: |
           pwd
           ls -al 
+          ls -al bin
           cat bin/setup
           export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
           export PATH="$HOME/.gem/ruby/3.2.0/bin:$PATH"
