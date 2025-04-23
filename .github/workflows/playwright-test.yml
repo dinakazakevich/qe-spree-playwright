@@ -45,7 +45,7 @@ jobs:
         run: docker ps -a
 
       - name: Setup application setup
-        run: bin/setup
+        run: ./bin/setup
 
       - name: Run application services
         run: |
@@ -61,9 +61,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.52.0-noble
       options: 
         --user 1001
-    # defaults:
-    #     run:
-    #         working-directory: ./playwright
+
 
     steps:
     - uses: actions/checkout@v4
@@ -77,7 +75,7 @@ jobs:
       
     - name: Install Playwright Browsers
       working-directory: ./playwright
-      run: npx playwright install --with-deps    
+      run: npx playwright install --with-deps
 
     - name: Run your tests
       # run: npx playwright test --config=playwright/playwright.config.js
