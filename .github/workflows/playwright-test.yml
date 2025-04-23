@@ -70,21 +70,12 @@ jobs:
       - name: Setup application setup
         if: ${{ !env.ACT }} 
         run: |
-          # Install dependencies
-          gem install bundler --conservative
-          bundle install
-          
-          # Setup database
-          bin/rails db:prepare
-          bin/rails db:seed
-          
-          # Setup credentials
-          bin/rails g master_key
-          bin/rails g credentials
-          
-          # Cleanup
-          bin/rails log:clear tmp:clear
-          bin/rails restart
+            bundle exec bin/rails db:prepare
+            bundle exec bin/rails db:seed
+            bundle exec bin/rails g master_key
+            bundle exec bin/rails g credentials
+            bundle exec bin/rails log:clear tmp:clear
+            bundle exec bin/rails restart
 
       - name: Run application services
         if: ${{ !env.ACT }} 
