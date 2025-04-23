@@ -31,15 +31,14 @@ jobs:
           ruby -v
           gem -v
           bundle -v
-        
 
-  docker-setup: 
-    name: Docker Setup
-    needs: environment-setup
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout  
-        uses: actions/checkout@v3
+  # docker-setup: 
+  #   name: Docker Setup
+  #   needs: environment-setup
+  #   runs-on: ubuntu-latest
+  #   steps: 
+      # - name: Checkout  
+      #   uses: actions/checkout@v3
 
       - name: Set Up Services With Docker Compose
         uses: docker/setup-compose-action@v1
@@ -69,22 +68,16 @@ jobs:
         
       - name: Setup application setup
         if: ${{ !env.ACT }} 
-        run: |
-            bundle exec bin/rails db:prepare
-            bundle exec bin/rails db:seed
-            bundle exec bin/rails g master_key
-            bundle exec bin/rails g credentials
-            bundle exec bin/rails log:clear tmp:clear
-            bundle exec bin/rails restart
+        run: ./bin/setup
 
       - name: Run application services
         if: ${{ !env.ACT }} 
-        run: bin/dev   
+        run: ./bin/dev   
 
         
   load-sample-data:
     name: Load Sample Data 
-    needs: docker-setup
+    needs: environment-setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
