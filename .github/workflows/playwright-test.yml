@@ -25,6 +25,12 @@ jobs:
         with: 
             ruby-version: '3.3.0'
             bundler-cache: true
+
+      - name: Verify Ruby setup
+        run: |
+          ruby -v
+          gem -v
+          bundle -v
         
 
   docker-setup: 
@@ -76,7 +82,10 @@ jobs:
     #       "
       - name: Setup application setup
         if: ${{ !env.ACT }} 
-        run: ./bin/setup
+        run: |
+          export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+          export PATH="$HOME/.gem/ruby/3.2.0/bin:$PATH"
+          ./bin/setup
 
       - name: Run application services
         if: ${{ !env.ACT }} 
