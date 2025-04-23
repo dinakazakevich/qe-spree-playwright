@@ -57,10 +57,6 @@ jobs:
     name: Run Playwright Tests
     needs: environment-setup
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.52.0-noble
-      options: 
-        --user 1001
 
     steps:
     - uses: actions/checkout@v4
@@ -68,26 +64,22 @@ jobs:
       with:
         node-version: lts/*
 
-    - name: Install dependencies
-      working-directory: ./playwright
-      run: npm ci
+    - name: Start Playwright container via Docker Compose
+      run: docker compose run --rm playwright
+
+    # - name: Install dependencies
+    #   working-directory: ./playwright
+    #   run: npm ci
       
     # - name: Install Playwright Browsers
     #   working-directory: ./playwright
     #   run: npx playwright install --with-deps    
 
-    - name: Run your tests
-      # run: npx playwright test --config=playwright/playwright.config.js
-      run: |
-        docker run --rm \
-          --network=qe-spree-technical-assessment_default \
-          -v "./playwright:/tests" \
-          -w /tests \
-          mcr.microsoft.com/playwright:v1.52.0-noble \
-          npx playwright test
-      working-directory: ./playwright
-      env:
-        BASE_URL: http://web:3000  
+    # - name: Run your tests
+    #   run: npx playwright test
+    #   working-directory: ./playwright
+    #   env:
+    #     BASE_URL: http://web:3000  
 
     - name: Stop Docker Compose services
       if: always()
