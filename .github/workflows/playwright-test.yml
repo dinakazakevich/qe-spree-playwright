@@ -13,12 +13,13 @@ jobs:
     name: Set Up Environment 
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Install dependencies 
         run: sudo apt-get install libvips-dev libpq-dev
-
+      
+      # Set up Ruby
       - name: Install Ruby 
         uses: ruby/setup-ruby@v1
         with: 
@@ -30,21 +31,22 @@ jobs:
     name: Docker Setup
     needs: environment-setup
     runs-on: ubuntu-latest
-
     steps: 
       - name: Checkout  
         uses: actions/checkout@v3
-      
-      - name: Build Docker Compose services
-        if: ${{ !env.ACT }}
-        run: docker compose build
-      
-      - name: Start Docker Compose services
+      - name: Set Up Services With Docker Compose
+        uses: docker/setup-compose-action@v1
+        with: 
+          version: latest
+      # - name: Build Docker Compose services
+      #   if: ${{ !env.ACT }}
+      #   run: docker compose build
+      - name: Start Docker Compose Services
         run: docker compose up -d
-      
+
       - name: Check running containers
         run: docker ps -a
-        
+
       - name: Wait for PostgreSQL to be ready
         run: |
           echo 'Waiting for PostgreSQL to be ready...'
@@ -72,9 +74,13 @@ jobs:
     #           vips -v
     #         fi
     #       "
-      - name: Run setup script
+      - name: Setup application setup
         if: ${{ !env.ACT }} 
-        run: docker compose exec -T app ./bin/setup
+        run: ./bin/setup
+
+      - name: Run application services
+        if: ${{ !env.ACT }} 
+        run: ./bin/dev   
 
         
   load-sample-data:

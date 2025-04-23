@@ -6,3 +6,6 @@
 /playwright/playwright-report/
 /playwright/blob-report/
 /playwright/playwright/.cache/
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
