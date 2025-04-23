@@ -85,7 +85,8 @@ jobs:
     #   env:
     #     BASE_URL: http://localhost:3000
 
-    - uses: actions/checkout@v4
+    - name: Checkout Code
+      uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
@@ -99,15 +100,14 @@ jobs:
     - name: Stop Docker Compose services
       if: always()
       run: docker compose down
+      working-directory: ./
     
     - name: Upload test artifacts
       if: ${{ !cancelled() }}
       uses: actions/upload-artifact@v3
       with:
         name: test-results
-        path: |
-          playwright/test-results
-          playwright/playwright-report
+        path: playwright/test-results
         retention-days: 1
         if-no-files-found: ignore
 
