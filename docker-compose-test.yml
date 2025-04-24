@@ -41,7 +41,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - RAILS_ENV=test
-      - SECRET_KEY_BASE=${{secrets.SECRET_KEY_BASE}}
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
       - DB_HOST=postgres
       - DB_USER=postgres
       - DB_PASSWORD=password
@@ -77,7 +77,7 @@ services:
     environment:
       - BASE_URL=http://web:3000
       - CI=true
-      - SECRET_KEY_BASE=${{secrets.SECRET_KEY_BASE}}
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     networks:
       - spree_test_network
     depends_on:
