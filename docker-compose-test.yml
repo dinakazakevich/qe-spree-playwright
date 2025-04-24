@@ -82,7 +82,11 @@ services:
       - spree_test_network
     depends_on:
       - web
-    command: npm ci && npx playwright test
+    command: >
+      /bin/sh -c "
+        npm ci &&
+        npx playwright test
+        "
 
 networks:
   spree_test_network:
