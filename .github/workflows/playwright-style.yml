@@ -33,3 +33,7 @@ jobs:
       - name: Run ESLint
         working-directory: ./playwright
         run: npx eslint . --ext .js,.ts
+
+      - name: Type check
+        working-directory: ./playwright
+        run: npm run type-check   

@@ -29,6 +29,7 @@ export default [
       ...tseslint.configs.recommended.rules,
       ...prettierConfig.rules,
       '@typescript-eslint/no-unused-vars': 'warn',
+      "@typescript-eslint/no-floating-promises": "error",
       'no-console': 'warn',
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
