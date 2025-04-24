@@ -1,6 +1,9 @@
 name: Playwrgiht Code Style and Lint
 
 on:
+  push:
+    branches: 
+        - main
   pull_request:
     branches:
         - main
