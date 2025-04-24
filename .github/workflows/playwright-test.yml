@@ -1,9 +1,9 @@
 name: Playwright Test
 
 on:
-  push:
-    branches: 
-      - main
+  # push:
+  #   branches: 
+  #     - main
   pull_request:
     branches: 
       - main
@@ -27,11 +27,13 @@ jobs:
             ruby-version: '3.3.0'
             bundler-cache: true
 
-      - name: Verify Ruby setup
-        run: |
-          ruby -v
-          gem -v
-          bundle -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        working-directory: ./playwright
+        run: npm ci
 
       - name: Set up services with Docker Compose
         uses: docker/setup-compose-action@v1
@@ -50,45 +52,46 @@ jobs:
       - name: Run application services
         run: |
           ./bin/dev &
-          sleep 10 
+          sleep 30 
+          echo "Testing via localhost1"
+          curl -v http://0.0.0.0:3000
 
-  playwright:
-    name: Run Playwright Tests
-    needs: environment-setup
-    runs-on: ubuntu-latest
+  # playwright:
+  #   name: Run Playwright Tests
+  #   needs: environment-setup
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
+  #   steps:
+  #   - uses: actions/checkout@v4
 
-    - name: Install dependencies
-      working-directory: ./playwright
-      run: npm ci
+        
+      - name: Install Playwright Browsers
+        working-directory: ./playwright
+        run: npx playwright install --with-deps  
+
+      # - name: Checking on the port 
+      #   run: |
+      #     echo "Testing via localhost2"
+      #     curl -v http://localhost:3000
+
+      - name: Run your tests
+        run: npx playwright test
+        working-directory: ./playwright
+        env:
+          BASE_URL: http://0.0.0.0:3000
+
+      - name: Stop Docker Compose services
+        if: always()
+        run: |
+          pwd
+          docker compose down
+        working-directory: .
       
-    - name: Install Playwright Browsers
-      working-directory: ./playwright
-      run: npx playwright install --with-deps    
-
-    - name: Run your tests
-      run: npx playwright test
-      working-directory: ./playwright
-      env:
-        BASE_URL: http://localhost:3000
-
-    - name: Stop Docker Compose services
-      if: always()
-      run: |
-        pwd
-        docker compose down
-      working-directory: .
-    
-    - name: Upload test artifacts
-      if: ${{ !cancelled() }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results
-        path: playwright/test-results
-        retention-days: 1
-        if-no-files-found: ignore
+      - name: Upload test artifacts
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: playwright/test-results
+          retention-days: 1
+          if-no-files-found: ignore
