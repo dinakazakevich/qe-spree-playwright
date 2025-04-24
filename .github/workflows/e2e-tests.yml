@@ -74,29 +74,29 @@ jobs:
       #       docker cp $container_id:/app/playwright/playwright-report ./playwright-report || true
       #     fi
       
-      - name: Retrieve Playwright artifacts
-        if: always()
-        env:
-          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
-        run: |
-          # Create directories matching your subfolder structure
-          mkdir -p playwright/playwright-report
-          mkdir -p playwright/test-results
+      # - name: Retrieve Playwright artifacts
+      #   if: always()
+      #   env:
+      #     SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+      #   run: |
+      #     # Create directories matching your subfolder structure
+      #     mkdir -p playwright/playwright-report
+      #     mkdir -p playwright/test-results
           
-          # Get the container ID
-          container_id=$(docker compose -f docker-compose-test.yml ps -q playwright)
+      #     # Get the container ID
+      #     container_id=$(docker compose -f docker-compose-test.yml ps -q playwright)
           
-          if [ ! -z "$container_id" ]; then
-            # Copy from the correct subfolder paths in the container
-            docker cp $container_id:/app/playwright/playwright-report/. ./playwright/playwright-report || true
-            docker cp $container_id:/app/playwright/test-results/. ./playwright/test-results || true
+      #     if [ ! -z "$container_id" ]; then
+      #       # Copy from the correct subfolder paths in the container
+      #       docker cp $container_id:/app/playwright/playwright-report/. ./playwright/playwright-report || true
+      #       docker cp $container_id:/app/playwright/test-results/. ./playwright/test-results || true
             
-            # Debug: show what was copied
-            echo "Files in playwright/playwright-report:"
-            ls -la ./playwright/playwright-report || echo "Directory empty or not found"
-          else
-            echo "No playwright container found!"
-          fi
+      #       # Debug: show what was copied
+      #       echo "Files in playwright/playwright-report:"
+      #       ls -la ./playwright/playwright-report || echo "Directory empty or not found"
+      #     else
+      #       echo "No playwright container found!"
+      #     fi
 
       - name: Upload Playwright report
         if: always()
