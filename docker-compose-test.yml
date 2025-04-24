@@ -74,6 +74,8 @@ services:
     volumes:
       - .:/app
       - playwright-cache:/ms-playwright
+      - ./playwright/playwright-report:/app/playwright/playwright-report
+      - ./playwright/test-results:/app/playwright/test-results
     environment:
       - BASE_URL=http://web:3000
       - CI=true
