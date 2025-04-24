@@ -77,7 +77,6 @@ services:
     environment:
       - BASE_URL=http://web:3000
       - CI=true
-      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     networks:
       - spree_test_network
     depends_on:
