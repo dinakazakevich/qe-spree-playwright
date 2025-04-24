@@ -58,8 +58,8 @@ jobs:
           echo "Web service is ready"
       
       - name: Run Playwright tests
-        # env:
-        #   SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+        env:
+          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
         run: |
           docker compose -f docker-compose-test.yml run playwright
       
