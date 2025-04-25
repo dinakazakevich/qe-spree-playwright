@@ -1,4 +1,4 @@
-name: Playwrgiht Code Style and Lint
+name: ESLint Prettier and Type Checks
 
 on:
   push:
