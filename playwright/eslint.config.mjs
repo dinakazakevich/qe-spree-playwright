@@ -18,6 +18,12 @@ export default [
     languageOptions: {
       parser: tsparser,
       sourceType: 'module',
+      parserOptions: {
+        project: './tsconfig.json', // Path to your tsconfig.json
+        tsconfigRootDir: process.cwd(),
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
     },
 
     plugins: {

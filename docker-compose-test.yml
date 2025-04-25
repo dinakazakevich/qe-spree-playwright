@@ -73,7 +73,7 @@ services:
     working_dir: /app/playwright
     volumes:
       - .:/app
-      - playwright-cache:/ms-playwright
+      - playwright-cache:/root/.cache/ms-playwright
       - ./playwright/playwright-report:/app/playwright/playwright-report
       - ./playwright/test-results:/app/playwright/test-results
     environment:
