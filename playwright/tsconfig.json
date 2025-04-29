@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
 
-    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "target": "ES2017" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
 
     /* Modules */
     "module": "commonjs" /* Specify what module code is generated. */,
@@ -14,5 +14,7 @@
 
     /* Redirect output structure to the directory. */
     "noEmit": true,                        /* Do not emit outputs. */
+    "lib": ["DOM", "ES2017"] /* or later */,
+
   }
 }

@@ -1,4 +1,15 @@
-/tmp/ 
+# Ignore all log files and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
 
 # Playwright
 /playwright/node_modules/
@@ -6,7 +17,12 @@
 /playwright/playwright-report/
 /playwright/blob-report/
 /playwright/playwright/.cache/
+/playwright/.auth
+/playwright/storage
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore local environment secrets
 /.secrets
+/playwright/.env

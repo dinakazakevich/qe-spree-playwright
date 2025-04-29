@@ -11,7 +11,9 @@ export default [
       "package-lock.json",
       "package.json",
       "tsconfig.json",
-      "eslint.config.mjs"
+      "eslint.config.mjs",
+      "playwright/utils/templateSpec.ts",
+      "playwright/utils/templateSpec.ts"
   ]),
     files: ['**/*.ts'],
 
@@ -29,6 +31,7 @@ export default [
     plugins: {
       '@typescript-eslint': tseslint,
       prettier: prettierPlugin,
+
     },
 
     rules: {
@@ -36,10 +39,12 @@ export default [
       ...prettierConfig.rules,
       '@typescript-eslint/no-unused-vars': 'warn',
       "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/await-thenable": "error",
       'no-console': 'warn',
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
       'prettier/prettier': 'error',
+      'max-len': [0, 120, 2, { ignoreUrls: true }]
     },
   },
 ];
