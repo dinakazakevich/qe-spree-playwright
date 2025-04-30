@@ -1,6 +1,6 @@
 import { type Locator } from '@playwright/test';
 import { PageObject } from './basePageObject';
-import '../../lib/utils/labels';
+import '../datafactory/labels';
 
 export class NavigationBar extends PageObject {
   protected readonly logoHomePage: Locator = this.host.getByRole('link', { name: 'Shop' });

@@ -1,9 +1,9 @@
 import { test as base } from '@playwright/test';
-import { HomePage } from '../../pom/pages/homePage';
-import { LoginPage } from '../../pom/pages/loginPage';
-import { ProductsPage } from '../../pom/pages/productsPage';
-import { ProductDetailsPage } from '../../pom/pages/productsDetailsPage';
-import { User } from '../types/user';
+import { HomePage } from '../pages/homePage';
+import { LoginPage } from '../pages/loginPage';
+import { ProductsPage } from '../pages/productsPage';
+import { ProductDetailsPage } from '../pages/productsDetailsPage';
+import { User } from '../types/types';
 
 export type TestOptions = {
   loginPage: LoginPage;
@@ -14,8 +14,15 @@ export type TestOptions = {
 };
 
 export const test = base.extend<TestOptions>({
-  loginPage: async ({ page, testUser }, use) => {
-    await use(new LoginPage(page, testUser));
+  testUser: [
+    {
+      email: 'spree@example.com',
+      password: 'spree123',
+    },
+    { option: true },
+  ],
+  loginPage: async ({ page }, use) => {
+    await use(new LoginPage(page));
   },
   homePage: async ({ page }, use) => {
     await use(new HomePage(page));

@@ -1,10 +1,10 @@
-import { test } from '../../fixtures/authenticatedTest';
-import { ProductPage } from '../../pom/pages/productsPage';
-import { ProductDetailsPage } from '../../pom/pages/productsDetailsPage';
+import { test } from '../../lib/fixtures/authenticatedPage';
+import { ProductsPage } from '../../lib/pages/productsPage';
+import { ProductDetailsPage } from '../../lib/pages/productsDetailsPage';
 
-test('abandoned cart scenario', async ({ adminAuthenticatedPage }) => {
-  let productsPageAuth = new ProductPage(adminAuthenticatedPage);
-  let productDetailsPageAuth = new ProductDetailsPage(adminAuthenticatedPage);
+test('abandoned cart scenario', async ({ authenticatedPage }) => {
+  let productsPageAuth = new ProductsPage(ProductsPage);
+  let productDetailsPageAuth = new ProductDetailsPage(ProductDetailsPage);
 
   // Go to homepage and make sure you are logged-in
 

@@ -1,6 +1,6 @@
 import { type Locator } from '@playwright/test';
 import { PageObject } from './basePageObject';
-import { User } from '../../lib/types/user';
+import { User } from '../types/types';
 
 export class LoginForm extends PageObject {
   public readonly header: Locator = this.host.getByRole('heading');
@@ -11,17 +11,17 @@ export class LoginForm extends PageObject {
   public readonly forgotPasswordLink: Locator = this.host.getByRole('link', { name: 'Forgot Password' });
   public readonly rememberCheckbox: Locator = this.host.getByRole('checkbox', { name: 'Remember me' });
 
-  async fillEmail(email: string) {
-    await this.emailInput.fill(email);
+  async fillEmail(testUser: User) {
+    await this.emailInput.fill(testUser.email);
   }
 
-  async fillPassword(password: string) {
-    await this.passwordInput.fill(password);
+  async fillPassword(testUser: User) {
+    await this.passwordInput.fill(testUser.password);
   }
 
   async doLogin(testUser: User) {
-    await this.fillEmail(testUser.email);
-    await this.fillPassword(testUser.password);
+    await this.fillEmail(testUser);
+    await this.fillPassword(testUser);
     await this.loginButton.click();
   }
 

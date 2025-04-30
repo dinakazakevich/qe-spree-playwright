@@ -1,5 +1,5 @@
-import { test, expect } from '../../lib/fixtures/testOptions';
-import { createCookies } from '../../lib/utils/authUtils';
+import { test, expect } from '../../lib/fixtures/instanciatedPage';
+import { createCookies } from '../../lib/datafactory/auth';
 
 test('if the access_token got obtained', async ({ page, context }) => {
   // console.log(access_token);

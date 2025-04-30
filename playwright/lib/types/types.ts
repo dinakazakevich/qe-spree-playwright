@@ -4,3 +4,8 @@ export type User = {
   first_name?: string;
   last_name?: string;
 };
+
+// TODO: define the function
+// export type Address = {
+//   /** */
+// }

@@ -1,12 +1,15 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../../pom/pages/homePage';
-import { getCookies } from '../../lib/utils/authUtils';
+import { test, expect } from '../../lib/fixtures/instanciatedPage';
+import { generateUser } from '../../lib/datafactory/testData';
+import { LoginPage } from '../../lib/pages/loginPage';
+import messages from '../../lib/datafactory/messages';
 
-let homePage: HomePage;
-
-test('has title', async ({ page, context }) => {
-  homePage = new HomePage(page);
+test('has title', async ({ homePage }) => {
   await homePage.goto();
+  const user = generateUser();
   await homePage.navBar.navToAccount();
-  expect(getCookies(context, '_spree_starter_session')).toBeTruthy();
+  await homePage.loginForm.signupLink.click();
+  await homePage.signupForm.signUp(user);
+  await homePage.signupSuccess();
+
+  await expect(homePage.page.getByText(messages.signup.success)).toBeVisible();
 });

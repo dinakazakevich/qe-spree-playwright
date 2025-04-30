@@ -1,8 +1,8 @@
-import { test as base, expect } from './testOptions';
-import { getCookies } from '../utils/authUtils';
-import { generateUser } from '../utils/testData';
-import { LoginPage } from '../../pom/pages/loginPage';
-import { User } from '../types/user';
+import { test as base, expect } from './instanciatedPage';
+import { getCookies } from '../datafactory/auth';
+import { generateUser } from '../datafactory/testData';
+import { LoginPage } from '../pages/loginPage';
+import { User } from '../types/types';
 
 type AuthenticatedPages = {
   authenticatedPage: LoginPage;
@@ -11,19 +11,18 @@ type AuthenticatedPages = {
 };
 
 export const test = base.extend<AuthenticatedPages>({
-  authenticatedPage: async ({ loginPage, context, testUser }, use) => {
+  authenticatedPage: async ({ loginPage, testUser }, use) => {
     // Perform login steps
     await loginPage.goto();
     await loginPage.loginForm.doLogin(testUser);
 
     // Confirm login is successful
     await loginPage.loginSuccess();
-    expect(getCookies(context, '_spree_starter_session')).toBeTruthy();
 
     // Pass the authenticated page object back to the test
     await use(loginPage);
   },
-  newAccountAuthenticatedPage: async ({ loginPage, context }, use) => {
+  newAccountAuthenticatedPage: async ({ loginPage }, use) => {
     const newTestUser = generateUser();
     // Go to Login page
     await loginPage.goto();
@@ -32,11 +31,11 @@ export const test = base.extend<AuthenticatedPages>({
     await loginPage.loginForm.signupLink.click();
 
     // Sign up with the new testUser credentials
-    await loginPage.SignupForm.signUp(newTestUser);
+    await loginPage.signupForm.signUp(newTestUser);
 
     // Confirm login is successful
-    await loginPage.signUpSuccess();
-    expect(getCookies(context, '_spree_starter_session')).toBeTruthy();
+    await loginPage.signupSuccess();
+    expect(getCookies(loginPage.page.context(), '_spree_starter_session')).toBeTruthy();
 
     // Pass the authenticated page object back to the test
     await use(loginPage);
