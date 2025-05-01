@@ -3,7 +3,6 @@ import { NavigationBar } from '../components/navigationComponent';
 import { LoginForm } from '../components/loginForm';
 import { CartComponent } from '../components/cartComponent';
 import { SignupForm } from '../components/signupForm';
-import { Sign } from 'crypto';
 
 export abstract class Page {
   public readonly page: PlaywrightPage;

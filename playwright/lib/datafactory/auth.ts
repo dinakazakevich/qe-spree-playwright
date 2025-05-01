@@ -23,7 +23,7 @@ export async function checkUserExistsViaAPI(testUser: User) {
   const requestContext = await request.newContext();
 
   // Make the POST request
-  const response = await requestContext.post(apiRoutes.authenticate, {
+  const response = await requestContext.post(apiRoutes.storefront.authenticate, {
     headers: {
       'Set-Cookie': '',
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -58,7 +58,7 @@ export async function createCookies(testUser: User) {
   const context = await request.newContext();
 
   // Make the POST request
-  const response = await context.post(apiRoutes.authenticate, {
+  const response = await context.post(apiRoutes.storefront.authenticate, {
     headers: {
       'Set-Cookie': '',
       'Content-Type': 'application/x-www-form-urlencoded',

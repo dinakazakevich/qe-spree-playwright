@@ -3,15 +3,18 @@ import { LoginPage } from '../pages/loginPage';
 import { User } from '../types/types';
 import { UserClient } from '../apiClient/userClient';
 import { getCookies } from '../datafactory/auth';
+import { Page } from '@playwright/test';
 
 type AuthenticatedFixtures = {
-  authenticatedPage: LoginPage;
+  authenticatedPageUI: LoginPage;
   newAccountAuthenticatedPage: LoginPage;
   userParams?: Partial<User>; // Optional override
   testUser: User;
   userClient: UserClient;
   authenticatedUserClient: UserClient;
   authenticateWithCSRF: UserClient;
+  authenticatedPageAPI: Page;
+  page: Page;
 };
 
 export const test = base.extend<AuthenticatedFixtures>({
@@ -28,7 +31,25 @@ export const test = base.extend<AuthenticatedFixtures>({
       await use(mergedUser);
     }
   },
-  authenticatedPage: async ({ loginPage, testUser, userClient }, use) => {
+  authenticatedPageAPI: async ({ browser, userClient, testUser }, use) => {
+    const checkUser = await userClient.authenticate(testUser);
+    if (!checkUser) {
+      await userClient.createAccount(testUser);
+      // eslint-disable-next-line quotes, no-console
+      console.log("Warning: user doesn't exist, creating a new user");
+    }
+    await userClient.authenticate(testUser);
+
+    const storageState = await userClient.request.storageState();
+
+    const context = await browser.newContext({ storageState });
+    const page = await context.newPage();
+
+    await use(page);
+
+    await context.close(); // closes both page and context
+  },
+  authenticatedPageUI: async ({ loginPage, testUser, userClient }, use) => {
     const userCheck = await userClient.checkUserExists(testUser);
 
     if (userCheck) {

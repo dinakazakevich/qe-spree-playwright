@@ -13,7 +13,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  */
 export default defineConfig({
   /* Test specs repository */
-  testDir: './specs',
+  testDir: './tests',
   /* Glob patterns or regular expressions to ignore test files */
   testIgnore: '*template.spec.ts',
   /* Run tests in files in parallel */

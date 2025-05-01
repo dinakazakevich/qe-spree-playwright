@@ -2,7 +2,7 @@
 import { APIRequestContext, APIResponse, expect } from '@playwright/test';
 
 export class BaseApiClient {
-  constructor(protected request: APIRequestContext) {}
+  constructor(public request: APIRequestContext) {}
 
   async get(url: string, options = {}): Promise<APIResponse> {
     const response = await this.request.get(url, options);

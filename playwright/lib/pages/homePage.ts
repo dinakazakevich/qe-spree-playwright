@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { Page } from './basePage';
-import messages from '../datafactory/messages';
+import { messages } from '../datafactory/constants';
 import { Page as PlaywrightPage } from '@playwright/test';
 
 export class HomePage extends Page {

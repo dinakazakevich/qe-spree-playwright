@@ -14,7 +14,3 @@ export function generateUser(): User {
     password: faker.internet.password({ length: 12 }),
   };
 }
-
-export function generateAddress(): Address {
-  /** */
-}

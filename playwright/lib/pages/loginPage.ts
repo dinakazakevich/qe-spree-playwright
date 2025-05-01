@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { Page } from './basePage';
 import { Page as PlaywrightPage } from '@playwright/test';
-import messages from '../datafactory/messages';
+import { messages } from '../datafactory/constants';
 
 export class LoginPage extends Page {
   protected readonly url: string;
