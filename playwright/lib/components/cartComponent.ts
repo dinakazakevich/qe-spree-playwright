@@ -4,7 +4,7 @@ import { PageObject } from './basePageObject';
 export class CartComponent extends PageObject {
   public readonly header: Locator = this.host.getByText('Cart');
   // Pass ('#slideover-cart') as the cart host when instantiate
-  public readonly cartListItem: Locator = this.host.getByRole('listitem');
+  public readonly cartListItem: Locator = this.host.locator('li.cart-line-item');
 
   async assertEmpty() {
     // Check that the cart has been created and is not empty
@@ -14,8 +14,11 @@ export class CartComponent extends PageObject {
 
   async assertNotEmpty() {
     // Check that the cart has been created and is not empty
-    await expect(this.host.getByRole('list').filter({ hasText: '$' })).toBeVisible();
     await expect(this.host).not.toContainText('Your cart is empty.');
+    // await expect(this.cartListItem).toBeVisible();
+    const cartItemCount = await this.cartListItem.count();
+    // eslint-disable-next-line @typescript-eslint/await-thenable
+    await expect(cartItemCount).toBeGreaterThan(0);
   }
 
   async removeItem() {

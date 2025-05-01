@@ -3,24 +3,28 @@ import { HomePage } from '../pages/homePage';
 import { LoginPage } from '../pages/loginPage';
 import { ProductsPage } from '../pages/productsPage';
 import { ProductDetailsPage } from '../pages/productsDetailsPage';
-import { User } from '../types/types';
+// import { User } from '../types/types';
+import { UserClient } from '../apiClient/userClient';
 
 export type TestOptions = {
   loginPage: LoginPage;
   homePage: HomePage;
   productsPage: ProductsPage;
   productDetailsPage: ProductDetailsPage;
-  testUser: User;
+  userClient: UserClient;
+  // testUser: User;
 };
 
 export const test = base.extend<TestOptions>({
-  testUser: [
-    {
-      email: 'spree@example.com',
-      password: 'spree123',
-    },
-    { option: true },
-  ],
+  // testUser: [
+  //   {
+  //     email: 'spree@example.com',
+  //     password: 'spree123',
+  //   },
+  //   { option: true },
+  // ],
+  // Instantiate page object and return a page that is ready to be used in the test
+  // This allows to skip `let homepage = new HomePage`
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
@@ -33,7 +37,15 @@ export const test = base.extend<TestOptions>({
   productDetailsPage: async ({ page }, use) => {
     await use(new ProductDetailsPage(page));
   },
-  // TODO: add a fixture for wishlist and other user account sections
+  // Instantiate API client object to avoid having to add `let userClient = new UserClient` in every test
+  userClient: async ({ request }, use) => {
+    const client = new UserClient(request);
+    await use(client);
+  },
+  // userCart: async ({ request }, use) => {
+  //   const client = new UserCart(request);
+  //   await use(client);
+  // },
 });
 
 export { expect } from '@playwright/test';

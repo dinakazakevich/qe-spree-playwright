@@ -1,7 +1,7 @@
-import { test, expect } from '../../lib/fixtures/instanciatedPage';
-import { generateUser } from '../../lib/datafactory/testData';
-import { LoginPage } from '../../lib/pages/loginPage';
-import messages from '../../lib/datafactory/messages';
+import { test, expect } from '../lib/fixtures/instantiate';
+import { generateUser } from '../lib/datafactory/testData';
+import { LoginPage } from '../lib/pages/loginPage';
+import { messages } from '../lib/datafactory/constants';
 
 test('has title', async ({ homePage }) => {
   await homePage.goto();

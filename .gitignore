@@ -3,6 +3,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/.idea
 
 # Ignore storage (uploaded files in development and any SQLite databases).
 /storage/*

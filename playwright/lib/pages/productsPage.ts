@@ -1,14 +1,15 @@
 import { Page } from './basePage';
-import { LoginForm } from '../components/loginForm';
-import { NavigationBar } from '../components/navigationComponent';
-import { mathRandom } from '../datafactory/testData';
+import { mathRandom } from '../helpers/utils';
+import { Page as PlaywrightPage } from '@playwright/test';
 
 export class ProductsPage extends Page {
-  public readonly navBar = new NavigationBar(this.page.getByRole('navigation', { name: 'Top' }));
-  public readonly loginForm = new LoginForm(this.page.locator('#login'));
-
+  protected readonly url: string;
+  constructor(page: PlaywrightPage) {
+    super(page);
+    this.url = '/products';
+  }
   async goto() {
-    await this.page.goto('/products');
+    await this.page.goto(this.url);
   }
 
   async selectProduct() {

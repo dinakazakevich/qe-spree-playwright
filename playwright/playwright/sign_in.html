@@ -1,0 +1,1659 @@
+<!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/layouts/spree/storefront.html.erb --><!doctype html>
+<html lang="en">
+  <head>
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/spree/shared/_head.html.erb -->
+    <meta charset="utf-8" />
+    <title>Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="http://localhost:3000:3000/" rel="canonical" />
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta
+      name="csrf-token"
+      content="2nUV9QnwGhncKRN9Egmbf5IASrUkHCqhXDU5jHMxgGd36hLLdbWcYOFn77pJ1BGdfq1Ye7MuRpIBCkDBmndSPw"
+    />
+
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_meta_tags.html.erb -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <meta name="description" content="Shop" />
+
+    <meta property="og:site_name" content="Shop" />
+    <meta property="og:url" content="http://localhost:3000:3000/" />
+    <meta property="og:title" content="Shop" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Shop" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shop" />
+    <meta name="twitter:description" content="Shop" />
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_meta_tags.html.erb -->
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_css_variables.html.erb -->
+    <style data-turbo-track="reload">
+      :root {
+        --primary: #000000;
+        --accent: #f0efe9;
+        --danger: #c73528;
+        --success: #00c773;
+        --neutral: #999999;
+
+        --background: #ffffff;
+        --text: #000000;
+
+        --border-default-color: #e9e7dc;
+        --border-default-width: 1px;
+        --border-default-radius: 6px;
+
+        /* --border-default-shadow: 0px 4px 5px rgba(0, 0, 0, 0); */
+        --button: #000000;
+        --button-rgb: 0, 0, 0;
+        --button-text: #ffffff;
+        --button-border-radius: 100px;
+        --button-border-width: 1px;
+        --button-border-color: ;
+
+        --button-hover: #000000;
+        --button-hover-text: #ffffff;
+
+        --secondary-button: #ffffff;
+        --secondary-button-text: #000000;
+        --secondary-button-hover: #000000;
+        --secondary-button-hover-text: #ffffff;
+
+        --input: #e9e7dc;
+        --input-bg: #ffffff;
+        --input-text: #6b7280;
+        --input-focus-bg: #ffffff;
+        --input-border-radius: 8px;
+
+        --neutral-50: #f3f3f3;
+        --neutral-100: #eaeaea;
+        --neutral-200: #d4d4d4;
+        --neutral-300: #b3b3b3;
+        --neutral-400: #999999;
+        --neutral-500: #808080;
+        --neutral-600: #666666;
+        --neutral-700: #4d4d4d;
+        --neutral-800: #333333;
+        --neutral-900: #1a1a1a;
+        --accent-100: #fbfaf8;
+      }
+    </style>
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_css_variables.html.erb -->
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/spree/shared/_fonts.html.erb -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200..700&amp;display=swap" />
+
+    <style type="text/css">
+      :root {
+        --font-body: Inter;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      body {
+        font-size: 1rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/spree/shared/_fonts.html.erb -->
+
+    <script type="importmap" data-turbo-track="reload">
+      {
+        "imports": {
+          "@rails/request.js": "/assets/@rails--request.js-de9a798286d24ebf0114db0c804c93bd447d0fdff856f30efbebd22d5b8a3b84.js",
+          "tailwindcss-stimulus-components": "/assets/tailwindcss-stimulus-components-0478120d897543c7466131f6e32f51ec04087f065a476380098e5317c2ff9472.js",
+          "stimulus-reveal-controller": "/assets/stimulus-reveal-controller-5d32c589c8a1e84c07da00e086f49901fc80aca6610fa882f6cc8f8adb62baf9.js",
+          "@stimulus-components/auto-submit": "/assets/@stimulus-components--auto-submit-fa9a9cb2fe24adc00bf7a451cbaffe1e9c70a8c769897a26fc6fc3369e8ce444.js",
+          "application-spree-storefront": "/assets/spree/storefront/application-60bf773efe5a3c8da6f89ff73da05d4373e4859f955f195c940749ec247cbc2e.js",
+          "stimulus-scroll-to": "/assets/stimulus-scroll-to-9322c09d3dcb3e57444d5c5248fadf056f4a7d95ddfbc17e215d6891e2242e5b.js",
+          "stimulus-read-more": "/assets/stimulus-read-more-4b4e2ff97f8970c4cdd186f8e1b46456e1d4cbbc0bcfd5ceffa9a470c7a8c443.js",
+          "@kanety/stimulus-accordion": "/assets/@kanety--stimulus-accordion-c9e970aeef98580c56444c6d1048c62ab71da1a9772c1b2ecd57be8b0d488ade.js",
+          "headroom.js": "/assets/headroom.js-63dede99b6975eac9da04b75420c15a8b63efd5b018352657f7273143e7a795e.js",
+          "photoswipe/lightbox": "/assets/photoswipe--dist--photoswipe-lightbox.esm.js-32a766d39024a7881b03943c2e1790c0b6b6965c37dd8c44d3207f3a3fd6d851.js",
+          "nouislider": "/assets/nouislider-321701e8147c69bf9054bd44617d0d5555a08881df333d470e863d5866a6532c.js",
+          "swiper/bundle": "https://ga.jspm.io/npm:swiper@11.2.2/swiper-bundle.mjs",
+          "@stimulus-components/carousel": "/assets/@stimulus-components--carousel-d21c616fd13eb6c12ffae80557edd78b8c73f938c1ddee0b106854c0f063ba3c.js",
+          "photoswipe": "/assets/photoswipe-d5b2e99f0f7faad507b75d260fb5c196b352e29513cb27569486b8645efcf496.js",
+          "card-validator": "/assets/card-validator-9cdaa08e6f8087777974728dbe458031e152723e0a420feeffd9ca0dae2d2a16.js",
+          "credit-card-type": "/assets/credit-card-type-1ecdcea00067a2fe5718d9ccaf61ffbcf853817898cd2fb5012ffcf8b592e705.js",
+          "application": "/assets/application-234f8bed8636066fccb3be9d9c37552702ed61ecdcfeb919a52fa12d5a694d68.js",
+          "@hotwired/turbo-rails": "/assets/turbo.min-c85b4c5406dd49df1f63e03a5b07120d39cc3e33bc2448f5e926b80514f9dfc8.js",
+          "@hotwired/stimulus": "/assets/stimulus.min-dd364f16ec9504dfb72672295637a1c8838773b01c0b441bd41008124c407894.js",
+          "@hotwired/stimulus-loading": "/assets/stimulus-loading-3576ce92b149ad5d6959438c6f291e2426c86df3b874c525b30faad51b0d96b3.js",
+          "spree/core/controllers/address_autocomplete_controller": "/assets/spree/core/controllers/address_autocomplete_controller-868667c3838f2f2f79ceaf6683f840aa1f4af901ea686e27f7867dbcc962dbe2.js",
+          "spree/core/controllers/address_form_controller": "/assets/spree/core/controllers/address_form_controller-fec06b19642381b25ae3f93b24240960ac6dd551d586a3c073e6bb550be48063.js",
+          "spree/core/controllers/enable_button_controller": "/assets/spree/core/controllers/enable_button_controller-c9eb156235192713408cf1ab8d7ed9114eb208f68afb0202bcb62a8de1e01b9c.js",
+          "spree/core/helpers/address_autocomplete/google_places_suggestions_provider": "/assets/spree/core/helpers/address_autocomplete/google_places_suggestions_provider-654d5e4053fe3beb7ac00bbd5d7cfe1a672f8303ed069a159ccdb8c054ed5282.js",
+          "spree/core/helpers/debounce": "/assets/spree/core/helpers/debounce-c820da7054fcbe683f129b5790d41452392d1f3fd4e040039dee9c7e10a7453d.js",
+          "spree/core/helpers/scroll_lock": "/assets/spree/core/helpers/scroll_lock-829108f9bdaa547d2ff7527b526fcb455ef0f568063b529d23c46b44d2888492.js",
+          "spree/storefront/controllers/accordion_controller": "/assets/spree/storefront/controllers/accordion_controller-de6cfedaf69cefea4efdfd006c187f59fa112af487725e807ee30b3da8818259.js",
+          "spree/storefront/controllers/account_nav_controller": "/assets/spree/storefront/controllers/account_nav_controller-2e005514ff46be4fef30be4eda8362e6b445502efe7210b8a492764ee500c7e7.js",
+          "spree/storefront/controllers/address_book_controller": "/assets/spree/storefront/controllers/address_book_controller-12f7506875b2ff0c55afbfd1eca0cf477a1be449baa024de0bdcdd60b177c2c1.js",
+          "spree/storefront/controllers/card_validation_controller": "/assets/spree/storefront/controllers/card_validation_controller-f16ca942670d9a317f1b3447c87af00a13466f1f3cc26526a39e6e6102ed8a12.js",
+          "spree/storefront/controllers/cart_controller": "/assets/spree/storefront/controllers/cart_controller-006a9f72c80e3745a96720ef87d670dc21e308aa2ae64de2e81b33cf56c3ae0e.js",
+          "spree/storefront/controllers/clear_input_controller": "/assets/spree/storefront/controllers/clear_input_controller-c5dc94cf59f6d27f716b1bcce8a599fa337767b7b89d6a35d7c8d77ff572b4ae.js",
+          "spree/storefront/controllers/copy_input_controller": "/assets/spree/storefront/controllers/copy_input_controller-1c5fd9e9e25463b2496ffb930eefcbc83be6e0e2593fc5ad02095486156eb5cc.js",
+          "spree/storefront/controllers/delivery_controller": "/assets/spree/storefront/controllers/delivery_controller-df0b150cbd95c9a08fa4e4a8610e8db4f2d1b441d7fbfadbb02bff057e071f63.js",
+          "spree/storefront/controllers/dropdown_controller": "/assets/spree/storefront/controllers/dropdown_controller-f2e61a4aeee2399512ffd53cf19f63d6a078df0baaaa045ae57595bfc7656de6.js",
+          "spree/storefront/controllers/header_controller": "/assets/spree/storefront/controllers/header_controller-d7760547906fe7d7dc073d2ebe70509d60191cdb311da44ba5bab9d151f0b68d.js",
+          "spree/storefront/controllers/infinite_scroll_controller": "/assets/spree/storefront/controllers/infinite_scroll_controller-dac6de7f025fffb3b69db1c8d33d8afe52c5feb8fbdc529d101687a2e55473e1.js",
+          "spree/storefront/controllers/lightbox_controller": "/assets/spree/storefront/controllers/lightbox_controller-f0a34935ee87e85dd97443e15d165d7b55c655482830357696057fe6a6f729e9.js",
+          "spree/storefront/controllers/mobile_nav_controller": "/assets/spree/storefront/controllers/mobile_nav_controller-a6bb090451f77ee7db0688a1b5eb3c3fa205ee4db58061a97e8613ffc7054ce4.js",
+          "spree/storefront/controllers/modal_controller": "/assets/spree/storefront/controllers/modal_controller-5b62c6422296057b3baa7f2f1c7746549216e7d0d7dbfe6f37c2b0fd48bad469.js",
+          "spree/storefront/controllers/no_ui_slider_controller": "/assets/spree/storefront/controllers/no_ui_slider_controller-5424609075c0f2fffb5ecc20a600d2c4e961d3f4915cf4410b1761a627f34a84.js",
+          "spree/storefront/controllers/pdp_desktop_gallery": "/assets/spree/storefront/controllers/pdp_desktop_gallery-79d988104f8598d3453ea575d61e31005463073361a96f972dee138ee2896639.js",
+          "spree/storefront/controllers/plp_variant_picker_controller": "/assets/spree/storefront/controllers/plp_variant_picker_controller-04dddfe0f27df484c5ae61738228ff397a26cd8857c13acc25df3f351142b9ac.js",
+          "spree/storefront/controllers/product_form_controller": "/assets/spree/storefront/controllers/product_form_controller-b06eed37279d1b4e7827314dc77ce4cf83268c81c43f75d4a53852cac3fa021c.js",
+          "spree/storefront/controllers/promotions_controller": "/assets/spree/storefront/controllers/promotions_controller-99a1848eb91fe55d28f8f598d45dd4fd5fb4fa348db25db2068f593783fa87e0.js",
+          "spree/storefront/controllers/quantity_picker_controller": "/assets/spree/storefront/controllers/quantity_picker_controller-0054272e47dcc9367d3beff7e12b1472958a9ea103af863d2be2ab7c3024a9e1.js",
+          "spree/storefront/controllers/search_suggestions_controller": "/assets/spree/storefront/controllers/search_suggestions_controller-079af4d225b4599a0dfd931e1791bd7b70e90821d95004135d7f9f0e083528ae.js",
+          "spree/storefront/controllers/searchable_list_controller": "/assets/spree/storefront/controllers/searchable_list_controller-520cf5b0d7c11755c488de06d89b22f37e25fe60b9e13ddc0375139f48396e2e.js",
+          "spree/storefront/controllers/slideover_controller": "/assets/spree/storefront/controllers/slideover_controller-75d1541cc7a07f61ebcfff97d338fd443b5ec661844d8513d7136a3b05621619.js",
+          "spree/storefront/controllers/sticky_button_controller": "/assets/spree/storefront/controllers/sticky_button_controller-5f9e24aef433c0126633d0615a46610e88a555874ab770b2b21739bcb007909e.js",
+          "spree/storefront/controllers/summary_controller": "/assets/spree/storefront/controllers/summary_controller-38bd65e5775c028f00ea52328e60929594753b10324d7ea23fa867a3c5179be1.js",
+          "spree/storefront/controllers/swiper_controller": "/assets/spree/storefront/controllers/swiper_controller-51e41e79cf0042723d6de61b356f55dab110d293a6d597d69d53fef1d91dfd45.js",
+          "spree/storefront/controllers/toggle_menu_controller": "/assets/spree/storefront/controllers/toggle_menu_controller-798b9cf5978ed6311d37acea70d27cf3fa48a74e1e6ad17320a7cb6ab129d8ee.js",
+          "spree/storefront/controllers/turbo_stream_form_controller": "/assets/spree/storefront/controllers/turbo_stream_form_controller-e914aa207742dd17d48a1549fa58efe4baa8084701026881f142424cbfd6f473.js",
+          "spree/storefront/controllers/wished_item_controller": "/assets/spree/storefront/controllers/wished_item_controller-dc48382833e8281cb111de446c284853b8ea321affabe362613f9a03d5eb8b10.js",
+          "spree/storefront/helpers/show_flash_message": "/assets/spree/storefront/helpers/show_flash_message-49eac2adb2f76406eebd96054b81ac16d270e37565cb0cd4d955ad8cc994eae8.js",
+          "controllers/application": "/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js",
+          "controllers/hello_controller": "/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js",
+          "controllers": "/assets/controllers/index-2db729dddcc5b979110e98de4b6720f83f91a123172e87281d5a58410fc43806.js"
+        }
+      }
+    </script>
+    <link
+      rel="modulepreload"
+      href="/assets/tailwindcss-stimulus-components-0478120d897543c7466131f6e32f51ec04087f065a476380098e5317c2ff9472.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/stimulus-reveal-controller-5d32c589c8a1e84c07da00e086f49901fc80aca6610fa882f6cc8f8adb62baf9.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/stimulus-scroll-to-9322c09d3dcb3e57444d5c5248fadf056f4a7d95ddfbc17e215d6891e2242e5b.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/stimulus-read-more-4b4e2ff97f8970c4cdd186f8e1b46456e1d4cbbc0bcfd5ceffa9a470c7a8c443.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/@kanety--stimulus-accordion-c9e970aeef98580c56444c6d1048c62ab71da1a9772c1b2ecd57be8b0d488ade.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/headroom.js-63dede99b6975eac9da04b75420c15a8b63efd5b018352657f7273143e7a795e.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/photoswipe--dist--photoswipe-lightbox.esm.js-32a766d39024a7881b03943c2e1790c0b6b6965c37dd8c44d3207f3a3fd6d851.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/nouislider-321701e8147c69bf9054bd44617d0d5555a08881df333d470e863d5866a6532c.js"
+    />
+    <link rel="modulepreload" href="https://ga.jspm.io/npm:swiper@11.2.2/swiper-bundle.mjs" />
+    <link
+      rel="modulepreload"
+      href="/assets/@stimulus-components--carousel-d21c616fd13eb6c12ffae80557edd78b8c73f938c1ddee0b106854c0f063ba3c.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/card-validator-9cdaa08e6f8087777974728dbe458031e152723e0a420feeffd9ca0dae2d2a16.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/credit-card-type-1ecdcea00067a2fe5718d9ccaf61ffbcf853817898cd2fb5012ffcf8b592e705.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/application-234f8bed8636066fccb3be9d9c37552702ed61ecdcfeb919a52fa12d5a694d68.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/turbo.min-c85b4c5406dd49df1f63e03a5b07120d39cc3e33bc2448f5e926b80514f9dfc8.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/stimulus.min-dd364f16ec9504dfb72672295637a1c8838773b01c0b441bd41008124c407894.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/stimulus-loading-3576ce92b149ad5d6959438c6f291e2426c86df3b874c525b30faad51b0d96b3.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/core/controllers/address_autocomplete_controller-868667c3838f2f2f79ceaf6683f840aa1f4af901ea686e27f7867dbcc962dbe2.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/core/controllers/address_form_controller-fec06b19642381b25ae3f93b24240960ac6dd551d586a3c073e6bb550be48063.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/core/controllers/enable_button_controller-c9eb156235192713408cf1ab8d7ed9114eb208f68afb0202bcb62a8de1e01b9c.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/core/helpers/address_autocomplete/google_places_suggestions_provider-654d5e4053fe3beb7ac00bbd5d7cfe1a672f8303ed069a159ccdb8c054ed5282.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/core/helpers/debounce-c820da7054fcbe683f129b5790d41452392d1f3fd4e040039dee9c7e10a7453d.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/core/helpers/scroll_lock-829108f9bdaa547d2ff7527b526fcb455ef0f568063b529d23c46b44d2888492.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/accordion_controller-de6cfedaf69cefea4efdfd006c187f59fa112af487725e807ee30b3da8818259.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/account_nav_controller-2e005514ff46be4fef30be4eda8362e6b445502efe7210b8a492764ee500c7e7.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/address_book_controller-12f7506875b2ff0c55afbfd1eca0cf477a1be449baa024de0bdcdd60b177c2c1.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/card_validation_controller-f16ca942670d9a317f1b3447c87af00a13466f1f3cc26526a39e6e6102ed8a12.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/cart_controller-006a9f72c80e3745a96720ef87d670dc21e308aa2ae64de2e81b33cf56c3ae0e.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/clear_input_controller-c5dc94cf59f6d27f716b1bcce8a599fa337767b7b89d6a35d7c8d77ff572b4ae.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/copy_input_controller-1c5fd9e9e25463b2496ffb930eefcbc83be6e0e2593fc5ad02095486156eb5cc.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/delivery_controller-df0b150cbd95c9a08fa4e4a8610e8db4f2d1b441d7fbfadbb02bff057e071f63.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/dropdown_controller-f2e61a4aeee2399512ffd53cf19f63d6a078df0baaaa045ae57595bfc7656de6.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/header_controller-d7760547906fe7d7dc073d2ebe70509d60191cdb311da44ba5bab9d151f0b68d.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/infinite_scroll_controller-dac6de7f025fffb3b69db1c8d33d8afe52c5feb8fbdc529d101687a2e55473e1.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/lightbox_controller-f0a34935ee87e85dd97443e15d165d7b55c655482830357696057fe6a6f729e9.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/mobile_nav_controller-a6bb090451f77ee7db0688a1b5eb3c3fa205ee4db58061a97e8613ffc7054ce4.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/modal_controller-5b62c6422296057b3baa7f2f1c7746549216e7d0d7dbfe6f37c2b0fd48bad469.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/no_ui_slider_controller-5424609075c0f2fffb5ecc20a600d2c4e961d3f4915cf4410b1761a627f34a84.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/pdp_desktop_gallery-79d988104f8598d3453ea575d61e31005463073361a96f972dee138ee2896639.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/plp_variant_picker_controller-04dddfe0f27df484c5ae61738228ff397a26cd8857c13acc25df3f351142b9ac.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/product_form_controller-b06eed37279d1b4e7827314dc77ce4cf83268c81c43f75d4a53852cac3fa021c.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/promotions_controller-99a1848eb91fe55d28f8f598d45dd4fd5fb4fa348db25db2068f593783fa87e0.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/quantity_picker_controller-0054272e47dcc9367d3beff7e12b1472958a9ea103af863d2be2ab7c3024a9e1.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/search_suggestions_controller-079af4d225b4599a0dfd931e1791bd7b70e90821d95004135d7f9f0e083528ae.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/searchable_list_controller-520cf5b0d7c11755c488de06d89b22f37e25fe60b9e13ddc0375139f48396e2e.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/slideover_controller-75d1541cc7a07f61ebcfff97d338fd443b5ec661844d8513d7136a3b05621619.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/sticky_button_controller-5f9e24aef433c0126633d0615a46610e88a555874ab770b2b21739bcb007909e.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/summary_controller-38bd65e5775c028f00ea52328e60929594753b10324d7ea23fa867a3c5179be1.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/swiper_controller-51e41e79cf0042723d6de61b356f55dab110d293a6d597d69d53fef1d91dfd45.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/toggle_menu_controller-798b9cf5978ed6311d37acea70d27cf3fa48a74e1e6ad17320a7cb6ab129d8ee.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/turbo_stream_form_controller-e914aa207742dd17d48a1549fa58efe4baa8084701026881f142424cbfd6f473.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/controllers/wished_item_controller-dc48382833e8281cb111de446c284853b8ea321affabe362613f9a03d5eb8b10.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/spree/storefront/helpers/show_flash_message-49eac2adb2f76406eebd96054b81ac16d270e37565cb0cd4d955ad8cc994eae8.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/assets/controllers/index-2db729dddcc5b979110e98de4b6720f83f91a123172e87281d5a58410fc43806.js"
+    />
+    <script type="module">
+      import 'application-spree-storefront';
+    </script>
+    <script>
+      //<![CDATA[
+      wishedVariantIds = [];
+      //]]>
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="/assets/tailwind-7b0b205d28adfbc4d293043e8704d546f336559af1d24c987c55df0a12d988e9.css"
+      defer="defer"
+      data-turbo-track="reload"
+    />
+
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/spree/shared/_head.html.erb -->
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_custom_head.html.erb -->
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_custom_head.html.erb -->
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_json_ld.html.erb -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "url": "http://localhost:3000",
+        "sameAs": [],
+        "name": "Shop",
+        "email": "support@example.com"
+      }
+    </script>
+
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_json_ld.html.erb -->
+  </head>
+  <body class="bg-background w-full text-text -page">
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_announcement_bar.html.erb -->
+    <div
+      class="w-full justify-center items-center flex announcement-bar"
+      style="
+        background-color: #f5f5f4;
+        --section-background: #f5f5f4;
+        color: #000000;
+        --section-color: #000000;
+        border-color: #e9e7dc;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-top-width: 0px;
+        border-bottom-width: 0px;
+        --section--border-bottom-width: 0px;
+      "
+    >
+      <div class="text-sm tracking-widest">
+        <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+        <div class="trix-content">
+          <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->Welcome
+          to my Store!
+          <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->
+        </div>
+        <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+      </div>
+    </div>
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_announcement_bar.html.erb -->
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_header.html.erb -->
+    <header
+      class="sticky has-[.currency-and-locale-modal:not(.hidden)]:relative top-0 z-50 has-[.currency-and-locale-modal:not(.hidden)]:z-[unset] header-logo-centered"
+      data-controller="header toggle-menu slideover slideover-account"
+      data-toggle-menu-class="hamburger-visible"
+      data-slideover-invisible-class="translate-x-full,opacity-0"
+      data-slideover-visible-class="translate-x-0,opacity-100"
+      data-slideover-active-target="#slideover-cart"
+      data-slideover-account-invisible-class="translate-x-full,opacity-0"
+      data-slideover-account-visible-class="translate-x-0,opacity-100"
+      data-slideover-account-active-target="#slideover-account"
+    >
+      <nav
+        aria-label="Top"
+        style="
+          background-color: #ffffff;
+          --section-background: #ffffff;
+          color: #000000;
+          --section-color: #000000;
+          border-color: #e9e7dc;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          border-top-width: 0px;
+          border-bottom-width: 0px;
+          --section--border-bottom-width: 0px;
+        "
+        class="transition-transform duration-300 relative"
+      >
+        <div class="page-container">
+          <div class="flex items-center lg:items-end justify-between">
+            <div class="flex -order-1 flex-1">
+              <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
+              <button
+                type="button"
+                data-action="click->toggle-menu#toggle touch->toggle-menu#toggle"
+                class="lg:hidden relative w-6"
+                data-toggle-menu-target="button"
+              >
+                <span class="sr-only">Toggle menu</span>
+                <div class="absolute top-0">
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_menu.html.erb --><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path d="M0 6H24" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M0 18H24" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                  <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_menu.html.erb -->
+                </div>
+                <div class="absolute top-0 opacity-0">
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_close.html.erb --><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path d="M3.00029 3L21 20.9688M3 21L20.9997 3.03115" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                  <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_close.html.erb -->
+                </div>
+              </button>
+
+              <!-- Search button -->
+              <div class="flex">
+                <button
+                  class="ml-4 lg:ml-0 flex items-center"
+                  id="open-search"
+                  data-action="click->toggle-menu#hide touch->toggle-menu#hide"
+                >
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_search.html.erb --><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle cx="10.5" cy="10.5" r="8.75" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M23 23L17 17" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                  <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_search.html.erb -->
+                  <span class="hidden lg:block ml-2 text-sm !leading-6 uppercase">Search</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center flex-col header-nav-container">
+              <!-- Logo -->
+              <div class="flex lg:pb-4" id="header-logo">
+                <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_logo.html.erb -->
+                <a id="site-logo" href="/">
+                  <span class="sr-only">Shop</span>
+                  <h1 class="text-lg uppercase text-center">Shop</h1> </a
+                ><!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_logo.html.erb -->
+              </div>
+
+              <!-- Desktop Menu -->
+              <div class="hidden lg:flex">
+                <div class="flex flex-wrap justify-center h-full mx-4">
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/nav/_desktop.html.erb -->
+                  <a
+                    data-title="shop all"
+                    class="shrink-0 menu-item header--nav-link px-4 py-1 focus:mx-0 focus:px-4"
+                    href="http://localhost:3000/products"
+                  >
+                    <span>Shop All</span>
+                  </a>
+                  <a
+                    data-title="on sale"
+                    class="shrink-0 menu-item header--nav-link px-4 py-1 focus:mx-0 focus:px-4"
+                    href="http://localhost:3000/t/collections/on-sale"
+                  >
+                    <span>On sale</span>
+                  </a>
+                  <a
+                    data-title="new arrivals"
+                    class="shrink-0 menu-item header--nav-link px-4 py-1 focus:mx-0 focus:px-4"
+                    href="http://localhost:3000/t/collections/new-arrivals"
+                  >
+                    <span>New arrivals</span>
+                  </a>
+                  <a
+                    data-title="blog"
+                    class="shrink-0 menu-item header--nav-link px-4 py-1 focus:mx-0 focus:px-4"
+                    href="http://localhost:3000/posts"
+                  >
+                    <span>Blog</span> </a
+                  ><!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/nav/_desktop.html.erb -->
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 flex-1 justify-end">
+              <!-- Desktop Account -->
+              <div class="hidden lg:flex">
+                <button
+                  data-action="click->slideover-account#toggle click@window->slideover-account#hide click->toggle-menu#hide touch->toggle-menu#hide"
+                >
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_account.html.erb --><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="24"
+                    viewBox="0 0 25 24"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_440_247)">
+                      <circle cx="12.5" cy="5" r="4.25" stroke="currentColor" stroke-width="1.5" />
+                      <path
+                        d="M23.5 23C23.5 16.9249 18.5751 12 12.5 12C6.42487 12 1.5 16.9249 1.5 23"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_440_247">
+                        <rect width="24" height="24" fill="white" transform="translate(0.5)" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_account.html.erb -->
+                </button>
+              </div>
+
+              <form data-turbo-stream="true" action="/account/wishlist" accept-charset="UTF-8" method="get">
+                <button type="submit" id="wishlist-icon" class="flex items-end">
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_wishlist_icon.html.erb -->
+                  <div class="relative">
+                    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_heart.html.erb -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M13.7601 3.46195L13.7602 3.46182C14.2788 2.91653 14.8925 2.48607 15.5652 2.19312C16.2378 1.90021 16.9574 1.75 17.6831 1.75C18.4087 1.75 19.1283 1.90021 19.8009 2.19312C20.4736 2.48607 21.0873 2.91653 21.6059 3.46182L21.6062 3.46208C22.1251 4.00718 22.5386 4.6564 22.8213 5.37354C23.104 6.09072 23.25 6.86062 23.25 7.63895C23.25 8.41727 23.104 9.18717 22.8213 9.90436C22.5386 10.6215 22.1251 11.2707 21.6062 11.8158L21.606 11.8159L20.389 13.095L11.9997 21.912L3.6104 13.095L2.39335 11.8159C1.34505 10.7142 0.75 9.21232 0.75 7.63895C0.75 6.06557 1.34505 4.56369 2.39335 3.46195C3.44045 2.36148 4.85242 1.75065 6.31633 1.75065C7.78024 1.75065 9.19221 2.36148 10.2393 3.46195L11.4564 4.74103L11.9997 5.31207L12.543 4.74103L13.7601 3.46195Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                    </svg>
+                    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_heart.html.erb -->
+                  </div>
+                  <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_wishlist_icon.html.erb -->
+                </button>
+              </form>
+              <!-- Cart -->
+              <div data-action="click->toggle-menu#hide touch->toggle-menu#hide">
+                <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_cart_icon.html.erb --><turbo-frame
+                  id="cart-icon-"
+                  target="_top"
+                >
+                  <a
+                    class="relative block w-6"
+                    id="cart-pane-link"
+                    data-action="click-&gt;slideover#toggle click@window-&gt;slideover#hide"
+                    onclick="event.preventDefault()"
+                    href="/cart"
+                  >
+                    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_cart.html.erb --><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M1.84725 22.25L3.49725 8.75H20.5028L22.1528 22.25H12H1.84725Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                      <path
+                        d="M16 11V5C16 2.79086 14.2091 1 12 1V1C9.79086 1 8 2.79086 8 5V11"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                    </svg>
+                    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_cart.html.erb -->
+                    <span class="cart-counter w-full text-[8px] font-extrabold absolute top-[10px] text-center"> </span>
+                    <span class="sr-only">Items in cart, View bag</span>
+                  </a></turbo-frame
+                ><!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_cart_icon.html.erb -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="hide-on-load h-0 opacity-0 pointer-events-none"
+          data-toggle-menu-target="toggleable"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            class="flex justify-between flex-col lg:hidden w-full transition-transform translate-x-[-50%] has-[.currency-and-locale-modal:not(.hidden)]:transform-none body header--mobile-menu"
+            data-toggle-menu-target="content"
+            style="background-color:; height: calc(100dvh - 38px)"
+          >
+            <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/nav/_mobile.html.erb -->
+            <div class="bg-background mt-4 border-default border-t overflow-x-hidden h-full w-screen overflow-y-hidden">
+              <div
+                class="h-full flex transform has-[.currency-and-locale-modal:not(.hidden)]:transform-none relative transition-transform duration-300"
+                data-controller="mobile-nav"
+              >
+                <div class="w-screen shrink-0 flex flex-col h-full flex-grow-0">
+                  <div class="flex-grow overflow-y-scroll">
+                    <a
+                      data-title="shop all"
+                      class="block text-base tracking-widest p-4 w-full uppercase border-default border-b header--nav-link"
+                      href="http://localhost:3000/products"
+                    >
+                      <span>Shop All</span>
+                    </a>
+                    <a
+                      data-title="on sale"
+                      class="block text-base tracking-widest p-4 w-full uppercase border-default border-b header--nav-link"
+                      href="http://localhost:3000/t/collections/on-sale"
+                    >
+                      <span>On sale</span>
+                    </a>
+                    <a
+                      data-title="new arrivals"
+                      class="block text-base tracking-widest p-4 w-full uppercase border-default border-b header--nav-link"
+                      href="http://localhost:3000/t/collections/new-arrivals"
+                    >
+                      <span>New arrivals</span>
+                    </a>
+                    <a
+                      data-title="blog"
+                      class="block text-base tracking-widest p-4 w-full uppercase border-default border-b header--nav-link"
+                      href="http://localhost:3000/posts"
+                    >
+                      <span>Blog</span>
+                    </a>
+                  </div>
+                  <div class="p-4 bg-accent">
+                    <button
+                      id="mobile-menu"
+                      data-action="click->slideover-account#toggle click@window->slideover-account#hide click->toggle-menu#hide touch->toggle-menu#hide"
+                      class="btn-secondary gap-2 flex justify-center items-center w-full"
+                    >
+                      <span>My Account</span>
+                      <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_account.html.erb --><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="24"
+                        viewBox="0 0 25 24"
+                        fill="none"
+                      >
+                        <g clip-path="url(#clip0_440_247)">
+                          <circle cx="12.5" cy="5" r="4.25" stroke="currentColor" stroke-width="1.5" />
+                          <path
+                            d="M23.5 23C23.5 16.9249 18.5751 12 12.5 12C6.42487 12 1.5 16.9249 1.5 23"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_440_247">
+                            <rect width="24" height="24" fill="white" transform="translate(0.5)" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                      <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_account.html.erb -->
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/nav/_mobile.html.erb -->
+          </div>
+        </div>
+      </nav>
+      <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_cart_pane.html.erb --><!-- begin sidebar/slideover -->
+      <div
+        id="cart-pane"
+        data-slideover-target="overlay"
+        class="fixed inset-0 flex flex-row-reverse z-50 transition-opacity hidden"
+      >
+        <div class="fixed inset-0">
+          <div data-action="click->slideover#toggle" class="absolute inset-0 bg-background opacity-75"></div>
+        </div>
+        <div
+          id="slideover-cart"
+          data-slideover-target="menu"
+          class="relative sidebar-pane flex-1 !flex flex-col w-full bg-background text-text md:border-l border-default transition ease-in-out duration-300 translate-x-full"
+        >
+          <div class="p-4 gap-4 flex-shrink-0 flex items-center justify-between border-b border-default z-50">
+            <button
+              name="button"
+              type="button"
+              data-action="slideover#toggle"
+              class="flex items-center justify-center rounded-full focus:outline-none focus:bg-background"
+              aria-label="Close sidebar"
+            >
+              <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_close.html.erb --><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path d="M3.00029 3L21 20.9688M3 21L20.9997 3.03115" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+              <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_close.html.erb -->
+            </button>
+            <span class="text-xl font-medium uppercase leading-loose">Cart</span>
+            <span class="relative block w-6">
+              <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_cart.html.erb --><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M1.84725 22.25L3.49725 8.75H20.5028L22.1528 22.25H12H1.84725Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M16 11V5C16 2.79086 14.2091 1 12 1V1C9.79086 1 8 2.79086 8 5V11"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+              </svg>
+              <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_cart.html.erb -->
+              <span class="cart-counter w-full text-[8px] font-extrabold absolute top-[10px] text-center"> </span>
+              <span class="sr-only">Items in cart, View bag</span>
+            </span>
+          </div>
+          <div class="flex-1 h-0 overflow-y-auto">
+            <turbo-frame class="cart-contents" loading="lazy" id="cart_contents" src="/cart"></turbo-frame>
+          </div>
+        </div>
+      </div>
+      <!-- end sidebar/slideover -->
+      <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_cart_pane.html.erb -->
+      <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_account_pane.html.erb -->
+      <div
+        id="account-pane"
+        data-turbo-permanent
+        data-slideover-account-target="overlay"
+        class="fixed inset-0 flex flex-row-reverse z-50 transition-opacity hidden"
+      >
+        <div class="fixed inset-0">
+          <div data-action="click->slideover-account#toggle" class="absolute inset-0 bg-background opacity-75"></div>
+        </div>
+        <div
+          id="slideover-account"
+          data-slideover-account-target="menu"
+          class="relative sidebar-pane flex-1 !flex flex-col w-full bg-background text-text md:border-l border-default transition ease-in-out duration-300 translate-x-full"
+        >
+          <div class="p-4 gap-4 flex-shrink-0 flex items-center justify-between border-b border-default z-50">
+            <button
+              data-action="slideover-account#toggle"
+              class="flex items-center justify-center rounded-full focus:outline-none focus:bg-background"
+              aria-label="Close account sidebar"
+            >
+              <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_cross.html.erb -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="24px/Cross">
+                  <path
+                    id="Vector"
+                    d="M3.00029 3L21 20.9688M3 21L20.9997 3.03115"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                </g>
+              </svg>
+              <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_cross.html.erb -->
+            </button>
+            <span class="text-xl font-medium uppercase leading-loose">Account</span>
+            <span></span>
+          </div>
+          <turbo-frame loading="lazy" id="login" src="/users/sign_in"></turbo-frame>
+        </div>
+      </div>
+      <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_account_pane.html.erb -->
+
+      <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_search.html.erb -->
+      <div id="search-suggestions" role="dialog" aria-modal="true">
+        <div
+          class="w-full flex flex-col border-b border-default"
+          data-controller="search-suggestions"
+          data-show-class="h-screen min-h-screen"
+          data-search-suggestions-url-value="/search/suggestions"
+        >
+          <div class="hidden lg:flex justify-center w-full mt-4 mb-3" id="header-logo">
+            <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_logo.html.erb -->
+            <a id="site-logo" href="/">
+              <span class="sr-only">Shop</span>
+              <h1 class="text-lg uppercase text-center">Shop</h1> </a
+            ><!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_logo.html.erb -->
+          </div>
+          <form action="/search" accept-charset="UTF-8" method="get">
+            <div class="page-container bg-background flex w-full my-2 lg:mb-3 animate-fadeIn">
+              <button
+                name="button"
+                type="button"
+                class="items-center justify-center pr-4"
+                data-action="click-&gt;search-suggestions#hide touch-&gt;search-suggestions#hide"
+              >
+                <span class="sr-only">Close</span>
+                <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_close.html.erb --><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path d="M3.00029 3L21 20.9688M3 21L20.9997 3.03115" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+                <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_close.html.erb -->
+              </button>
+              <div class="relative mx-auto w-full md:w-1/2" data-controller="clear-input">
+                <button name="button" type="submit" class="absolute left-2 top-2">
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_search.html.erb --><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle cx="10.5" cy="10.5" r="8.75" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M23 23L17 17" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                  <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/icons/_search.html.erb -->
+                </button>
+                <input
+                  type="text"
+                  name="q"
+                  id="q"
+                  class="p-2 lg:text-sm !leading-6 pl-10 !h-auto bg-accent w-full uppercase pr-14 focus:outline-none text-input"
+                  placeholder="Search"
+                  data-search-suggestions-target="input"
+                  data-clear-input-target="input"
+                />
+                <button
+                  name="button"
+                  type="submit"
+                  class="hidden text-sm font-semibold absolute top-2 right-2 uppercase h-6 tracking-widest"
+                  data-clear-input-target="button"
+                  data-action="click-&gt;clear-input#clear touch-&gt;clear-input#clear click-&gt;search-suggestions#clear touch-&gt;search-suggestions#clear"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+          </form>
+          <div id="search-suggestions-content" class="flex-grow hidden" data-show-class="animate-fadeIn"></div>
+        </div>
+
+        <!-- rendering search flyover skeleton -->
+        <template id="loading">
+          <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/search/_suggestions.html.erb -->
+          <div class="bg-background w-full h-full flex flex-col">
+            <div
+              class="uppercase block py-4 lg:py-6 border-b border-default w-full font-semibold text-sm tracking-widest"
+            >
+              <h3 class="page-container">Top suggestions</h3>
+            </div>
+            <div class="flex flex-col md:grid md:grid-cols-4 grid-rows-[1fr_min-content] w-full page-container h-full">
+              <div class="flex flex-col p-4 md:border-r1 border-default pl-4 gap-2 md:h-full w-full">
+                <div class="block w-full animate-pulse bg-accent h-6"></div>
+                <div class="block w-full animate-pulse bg-accent h-6"></div>
+                <div class="block w-full animate-pulse bg-accent h-6"></div>
+                <div class="block w-full animate-pulse bg-accent h-6"></div>
+                <div class="block w-full animate-pulse bg-accent h-6"></div>
+              </div>
+              <div
+                class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 px-4 md:px-[3.75rem] py-6 w-full h-full md:col-span-3 animate-pulse"
+              >
+                <div class="lg:col-span-12 flex justify-between flex-col overflow-hidden">
+                  <div class="grid gap-4 lg:gap-6 grid-cols-8 lg:grid-cols-12">
+                    <div class="col-span-6 lg:col-span-4">
+                      <div class="aspect-1 bg-accent w-full"></div>
+                      <div class="h-6 mt-2 w-32 bg-accent rounded"></div>
+                      <div class="h-8 mt-2 w-16 bg-accent rounded"></div>
+                    </div>
+                    <div class="col-span-2 lg:col-span-4 flex flex-col h-full overflow-hidden">
+                      <div class="h-full lg:aspect-1 bg-accent w-full"></div>
+                      <div class="h-6 mt-2 w-32 bg-accent rounded shrink-0"></div>
+                      <div class="h-8 mt-2 w-16 bg-accent rounded shrink-0"></div>
+                    </div>
+                    <div class="hidden col-span-2 lg:col-span-4 lg:flex flex-col h-full overflow-hidden">
+                      <div class="h-full lg:aspect-1 bg-accent w-full"></div>
+                      <div class="h-6 mt-2 w-32 bg-accent rounded shrink-0"></div>
+                      <div class="h-8 mt-2 w-16 bg-accent rounded shrink-0"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/search/_suggestions.html.erb -->
+        </template>
+      </div>
+      <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_search.html.erb -->
+    </header>
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_header.html.erb -->
+
+    <turbo-frame id="flash">
+      <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_flashes.html.erb --><template
+        id="flashMessage"
+      >
+        <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_flash.html.erb -->
+        <div class="pointer-events-none w-full">
+          <div
+            data-controller="alert"
+            data-alert-hide-class="translate-x-[500px] opacity-0"
+            class="ease-in-out duration-500 w-full relative pointer-events-auto"
+          >
+            <div class="p-2">
+              <p class="text-sm lg:text-base font-medium text-center uppercase text-text flash-message"></p>
+              <button data-action="alert#close" class="absolute top-2 right-2 h-[22px] lg:h-6">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_flash.html.erb -->
+      </template>
+      <div id="flashes" class="fixed z-[9999] w-full top-0">
+        <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_flash.html.erb -->
+        <div class="pointer-events-none w-full">
+          <div
+            data-controller="alert"
+            data-alert-hide-class="translate-x-[500px] opacity-0"
+            class="ease-in-out duration-500 w-full relative pointer-events-auto alert-error"
+          >
+            <div class="p-2">
+              <p class="text-sm lg:text-base font-medium text-center uppercase text-text flash-message">
+                Something went wrong
+              </p>
+              <button data-action="alert#close" class="absolute top-2 right-2 h-[22px] lg:h-6">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_flash.html.erb -->
+      </div>
+      <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_flashes.html.erb -->
+    </turbo-frame>
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/spree/home/index.html.erb -->
+    <main class="page-contents">
+      <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_image_with_text.html.erb -->
+      <div
+        style="
+          background-color: #ffffff;
+          --section-background: #ffffff;
+          color: #000000;
+          --section-color: #000000;
+          border-color: #e9e7dc;
+          padding-top: 0px;
+          padding-bottom: 26px;
+          border-top-width: 1px;
+          border-bottom-width: 0px;
+          --section--border-bottom-width: 0px;
+        "
+        class="image-with-text right-aligned"
+      >
+        <div class="page-container">
+          <div class="lg:grid lg:grid-cols-12 lg:gap-6 image-with-text--container">
+            <div class="lg:col-span-6 aspect-[6/7] lg:col-start-7 lg:order-1 image-with-text--image-wrapper">
+              <a title="Shop All" href="http://localhost:3000/products">
+                <div class="w-full h-full object-cover bg-gray-100"></div>
+              </a>
+            </div>
+            <div class="lg:grid lg:col-span-5 lg:content-center image-with-text--blocks-wrapper">
+              <h2
+                class="text-2xl lg:text-3xl font-medium"
+                data-editor-id="block-4"
+                data-editor-name="Welcome to our shop!"
+                data-editor-parent-id="section-14"
+                data-editor-link="/admin/page_sections/14/blocks/4/edit"
+                style="
+                  text-align: left;
+                  width: 100%;
+                  margin: 0 auto 0 0;
+                  color: var(--section-color);
+                  padding-top: 24px;
+                  padding-bottom: 8px;
+                  background-color: var(--section-background);
+                "
+                width_desktop="width-desktop=&#39;true&#39;"
+              >
+                <a class="image-with-text--heading" href="http://localhost:3000/products">
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+                  <div class="trix-content">
+                    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->Welcome
+                    to our shop!
+                    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->
+                  </div>
+                  <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+                </a>
+              </h2>
+              <div
+                data-editor-id="block-5"
+                data-editor-name="At Shop we offer a wide ran..."
+                data-editor-parent-id="section-14"
+                data-editor-link="/admin/page_sections/14/blocks/5/edit"
+                style="
+                  text-align: left;
+                  width: 100%;
+                  margin: 0 auto 0 0;
+                  color: var(--section-color);
+                  padding-top: 0px;
+                  padding-bottom: 16px;
+                  background-color: var(--section-background);
+                "
+                width_desktop="width-desktop=&#39;true&#39;"
+              >
+                <a class="image-with-text--text" href="http://localhost:3000/products">
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+                  <div class="trix-content">
+                    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->At
+                    Shop we offer a wide range of products for your home and business.
+                    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->
+                  </div>
+                  <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+                </a>
+              </div>
+              <div
+                class="w-full image-with-text--buttons"
+                data-editor-id="block-6"
+                data-editor-name="Button"
+                data-editor-parent-id="section-14"
+                data-editor-link="/admin/page_sections/14/blocks/6/edit"
+                style="
+                  text-align: left;
+                  width: 100%;
+                  margin: 0 auto 0 0;
+                  color: var(--section-color);
+                  padding-top: 0px;
+                  padding-bottom: 0px;
+                  background-color: var(--section-background);
+                "
+                width_desktop="width-desktop=&#39;true&#39;"
+              >
+                <div class="inline-block">
+                  <div class="flex flex-col lg:flex-row gap-4">
+                    <a class="btn-primary" href="http://localhost:3000/products">Shop All</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_image_with_text.html.erb --><turbo-frame
+        loading="eager"
+        id="section-15"
+        src="/en/page_sections/15"
+        ><!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_featured_taxon.html.erb -->
+        <div
+          style="
+            background-color: #ffffff;
+            --section-background: #ffffff;
+            color: #000000;
+            --section-color: #000000;
+            border-color: #e9e7dc;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            border-top-width: 1px;
+            border-bottom-width: 0px;
+            --section--border-bottom-width: 0px;
+          "
+          class="animate-fadeIn"
+        >
+          <div class="page-container">
+            <div class="mb-8 flex justify-between items-end">
+              <div class="md:basis-2/5">
+                <h3
+                  class="text-xl lg:text-2xl font-medium featured-taxon--title font-medium text-left"
+                  data-title="on sale"
+                  style="text-transform: uppercase"
+                >
+                  <a data-turbo-frame="_top" href="http://localhost:3000/t/collections/on-sale">On sale</a>
+                </h3>
+              </div>
+              <a
+                class="btn-primary text-center hidden md:inline-block"
+                data-turbo-frame="_top"
+                href="http://localhost:3000/t/collections/on-sale"
+              >
+                Explore category
+              </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+              <div class="md:col-span-12 flex justify-between flex-col overflow-hidden">
+                <div class="grid gap-4 md:gap-6 grid-cols-8 relative">
+                  <div class="col-span-6 md:col-span-2">
+                    <div class="aspect-1 bg-accent w-full"></div>
+                    <div class="h-6 mt-2 w-32 bg-accent rounded"></div>
+                    <div class="h-8 mt-2 w-16 bg-accent rounded"></div>
+                  </div>
+                  <div class="col-span-2 md:col-span-2 flex flex-col">
+                    <div class="aspect-[1/3] md:aspect-1 bg-accent w-full flex-1"></div>
+                    <div class="h-6 mt-2 w-32 bg-accent rounded"></div>
+                    <div class="h-8 mt-2 w-16 bg-accent rounded"></div>
+                  </div>
+                  <div class="col-span-2 hidden md:block">
+                    <div class="aspect-1 bg-accent w-full"></div>
+                    <div class="h-6 mt-2 w-32 bg-accent rounded"></div>
+                    <div class="h-8 mt-2 w-16 bg-accent rounded"></div>
+                  </div>
+                  <div class="col-span-2 hidden md:block">
+                    <div class="aspect-1 bg-accent w-full"></div>
+                    <div class="h-6 mt-2 w-32 bg-accent rounded"></div>
+                    <div class="h-8 mt-2 w-16 bg-accent rounded"></div>
+                  </div>
+                </div>
+                <div class="md:hidden w-full block rounded-button bg-accent h-12 mt-8"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_featured_taxon.html.erb --></turbo-frame
+      ><turbo-frame loading="eager" id="section-16" src="/en/page_sections/16"
+        ><!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_featured_taxon.html.erb -->
+        <div
+          style="
+            background-color: #ffffff;
+            --section-background: #ffffff;
+            color: #000000;
+            --section-color: #000000;
+            border-color: #e9e7dc;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            border-top-width: 1px;
+            border-bottom-width: 0px;
+            --section--border-bottom-width: 0px;
+          "
+          class="animate-fadeIn"
+        >
+          <div class="page-container">
+            <div class="mb-8 flex justify-between items-end">
+              <div class="md:basis-2/5">
+                <h3
+                  class="text-xl lg:text-2xl font-medium featured-taxon--title font-medium text-left"
+                  data-title="new arrivals"
+                  style="text-transform: uppercase"
+                >
+                  <a data-turbo-frame="_top" href="http://localhost:3000/t/collections/new-arrivals">New arrivals</a>
+                </h3>
+              </div>
+              <a
+                class="btn-primary text-center hidden md:inline-block"
+                data-turbo-frame="_top"
+                href="http://localhost:3000/t/collections/new-arrivals"
+              >
+                Explore category
+              </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+              <div class="md:col-span-12 flex justify-between flex-col overflow-hidden">
+                <div class="grid gap-4 md:gap-6 grid-cols-8 relative">
+                  <div class="col-span-6 md:col-span-2">
+                    <div class="aspect-1 bg-accent w-full"></div>
+                    <div class="h-6 mt-2 w-32 bg-accent rounded"></div>
+                    <div class="h-8 mt-2 w-16 bg-accent rounded"></div>
+                  </div>
+                  <div class="col-span-2 md:col-span-2 flex flex-col">
+                    <div class="aspect-[1/3] md:aspect-1 bg-accent w-full flex-1"></div>
+                    <div class="h-6 mt-2 w-32 bg-accent rounded"></div>
+                    <div class="h-8 mt-2 w-16 bg-accent rounded"></div>
+                  </div>
+                  <div class="col-span-2 hidden md:block">
+                    <div class="aspect-1 bg-accent w-full"></div>
+                    <div class="h-6 mt-2 w-32 bg-accent rounded"></div>
+                    <div class="h-8 mt-2 w-16 bg-accent rounded"></div>
+                  </div>
+                  <div class="col-span-2 hidden md:block">
+                    <div class="aspect-1 bg-accent w-full"></div>
+                    <div class="h-6 mt-2 w-32 bg-accent rounded"></div>
+                    <div class="h-8 mt-2 w-16 bg-accent rounded"></div>
+                  </div>
+                </div>
+                <div class="md:hidden w-full block rounded-button bg-accent h-12 mt-8"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_featured_taxon.html.erb --></turbo-frame
+      ><!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_image_with_text.html.erb -->
+      <div
+        style="
+          background-color: #f0efe9;
+          --section-background: #f0efe9;
+          color: #000000;
+          --section-color: #000000;
+          border-color: #e9e7dc;
+          padding-top: 16px;
+          padding-bottom: 16px;
+          border-top-width: 1px;
+          border-bottom-width: 0px;
+          --section--border-bottom-width: 0px;
+        "
+        class="image-with-text right-aligned"
+      >
+        <div class="page-container">
+          <div class="lg:grid lg:grid-cols-12 lg:gap-6 image-with-text--container">
+            <div class="lg:col-span-6 aspect-[6/7] lg:col-start-7 lg:order-1 image-with-text--image-wrapper">
+              <a title="Shop All" href="http://localhost:3000/products">
+                <div class="w-full h-full object-cover bg-gray-100"></div>
+              </a>
+            </div>
+            <div class="lg:grid lg:col-span-5 lg:content-center image-with-text--blocks-wrapper">
+              <h2
+                class="text-2xl lg:text-3xl font-medium"
+                data-editor-id="block-7"
+                data-editor-name="About us"
+                data-editor-parent-id="section-17"
+                data-editor-link="/admin/page_sections/17/blocks/7/edit"
+                style="
+                  text-align: left;
+                  width: 100%;
+                  margin: 0 auto 0 0;
+                  color: var(--section-color);
+                  padding-top: 24px;
+                  padding-bottom: 8px;
+                  background-color: var(--section-background);
+                "
+                width_desktop="width-desktop=&#39;true&#39;"
+              >
+                <a class="image-with-text--heading" href="http://localhost:3000/products">
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+                  <div class="trix-content">
+                    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->About
+                    us
+                    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->
+                  </div>
+                  <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+                </a>
+              </h2>
+              <div
+                data-editor-id="block-8"
+                data-editor-name="Welcome to our shop! We car..."
+                data-editor-parent-id="section-17"
+                data-editor-link="/admin/page_sections/17/blocks/8/edit"
+                style="
+                  text-align: left;
+                  width: 100%;
+                  margin: 0 auto 0 0;
+                  color: var(--section-color);
+                  padding-top: 0px;
+                  padding-bottom: 16px;
+                  background-color: var(--section-background);
+                "
+                width_desktop="width-desktop=&#39;true&#39;"
+              >
+                <a class="image-with-text--text" href="http://localhost:3000/products">
+                  <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+                  <div class="trix-content">
+                    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->Welcome
+                    to our shop! We carefully curate high-quality products that we believe in. Our process involves
+                    rigorous testing and selection to ensure we only offer items that meet our standards. We're
+                    passionate about delivering exceptional value and service to our customers.
+                    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->
+                  </div>
+                  <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_image_with_text.html.erb -->
+    </main>
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/spree/home/index.html.erb -->
+
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_newsletter.html.erb -->
+    <div
+      class="w-full flex justify-center items-center relative"
+      style="
+        background-color: #ffffff;
+        --section-background: #ffffff;
+        color: #000000;
+        --section-color: #000000;
+        border-color: #e9e7dc;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        border-top-width: 1px;
+        border-bottom-width: 0px;
+        --section--border-bottom-width: 0px;
+      "
+    >
+      <div class="w-full page-container flex flex-col text-center py-5 px-5 z-10">
+        <h2
+          class="font-medium text-2xl lg:text-3xl"
+          data-editor-id="block-9"
+          data-editor-name="Subscribe to our newsletter"
+          data-editor-parent-id="section-22"
+          data-editor-link="/admin/page_sections/22/blocks/9/edit"
+          style="
+            text-align: center;
+            width: 50%;
+            margin: 0 auto;
+            color: var(--section-color);
+            padding-top: 0px;
+            padding-bottom: 8px;
+            background-color: var(--section-background);
+          "
+          width_desktop="width-desktop=&#39;true&#39;"
+        >
+          <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+          <div class="trix-content">
+            <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->Subscribe
+            to our newsletter
+            <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->
+          </div>
+          <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+        </h2>
+        <div
+          class="text-sm lg:text-base"
+          data-editor-id="block-10"
+          data-editor-name="Thank you for choosing us a..."
+          data-editor-parent-id="section-22"
+          data-editor-link="/admin/page_sections/22/blocks/10/edit"
+          style="
+            text-align: center;
+            width: 50%;
+            margin: 0 auto;
+            color: var(--section-color);
+            padding-top: 0px;
+            padding-bottom: 32px;
+            background-color: var(--section-background);
+          "
+          width_desktop="width-desktop=&#39;true&#39;"
+        >
+          <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+          <div class="trix-content">
+            <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->Thank
+            you for choosing us as your trusted online shopping destination.
+            <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/action_text/contents/_content.html.erb -->
+          </div>
+          <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/actiontext-7.2.1.2/app/views/layouts/action_text/contents/_content.html.erb -->
+        </div>
+        <form action="/newsletter_subscribers" accept-charset="UTF-8" method="post">
+          <input
+            type="hidden"
+            name="authenticity_token"
+            value="F4d_yXf2dPt90kFaIAQWJTxKQPw7RB9AXjc_HRc1AJq6NGYLC14HqtkypSJUMx3rd9Ejp6bpNhVwH9NsXsfesA"
+            autocomplete="off"
+          />
+          <div
+            class="flex items-center flex-col md:flex-row w-full justify-center"
+            data-editor-id="block-11"
+            data-editor-name="Newsletter Form"
+            data-editor-parent-id="section-22"
+            data-editor-link="/admin/page_sections/22/blocks/11/edit"
+            style="
+              text-align: left;
+              width: 100%;
+              margin: 0 auto 0 0;
+              color: var(--section-color);
+              padding-top: 0px;
+              padding-bottom: 0px;
+              background-color: var(--section-background);
+            "
+            width_desktop="width-desktop=&#39;true&#39;"
+          >
+            <div class="relative w-full lg:w-[424px] flex">
+              <input type="hidden" name="section_id" id="section_id" value="22" autocomplete="off" />
+              <input
+                placeholder="Enter your email"
+                required="required"
+                class="focus:border-primary focus:ring-primary pr-36 text-sm bg-accent rounded-input border-accent py-2 px-4 w-full relative z-30 !leading-[46px]"
+                type="email"
+                name="newsletter[email]"
+                id="newsletter_email"
+              />
+              <div class="absolute right-2 top-1/2 transform -translate-y-1/2 z-40">
+                <input
+                  type="submit"
+                  name="commit"
+                  value="Submit"
+                  class="btn-primary content-center"
+                  data-disable-with="Submit"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_newsletter.html.erb -->
+    <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_footer.html.erb -->
+    <footer id="footer" data-turbo-permanent>
+      <div
+        style="
+          background-color: #f5f5f4;
+          --section-background: #f5f5f4;
+          color: #000000;
+          --section-color: #000000;
+          border-color: #e9e7dc;
+          padding-top: 32px;
+          padding-bottom: 32px;
+          border-top-width: 0px;
+          border-bottom-width: 0px;
+          --section--border-bottom-width: 0px;
+        "
+      >
+        <div class="page-container">
+          <div class="flex gap-0 md:gap-6 md:flex-row flex-col">
+            <div class="flex justify-center flex-grow py-2 md:py-0 border-b md:border-none lg:w-60">
+              <!-- BEGIN /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_logo.html.erb -->
+              <a id="site-logo" href="/">
+                <span class="sr-only">Shop</span>
+                <h1 class="text-lg uppercase text-center">Shop</h1> </a
+              ><!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/shared/_logo.html.erb -->
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-4 grow w-full">
+              <div class="flex-grow gap-1 flex flex-col py-6 md:py-0 border-b md:border-none border-default lg:mb-6">
+                <div
+                  data-editor-id="block-12"
+                  data-editor-name="Shop"
+                  data-editor-parent-id="section-23"
+                  data-editor-link="/admin/page_sections/23/blocks/12/edit"
+                  style="
+                    text-align: left;
+                    width: 100%;
+                    margin: 0 auto 0 0;
+                    color: var(--section-color);
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                    background-color: var(--section-background);
+                  "
+                  width_desktop="width-desktop=&#39;true&#39;"
+                >
+                  <h3 class="text-sm py-2">Shop</h3>
+                  <ul class="uppercase text-sm tracking-wider !leading-4 flex flex-col gap-1">
+                    <li class="py-2">
+                      <a href="http://localhost:3000/products"> Shop All </a>
+                    </li>
+                    <li class="py-2">
+                      <a href="http://localhost:3000/t/collections/on-sale"> On sale </a>
+                    </li>
+                    <li class="py-2">
+                      <a href="http://localhost:3000/t/collections/new-arrivals"> New arrivals </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="flex-grow gap-1 flex flex-col py-6 md:py-0 border-b md:border-none border-default lg:mb-6">
+                <div
+                  data-editor-id="block-13"
+                  data-editor-name="Account"
+                  data-editor-parent-id="section-23"
+                  data-editor-link="/admin/page_sections/23/blocks/13/edit"
+                  style="
+                    text-align: left;
+                    width: 100%;
+                    margin: 0 auto 0 0;
+                    color: var(--section-color);
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                    background-color: var(--section-background);
+                  "
+                  width_desktop="width-desktop=&#39;true&#39;"
+                >
+                  <h3 class="text-sm py-2">Account</h3>
+                  <ul class="uppercase text-sm tracking-wider !leading-4 flex flex-col gap-1">
+                    <li class="py-2">
+                      <a href="http://localhost:3000/account"> My Account </a>
+                    </li>
+                    <li class="py-2">
+                      <a href="http://localhost:3000/account/wishlist"> Favorites </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="flex-grow gap-1 flex flex-col py-6 md:py-0 border-b md:border-none border-default lg:mb-6">
+                <div
+                  data-editor-id="block-14"
+                  data-editor-name="Company"
+                  data-editor-parent-id="section-23"
+                  data-editor-link="/admin/page_sections/23/blocks/14/edit"
+                  style="
+                    text-align: left;
+                    width: 100%;
+                    margin: 0 auto 0 0;
+                    color: var(--section-color);
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                    background-color: var(--section-background);
+                  "
+                  width_desktop="width-desktop=&#39;true&#39;"
+                >
+                  <h3 class="text-sm py-2">Company</h3>
+                  <ul class="uppercase text-sm tracking-wider !leading-4 flex flex-col gap-1"></ul>
+                </div>
+              </div>
+              <div class="flex-grow gap-1 flex flex-col py-6 md:py-0 border-b md:border-none border-default lg:mb-6">
+                <div
+                  data-editor-id="block-15"
+                  data-editor-name="Info"
+                  data-editor-parent-id="section-23"
+                  data-editor-link="/admin/page_sections/23/blocks/15/edit"
+                  style="
+                    text-align: left;
+                    width: 100%;
+                    margin: 0 auto 0 0;
+                    color: var(--section-color);
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                    background-color: var(--section-background);
+                  "
+                  width_desktop="width-desktop=&#39;true&#39;"
+                >
+                  <h3 class="text-sm py-2">Info</h3>
+                  <ul class="uppercase text-sm tracking-wider !leading-4 flex flex-col gap-1">
+                    <li class="py-2">
+                      <a href="http://localhost:3000/policies/privacy_policy"> Privacy Policy </a>
+                    </li>
+                    <li class="py-2">
+                      <a href="http://localhost:3000/policies/terms_of_service"> Terms of Service </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="flex-grow gap-4 flex flex-col justify-between lg:w-60">
+              <div class="gap-1 flex flex-col py-6 md:py-0">
+                <h3 class="text-sm py-2">Follow us</h3>
+                <div class="flex flex-wrap gap-2 max-w-48 py-2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end w-full"></div>
+        </div>
+      </div>
+      <div class="text-sm" style="color: #ffffff; background-color: #000000">
+        <div class="page-container py-2 flex justify-center gap-2">
+          <span>© 2025 <a href="/">Shop</a>. All rights reserved.</span>
+          <span>
+            Powered by
+            <a href="https://spreecommerce.org" target="_blank" rel="follow" class="underline">Spree Commerce</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+    <!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/themes/default/spree/page_sections/_footer.html.erb -->
+  </body>
+</html>
+
+<template id="csrf_meta_tags">
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta
+    name="csrf-token"
+    content="yoZXZvIWEceFfqk0AlUDDyiyr3mmBoYI1qOvQeXBK71nGVBYjlOXvrgwVfNZiIntxB-9tzE06juLnNYMDIf55Q"
+  />
+</template>
+<!-- END /Users/dinakazakevich/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/spree-a9dca03a8c82/storefront/app/views/layouts/spree/storefront.html.erb -->

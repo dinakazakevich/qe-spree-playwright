@@ -11,7 +11,7 @@ export class NavigationBar extends PageObject {
   protected readonly blog: Locator = this.host.getByRole('link', { name: 'Blog' });
   protected readonly accountIcon: Locator = this.host.getByRole('button').nth(1); // TODO: the element is missing the #id and proper identifiers hence using `.first()`
   protected readonly wishlistIcon: Locator = this.host.locator('#wishlist-icon');
-  protected readonly cartIcon: Locator = this.host.getByRole('link', { name: 'Items in cart, View bag' });
+  protected readonly cartIcon: Locator = this.host.getByRole('link', { name: 'Cart' });
 
   async navToSearch() {
     await this.search.click();

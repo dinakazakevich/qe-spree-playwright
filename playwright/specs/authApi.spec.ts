@@ -1,6 +1,6 @@
-import { test } from '../../lib/fixtures/instanciatedPage';
-import { createCookies } from '../../lib/datafactory/auth';
-import { adminAccessTokenFile, adminUser, generateUser } from '../../lib/datafactory/testData';
+import { test } from '../lib/fixtures/authenticate';
+import { createCookies } from '../lib/datafactory/auth';
+import { adminAccessTokenFile, adminUser, generateUser } from '../lib/datafactory/testData';
 
 test.describe('authenticate as admin and save the session token', () => {
   test.use({ testUser: adminUser });
@@ -20,7 +20,7 @@ test.describe('authenticate as admin and save the session token', () => {
 
 test.describe('authenticate as a new non-admin user', () => {
   test.use({ testUser: generateUser() });
-  test('authenticate as admin', async ({ page, context, testUser }) => {
+  test('create a new non-admin user', async ({ page, context, testUser }) => {
     const userAccessTokenFile = `playwright/.auth/${testUser.email}${testUser.password}.json`;
     const cookies = await createCookies(testUser);
     await page.context().addCookies([

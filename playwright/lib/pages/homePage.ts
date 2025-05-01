@@ -1,17 +1,16 @@
 import { expect } from '@playwright/test';
 import { Page } from './basePage';
-// import { LoginForm } from '../components/loginForm';
-// import { NavigationBar } from '../components/navigationComponent';
-// import { CartComponent } from '../components/cartComponent';
 import messages from '../datafactory/messages';
+import { Page as PlaywrightPage } from '@playwright/test';
 
 export class HomePage extends Page {
-  // public readonly navBar = new NavigationBar(this.page.getByRole('navigation', { name: 'Top' }));
-  // public readonly loginForm = new LoginForm(this.page.locator('#login'));
-  // public readonly cartSidebar = new CartComponent(this.page.locator('#slideover-cart'));
-
+  protected readonly url: string;
+  constructor(page: PlaywrightPage) {
+    super(page);
+    this.url = '/';
+  }
   async goto() {
-    await this.page.goto('/');
+    await this.page.goto(this.url);
   }
 
   async returnToHomePage() {
