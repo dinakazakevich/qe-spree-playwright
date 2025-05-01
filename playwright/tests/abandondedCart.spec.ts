@@ -1,9 +1,9 @@
-import { test, expect } from '../lib/fixtures/authenticate';
+import { test, expect } from '../lib/fixtures/instantiate';
 import { CART_STORAGE } from '../lib/datafactory/constants';
 import { CartComponent } from '../lib/components/cartComponent';
 import { generateUser } from '../lib/datafactory/testData';
 
-test.use({ testUser: generateUser() });
+// test.use({ testUser: generateUser() });
 test('abandoned cart scenario', async ({ browser, page, productsPage, productDetailsPage }) => {
   // Go to products page
   await page.goto('/products');

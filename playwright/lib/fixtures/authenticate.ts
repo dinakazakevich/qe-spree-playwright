@@ -38,7 +38,7 @@ export const test = base.extend<AuthenticatedFixtures>({
       // eslint-disable-next-line quotes, no-console
       console.log("Warning: user doesn't exist, creating a new user");
     }
-    await userClient.authenticate(testUser);
+    await userClient.authenticateWithCSRF(testUser);
 
     const storageState = await userClient.request.storageState();
 
