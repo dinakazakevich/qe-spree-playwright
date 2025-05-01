@@ -1,9 +1,11 @@
 import { test, expect } from '../lib/fixtures/authenticate';
 import { CART_STORAGE } from '../lib/datafactory/constants';
 import { CartComponent } from '../lib/components/cartComponent';
+import { generateUser } from '../lib/datafactory/testData';
 
+test.use({ testUser: generateUser() });
 test('abandoned cart scenario', async ({ browser, productsPage, productDetailsPage }) => {
-  // Go to homepage and make sure you are logged-in
+  // Go to products page
   await productsPage.goto();
   await productsPage.selectProduct();
   await productDetailsPage.selectSize('M');
@@ -17,5 +19,6 @@ test('abandoned cart scenario', async ({ browser, productsPage, productDetailsPa
   await page2.goto('/');
   await page2.getByRole('link', { name: 'Cart' }).click();
   const reopenedCartSidebar = new CartComponent(page2.locator('#slideover-cart'));
-  await reopenedCartSidebar.assertNotEmpty();
+  expect(reopenedCartSidebar.assertNotEmpty()).toBeTruthy();
+  await reopenedBrowser.close();
 });

@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page as PlaywrightPage } from '@playwright/test';
+import { expect, type Locator } from '@playwright/test';
 import { PageObject } from './basePageObject';
 
 export class CartComponent extends PageObject {
@@ -15,10 +15,9 @@ export class CartComponent extends PageObject {
   async assertNotEmpty() {
     // Check that the cart has been created and is not empty
     await expect(this.host).not.toContainText('Your cart is empty.');
-    // await expect(this.cartListItem).toBeVisible();
-    const cartItemCount = await this.cartListItem.count();
+    const cartItemCount = await this.cartListItem.all();
     // eslint-disable-next-line @typescript-eslint/await-thenable
-    await expect(cartItemCount).toBeGreaterThan(0);
+    return await expect(this.cartListItem.count()).toBeGreaterThan(0);
   }
 
   async removeItem() {

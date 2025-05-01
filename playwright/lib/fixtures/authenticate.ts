@@ -58,13 +58,6 @@ export const test = base.extend<AuthenticatedFixtures>({
       await use(loginPage);
     }
   },
-  // Discarded experiement
-  // authenticatedUserClient: async ({ userClient, testUser }, use) => {
-  //   await userClient.authenticateWithCSRF(testUser);
-  //   // expect(loginResponse.ok()).toBeTruthy();
-
-  //   await use(userClient); // reuse the same instance, now authenticated
-  // },
   authenticatedUserClient: async ({ userClient, testUser }, use) => {
     const userCheck = await userClient.checkUserExists(testUser);
     if (!userCheck) {
@@ -72,8 +65,8 @@ export const test = base.extend<AuthenticatedFixtures>({
       // eslint-disable-next-line quotes, no-console
       console.log("Warning: user doesn't exist, creating a new user");
     }
-    const response = await userClient.authenticate(testUser);
-    return response;
+    await userClient.authenticate(testUser);
+    await use(userClient);
   },
 });
 

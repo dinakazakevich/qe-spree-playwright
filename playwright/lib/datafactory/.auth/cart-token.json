@@ -2,17 +2,17 @@
   "cookies": [
     {
       "name": "token",
-      "value": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkltdFZlVVZ0YWpsbVZXdHpjWHAzWldGeVpqaEJjSEppVTNKWVRUVlJSVE41ZG1OaElnPT0iLCJleHAiOm51bGwsInB1ciI6ImNvb2tpZS50b2tlbiJ9fQ%3D%3D--2f7678438941f399f8ec217c91c486a4124f8699",
+      "value": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IklrUTJNa0ZOZDBkQmVuRkZNbVJPYjBwbFJGTnJlVzV4UVdWVWFuWlFSR2hZYTFOWUlnPT0iLCJleHAiOm51bGwsInB1ciI6ImNvb2tpZS50b2tlbiJ9fQ%3D%3D--5a7ffdcf0564da9d63fbaebb003c1ce57e35e954",
       "domain": "localhost",
       "path": "/",
-      "expires": 1780689388.787089,
+      "expires": 1780691677.425665,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "_spree_starter_session",
-      "value": "m3Q%2BDqvIOhjj6stt6w%2F%2B7Q8dq52OVkIBBhndONT1EIsHJ%2F%2Fp0KcLLY071fGjNLgO5o9Dakjqk7CK6wM%2FoBOq7eQmLUUB6FfwjJ92OuzL8976UN5YFq1K1xIIO6bYaQ6OkYK0YJt1cvTNnBY44AjCGgE0G1%2FZ5LyJf9du5zEpuEhpBDqju8OBiYwZInjSRnBMs9mZvbvYXB78usjUK5HTxApYQowvvJxzjOC31upKCuDOscEAZpFVcRGLl%2BgHBDd%2BEsLZ8Ra3sjvVueQm1eVkIQN0R9cfeGp1%2FJWQCiK3--A5UXSyKghYyJVO6p--EFOPZPbyLnliQD6yeMwyQA%3D%3D",
+      "value": "isEBJdwOMnYYzAqOGQUVidk7fNW0Qj37Oun8KFxRqBaajBBCHx25nyRw6ulFlqn4BeLiS5G4cnP4nAG5OA2c1Bsrpi5emRXHp1Yztgc6dyy4xX%2BhA8RYinq9WAQ51f6KdcKRsWOMilzXmF4vSIIptoUCriCJHTsItC%2BjozSiwGeRO4PJXfGJr7O4ueDrNH7QUsWnywkbycld%2BYC6otsfLCWQciNLDsqJY0xIcxJu9FFNAbn8AZXDOsglFDwVbeKPsoWKen7ax1%2BguGB6%2B1D%2F3DV%2FSgpg3Lq91rgTiAVy--J8%2FWKGUlnQYNT9e5--Cg%2Bs%2FLiWDXLUUvQzb488vw%3D%3D",
       "domain": "localhost",
       "path": "/",
       "expires": -1,
