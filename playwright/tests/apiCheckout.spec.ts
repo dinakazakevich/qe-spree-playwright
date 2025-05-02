@@ -3,21 +3,12 @@ import { test, expect } from '../lib/fixtures/authenticate';
 import { generateUser } from '../lib/datafactory/testData';
 
 test.describe('Checkout flow:', () => {
-  test.use({
-    userParams: {
-      email: 'spree@example.com',
-      password: 'spree123',
-    },
-  });
+  test.use({ userParams: generateUser() });
   test('entire checkout flow with api', async ({ authenticatedUserClient }) => {
-    console.log('authenticatedUserClient.tokenData', authenticatedUserClient.tokenData);
-    const response = await authenticatedUserClient.get(apiRoutes.storefront.wishlist, {
-      headers: {
-        Authorization: `Bearer ${authenticatedUserClient.tokenData}`,
-      },
-    });
-    const responsejson = await response.json();
-    console.log('responsejson:', responsejson);
+    // Authentication is done via the authenticate.ts fixture
+
+    // Testing that userClient has picked up the Authorization header from the class property
+    const response = await authenticatedUserClient.get(apiRoutes.storefront.wishlist);
     // Create a new cart
     // Add a product variant to cart
     // Proceed with checkout

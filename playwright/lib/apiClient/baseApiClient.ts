@@ -12,13 +12,32 @@ export class BaseApiClient {
     return this._tokenData;
   }
   async get(url: string, options: any = {}): Promise<APIResponse> {
+    // Default options with Authorization header
+    const defaultOptions = {
+      headers: {
+        Authorization: `Bearer ${this._tokenData || ''}`,
+      },
+    };
+
+    // Merge the default options with the provided options
+    // This ensures the test-specific options take precedence if there's overlap
+    const mergedOptions = {
+      ...defaultOptions,
+      ...options,
+      headers: {
+        ...defaultOptions.headers,
+        ...options.headers,
+      },
+    };
     console.log('📤 Sending GET request');
     console.log('URL:', url);
-    console.log('Headers:', options.headers);
-    const response = await this.request.get(url, options);
-    // expect(response.ok()).toBeTruthy();
+    console.log('Headers:', mergedOptions.headers);
+
+    const response = await this.request.get(url, mergedOptions);
+    expect(response.ok()).toBeTruthy();
     const responseJson = await response.json();
     console.log('ResponseJson:', responseJson);
+
     return response;
   }
 
