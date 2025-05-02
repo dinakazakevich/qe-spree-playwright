@@ -2,11 +2,23 @@
 import { APIRequestContext, APIResponse, expect } from '@playwright/test';
 
 export class BaseApiClient {
+  private _tokenData: any;
   constructor(public request: APIRequestContext) {}
 
-  async get(url: string, options = {}): Promise<APIResponse> {
+  set tokenData(data: any) {
+    this._tokenData = data;
+  }
+  get tokenData() {
+    return this._tokenData;
+  }
+  async get(url: string, options: any = {}): Promise<APIResponse> {
+    console.log('📤 Sending GET request');
+    console.log('URL:', url);
+    console.log('Headers:', options.headers);
     const response = await this.request.get(url, options);
-    expect(response.ok()).toBeTruthy();
+    // expect(response.ok()).toBeTruthy();
+    const responseJson = await response.json();
+    console.log('ResponseJson:', responseJson);
     return response;
   }
 

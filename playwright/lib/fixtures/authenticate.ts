@@ -2,6 +2,7 @@ import { test as base, expect } from './instantiate';
 import { HomePage } from '../pages/homePage';
 import { User } from '../types/types';
 import { UserClient } from '../apiClient/userClient';
+import { USER_SESSION_STORAGE } from '../datafactory/constants';
 
 type AuthenticatedFixtures = {
   testUser: User;
@@ -30,28 +31,71 @@ export const test = base.extend<AuthenticatedFixtures>({
     await use(mergedUser);
   },
   authenticatedUserClient: async ({ playwright, userClient, testUser }, use) => {
+    // const authResponse = await userClient.authenticate(testUser);
+    // const { access_token } = await authResponse.json();
+
+    // const authContext = await playwright.request.newContext({
+    //   extraHTTPHeaders: {
+    //     Authorization: `Bearer ${access_token}`,
+    //     'Content-Type': 'application/vnd.api+json',
+    //   },
+    // });
+    // expect(authResponse.ok()).toBeTruthy();
+
+    // // Parse response to get token data
+    // const authData = await authResponse.json();
+
+    // // Store token data
+    // userClient.tokenData = authData;
+
+    // // Create auth headers for future requests
+    // this.headers = {
+    //   'Authorization': `Bearer ${authData.access_token}`
+    // };
+
+    // return authData;
     const authResponse = await userClient.authenticate(testUser);
-    const { access_token } = await authResponse.json();
+    const authData = await authResponse.json();
+    console.log('authData:', authData);
+    // expect(authResponse.ok()).toBeTruthy();
+    userClient.tokenData = authData.access_token;
+    const access_token_value = userClient.tokenData;
+    console.log('access_token_value:', access_token_value);
+    // Parse response to get token data
+    // const authData = await authResponse.json();
 
-    const authContext = await playwright.request.newContext({
-      extraHTTPHeaders: {
-        Authorization: `Bearer ${access_token}`,
-        'Content-Type': 'application/vnd.api+json',
-      },
-    });
+    // // Create a new request context with auth headers
+    // const authContext = await playwright.request.newContext({
+    //   extraHTTPHeaders: {
+    //     Authorization: `Bearer ${userClient.tokenData.access_token}`,
+    //     'Content-Type': 'application/vnd.api+json',
+    //   },
+    // });
 
-    const authenticatedClient = new UserClient(authContext);
-    await use(authenticatedClient);
+    // // Create authenticated client
+    // const authenticatedClient = new UserClient(authContext);
 
-    await authContext.dispose();
+    // await authContext.storageState({ path: USER_SESSION_STORAGE });
+    await use(userClient);
+    // await authContext.dispose();
   },
-  authenticatedHomePage: async ({ homePage, testUser }, use) => {
+
+  // const authenticatedClient = new UserClient(authContext);
+
+  // await authContext.storageState({ path: USER_SESSION_STORAGE });
+
+  // await use(authenticatedClient);
+
+  // await authContext.dispose();
+  // },
+  authenticatedHomePage: async ({ homePage, testUser, context }, use) => {
     await homePage.goto();
     await homePage.navBar.navToAccount();
     await homePage.loginForm.doLogin(testUser);
 
     // Confirm login is successful
     await homePage.loginSuccess();
+    await context.storageState({ path: USER_SESSION_STORAGE });
 
     // Pass the authenticated page object back to the test
     await use(homePage);

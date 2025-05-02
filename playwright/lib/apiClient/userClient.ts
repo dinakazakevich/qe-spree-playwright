@@ -5,7 +5,8 @@ import { apiRoutes } from '../datafactory/constants';
 export class UserClient extends BaseApiClient {
   async createAccount(testUser: User) {
     // console.log('createUserTestUser:', testUser);
-    const response = await this.post('/api/v2/storefront/account',
+    const response = await this.post(
+      '/api/v2/storefront/account',
       {
         user: {
           email: testUser.email,
@@ -27,25 +28,19 @@ export class UserClient extends BaseApiClient {
     formData.append('password', testUser.password);
 
     // Make the POST request to /authenticate endpoint
-    const response = await this.post(apiRoutes.storefront.authenticate, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      data: formData.toString(),
+    const response = await this.post(apiRoutes.storefront.authenticate, formData.toString(), {
+      'Content-Type': 'application/x-www-form-urlencoded',
     });
     return response;
   }
 
   async checkUserExists(testUser: User) {
-    const response = await this.post(apiRoutes.storefront.authenticate, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      form: {
-        grant_type: 'password',
-        username: testUser.email,
-        password: testUser.password,
-      },
+    const formData = new URLSearchParams();
+    formData.append('grant_type', 'password');
+    formData.append('username', testUser.email);
+    formData.append('password', testUser.password);
+    const response = await this.post(apiRoutes.storefront.authenticate, formData.toString(), {
+      'Content-Type': 'application/x-www-form-urlencoded',
     });
     return response.status() === 200;
   }

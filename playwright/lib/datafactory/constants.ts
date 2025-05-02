@@ -2,9 +2,9 @@ import path from 'path';
 import { User } from '../types/types';
 
 // Define constants for paths
-export const CART_STORAGE = path.resolve(__dirname, '../../.auth/cart-token.json');
-export const ADMIN_SESSION_STORAGE = path.resolve(__dirname, '.auth/admin.json');
-export const USER_SESSION_STORAGE = path.resolve(__dirname, '.auth/user.json');
+export const CART_STORAGE = path.resolve(__dirname, `../../.auth/cart-${Date.now()}.json`);
+export const ADMIN_SESSION_STORAGE = path.resolve(__dirname, `../../.auth/admin-${Date.now()}.json`);
+export const USER_SESSION_STORAGE = path.resolve(__dirname, `../../.auth/user-${Date.now()}.json`);
 
 export const defaultUser: User = {
   email: 'spree@example.com',
@@ -29,6 +29,7 @@ export const apiRoutes = {
     createCart: '/api/v2/storefront/cart',
     retrieveCart: '/api/v2/storefront/cart',
     authenticate: '/spree_oauth/token',
+    wishlist: '/api/v2/storefront/wishlists/default',
   },
   // Platform API used for accessing admin platform
   platform: {

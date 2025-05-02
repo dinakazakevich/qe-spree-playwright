@@ -20,6 +20,8 @@ test('abandoned cart scenario', async ({ browser, authenticatedHomePage, product
 
   await productDetailsPage.cartSidebar.assertNotEmpty();
 
+  const cartTotal1 = await productDetailsPage.cartSidebar.getCartTotal();
+
   const browser1 = productDetailsPage.page.context();
   await browser1.storageState({ path: CART_STORAGE });
   await browser1.close();
@@ -34,6 +36,9 @@ test('abandoned cart scenario', async ({ browser, authenticatedHomePage, product
 
   // // Make sure it is not empty
   const cartSidebar = new CartComponent(page2.locator('#slideover-cart'));
-  // await expect(cartSidebar.cartListItem).toBeVisible();
+  await expect(cartSidebar.cartListItem).toBeVisible();
+
+  const cartTotal2 = await cartSidebar.getCartTotal();
+  expect(cartTotal1).toEqual(cartTotal2);
   expect(await cartSidebar.assertNotEmpty()).toBeTruthy();
 });

@@ -38,6 +38,10 @@ export class CartComponent extends PageObject {
       .first()
       .click();
   }
+  async getCartTotal() {
+    const cartTotal = await this.host.locator('span.shopping-cart-total-amount').textContent();
+    return cartTotal;
+  }
   async decreaseItemCount(productName: string) {
     // Decreases the number of items of a selected product
     // If there multiple products with the same name, it selects the first one
