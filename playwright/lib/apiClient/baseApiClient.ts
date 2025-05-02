@@ -11,11 +11,16 @@ export class BaseApiClient {
   }
 
   async post(url: string, data: any, headers?: Record<string, string>): Promise<APIResponse> {
+    console.log('📤 Sending POST request');
+    console.log('URL:', url);
+    console.log('Headers:', headers);
+    console.log('Body:', JSON.stringify(data, null, 2));
+
     const response = await this.request.post(url, {
       data,
       headers,
     });
-    // expect(response.ok()).toBeTruthy();
+
     return response;
   }
 

@@ -2,7 +2,7 @@ import path from 'path';
 import { User } from '../types/types';
 
 // Define constants for paths
-export const CART_STORAGE = path.resolve(__dirname, '.auth/cart-token.json');
+export const CART_STORAGE = path.resolve(__dirname, '../../.auth/cart-token.json');
 export const ADMIN_SESSION_STORAGE = path.resolve(__dirname, '.auth/admin.json');
 export const USER_SESSION_STORAGE = path.resolve(__dirname, '.auth/user.json');
 

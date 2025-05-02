@@ -5,7 +5,7 @@ import { User } from '../types/types';
 export class SignupForm extends PageObject {
   public readonly header: Locator = this.host.getByRole('heading');
   protected readonly emailInput: Locator = this.host.getByRole('textbox', { name: 'Email' });
-  protected readonly passwordInput: Locator = this.host.getByRole('textbox', { name: 'Password' });
+  protected readonly passwordInput: Locator = this.host.getByRole('textbox', { name: 'Password', exact: true });
   protected readonly signupLink: Locator = this.host.getByRole('link', { name: 'Sign Up' });
   protected readonly signupButton: Locator = this.host.getByRole('button', { name: 'Sign Up' });
   protected readonly forgotPasswordLink: Locator = this.host.getByRole('link', { name: 'Forgot Password' });
@@ -16,19 +16,19 @@ export class SignupForm extends PageObject {
   });
 
   async fillEmail(email: string) {
-    await this.emailInput.type(email, { delay: 200 });
+    await this.emailInput.fill(email);
   }
 
   async fillPassword(password: string) {
-    await this.passwordInput.type(password, { delay: 200 });
+    await this.passwordInput.fill(password);
   }
 
   async fillConfirmation(password: string) {
-    await this.passwordConfirmation.type(password, { delay: 200 });
+    await this.passwordConfirmation.fill(password);
   }
 
   async signUp(testUser: User) {
-    await this.signupLink.click();
+    // await this.signupLink.click();
     await this.fillEmail(testUser.email);
     await this.fillPassword(testUser.password);
     await this.fillConfirmation(testUser.password);

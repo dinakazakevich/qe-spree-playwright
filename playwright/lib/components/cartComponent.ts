@@ -14,11 +14,13 @@ export class CartComponent extends PageObject {
 
   async assertNotEmpty() {
     // Check that the cart has been created and is not empty
-    // await expect(this.cartListItem).toBeVisible();
+    await expect(this.cartListItem).toBeVisible();
     const itemCount = await this.cartListItem.count();
-    expect(itemCount).toBeGreaterThan(0);
+
+    // Check that there is not 'Your cart is empty.' label is shown
     await expect(this.host).not.toContainText('Your cart is empty.');
-    // return await expect(this.cartListItem.count()).toBeGreaterThan(0);
+
+    return itemCount > 0;
   }
 
   async removeItem() {
