@@ -30,6 +30,17 @@ export const apiRoutes = {
     retrieveCart: '/api/v2/storefront/cart',
     authenticate: '/spree_oauth/token',
     wishlist: '/api/v2/storefront/wishlists/default',
+    products: '/api/v2/storefront/products',
+    addToCart: '/api/v2/storefront/cart/add_item',
+    validate: '/api/v2/storefront/checkout/validate_order_for_payment?skip_state=true',
+    checkout: '/api/v2/storefront/checkout',
+    checkoutNext: 'checkout/next',
+    checkoutAdvance: '/api/v2/storefront/checkout/advance',
+    checkoutComplete: '/api/v2/storefront/checkout/complete',
+    shippingRates: '/api/v2/storefront/checkout/shipping_rates',
+    shippingSelect: '/api/v2/storefront/checkout/select_shipping_method',
+    createPayment: '/api/v2/storefront/checkout/create_payment',
+    paymentMethods: '/api/v2/storefront/checkout/payment_methods',
   },
   // Platform API used for accessing admin platform
   platform: {
@@ -49,4 +60,37 @@ export const messages = {
     success: 'Welcome! You have signed up successfully.',
   },
   signout: 'Signed out successfully',
+};
+
+export const cardNumber = {
+  valid: {
+    visa: {
+      1: 4111111111111111,
+      2: 4012888888881881,
+      3: 4222222222222,
+    },
+    mastercard: {
+      1: 5500000000000004,
+      2: 5555555555554444,
+      3: 5105105105105100,
+      4: 2223000010309703,
+    },
+    amex: {
+      1: 378282246310005,
+      2: 371449635398431,
+      3: 378734493671000,
+      4: 340000000000009,
+    },
+    discovery: {
+      1: 6011000000000004,
+      2: 6011111111111117,
+      3: 6011000990139424,
+    },
+  },
+  invalid: {
+    visa: {
+      1: 4000000000009995, // Insufficient funds error
+      2: 4000000000000002, // Generic decline
+    },
+  },
 };
