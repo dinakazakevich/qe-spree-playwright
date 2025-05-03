@@ -38,7 +38,7 @@ export const apiRoutes = {
     checkoutAdvance: '/api/v2/storefront/checkout/advance',
     checkoutComplete: '/api/v2/storefront/checkout/complete',
     shippingRates: '/api/v2/storefront/checkout/shipping_rates',
-    shippingSelect: '/api/v2/storefront/checkout/select_shipping_method',
+    shippingMethod: '/api/v2/storefront/checkout/select_shipping_method',
     createPayment: '/api/v2/storefront/checkout/create_payment',
     paymentMethods: '/api/v2/storefront/checkout/payment_methods',
   },
@@ -62,35 +62,17 @@ export const messages = {
   signout: 'Signed out successfully',
 };
 
-export const cardNumber = {
+export const cardNumbers = {
   valid: {
-    visa: {
-      1: 4111111111111111,
-      2: 4012888888881881,
-      3: 4222222222222,
-    },
-    mastercard: {
-      1: 5500000000000004,
-      2: 5555555555554444,
-      3: 5105105105105100,
-      4: 2223000010309703,
-    },
-    amex: {
-      1: 378282246310005,
-      2: 371449635398431,
-      3: 378734493671000,
-      4: 340000000000009,
-    },
-    discovery: {
-      1: 6011000000000004,
-      2: 6011111111111117,
-      3: 6011000990139424,
-    },
+    visa: ['4111111111111111', '4012888888881881', '4222222222222'],
+    mastercard: ['5500000000000004', '5555555555554444', '5105105105105100', '2223000010309703'],
+    amex: ['378282246310005', '371449635398431', '378734493671000', '340000000000009'],
+    discovery: ['6011000000000004', '6011111111111117', '6011000990139424'],
   },
   invalid: {
-    visa: {
-      1: 4000000000009995, // Insufficient funds error
-      2: 4000000000000002, // Generic decline
-    },
+    visa: [
+      '4000000000009995', // Insufficient funds error
+      '4000000000000002', // Generic decline]
+    ],
   },
 };

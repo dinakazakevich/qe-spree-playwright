@@ -27,67 +27,20 @@ export const test = base.extend<AuthenticatedFixtures>({
       console.log('User already exists:', mergedUser);
     }
     console.log('mergedUser:', mergedUser);
+
     // Pass the mergedUser to the next step
     await use(mergedUser);
   },
-  authenticatedUserClient: async ({ playwright, userClient, testUser }, use) => {
-    // const authResponse = await userClient.authenticate(testUser);
-    // const { access_token } = await authResponse.json();
-
-    // const authContext = await playwright.request.newContext({
-    //   extraHTTPHeaders: {
-    //     Authorization: `Bearer ${access_token}`,
-    //     'Content-Type': 'application/vnd.api+json',
-    //   },
-    // });
-    // expect(authResponse.ok()).toBeTruthy();
-
-    // // Parse response to get token data
-    // const authData = await authResponse.json();
-
-    // // Store token data
-    // userClient.tokenData = authData;
-
-    // // Create auth headers for future requests
-    // this.headers = {
-    //   'Authorization': `Bearer ${authData.access_token}`
-    // };
-
-    // return authData;
+  authenticatedUserClient: async ({ userClient, testUser }, use) => {
     const authResponse = await userClient.authenticate(testUser);
     const authData = await authResponse.json();
     console.log('authData:', authData);
-    // expect(authResponse.ok()).toBeTruthy();
-    userClient.tokenData = authData.access_token;
-    const access_token_value = userClient.tokenData;
+    expect(authResponse.ok()).toBeTruthy();
+    userClient.accessToken = authData.access_token;
+    const access_token_value = userClient.accessToken;
     console.log('access_token_value:', access_token_value);
-    // Parse response to get token data
-    // const authData = await authResponse.json();
-
-    // // Create a new request context with auth headers
-    // const authContext = await playwright.request.newContext({
-    //   extraHTTPHeaders: {
-    //     Authorization: `Bearer ${userClient.tokenData.access_token}`,
-    //     'Content-Type': 'application/vnd.api+json',
-    //   },
-    // });
-
-    // // Create authenticated client
-    // const authenticatedClient = new UserClient(authContext);
-
-    // await authContext.storageState({ path: USER_SESSION_STORAGE });
     await use(userClient);
-    // await authContext.dispose();
   },
-
-  // const authenticatedClient = new UserClient(authContext);
-
-  // await authContext.storageState({ path: USER_SESSION_STORAGE });
-
-  // await use(authenticatedClient);
-
-  // await authContext.dispose();
-  // },
   authenticatedHomePage: async ({ homePage, testUser, context }, use) => {
     await homePage.goto();
     await homePage.navBar.navToAccount();

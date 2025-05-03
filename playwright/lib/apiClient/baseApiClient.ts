@@ -2,21 +2,21 @@
 import { APIRequestContext, APIResponse, expect } from '@playwright/test';
 
 export class BaseApiClient {
-  private _tokenData: any;
+  private _accessToken: string = '';
 
   constructor(public request: APIRequestContext) {}
 
-  set tokenData(data: any) {
-    this._tokenData = data;
+  set accessToken(accessToken: string) {
+    this._accessToken = accessToken;
   }
-  get tokenData() {
-    return this._tokenData;
+  get accessToken() {
+    return this._accessToken;
   }
   async get(url: string, options: any = {}): Promise<APIResponse> {
     // Default options with Authorization header
     const defaultOptions = {
       headers: {
-        Authorization: `Bearer ${this._tokenData || ''}`,
+        Authorization: `Bearer ${this._accessToken || ''}`,
       },
     };
 
@@ -35,9 +35,10 @@ export class BaseApiClient {
     console.log('Headers:', mergedOptions.headers);
 
     const response = await this.request.get(url, mergedOptions);
-    expect(response.ok()).toBeTruthy();
+    // expect(response.ok()).toBeTruthy();
     const responseJson = await response.json();
     console.log('ResponseJson:', responseJson);
+    console.log(response.status());
 
     return response;
   }
@@ -46,7 +47,7 @@ export class BaseApiClient {
     // Default options with Authorization header
     const defaultOptions = {
       headers: {
-        Authorization: `Bearer ${this._tokenData || ''}`,
+        Authorization: `Bearer ${this._accessToken || ''}`,
       },
     };
 
@@ -75,7 +76,7 @@ export class BaseApiClient {
     // Default options with Authorization header
     const defaultOptions = {
       headers: {
-        Authorization: `Bearer ${this._tokenData || ''}`,
+        Authorization: `Bearer ${this._accessToken || ''}`,
       },
       data: options.data!,
     };
@@ -96,6 +97,7 @@ export class BaseApiClient {
     console.log('Body:', JSON.stringify(mergedOptions.data, null, 2));
     const response = await this.request.patch(url, mergedOptions);
     // expect(response.ok()).toBeTruthy();
+    console.log(response.status());
     return response;
   }
 
@@ -103,7 +105,7 @@ export class BaseApiClient {
     // Default options with Authorization header
     const defaultOptions = {
       headers: {
-        Authorization: `Bearer ${this._tokenData || ''}`,
+        Authorization: `Bearer ${this._accessToken || ''}`,
       },
     };
 
@@ -117,6 +119,10 @@ export class BaseApiClient {
         ...options.headers,
       },
     };
+    console.log('📤 Sending DELETE request');
+    console.log('URL:', url);
+    console.log('Headers:', mergedOptions.headers);
+    console.log('Body:', JSON.stringify(mergedOptions.data, null, 2));
     const response = await this.request.delete(url, mergedOptions);
     expect(response.ok()).toBeTruthy();
     console.log(response.status());

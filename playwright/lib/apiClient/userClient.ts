@@ -3,8 +3,9 @@ import { User } from '../types/types';
 import { apiRoutes } from '../datafactory/constants';
 
 export class UserClient extends BaseApiClient {
+  private cartTokenValue: string = '';
+
   async createAccount(testUser: User) {
-    // console.log('createUserTestUser:', testUser);
     const response = await this.post('/api/v2/storefront/account', {
       data: {
         user: {
@@ -54,5 +55,12 @@ export class UserClient extends BaseApiClient {
     const response = await this.authenticate(testUser);
     const json = await response.json();
     return json.access_token;
+  }
+
+  set cartToken(cartTokenValue: string) {
+    this.cartTokenValue = cartTokenValue;
+  }
+  get cartToken() {
+    return this.cartTokenValue;
   }
 }

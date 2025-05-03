@@ -2,18 +2,14 @@ import { apiRoutes } from '../lib/datafactory/constants';
 import { test, expect } from '../lib/fixtures/instantiate';
 import { JSDOM } from 'jsdom';
 import * as fs from 'fs';
+import { generateUser } from '../lib/datafactory/testData';
 
-// test.use({
-//   testUser: {
-//     email: 'spree@example.com',
-//     password: 'spree123',
-//   },
-// });
+const testUser = generateUser();
 test('a full checkout flow via API', async ({ userClient }) => {
-  const testUser = {
-    email: 'spree@example.com',
-    password: 'spree123',
-  };
+  // const testUser = {
+  //   email: 'spree@example.com',
+  //   password: 'spree123',
+  // };
   // Step 1: Get the login page to extract CSRF token
   const loginPageResponse = await userClient.get('/users/sign_in');
   console.log('step1:', 'loaded login page');
