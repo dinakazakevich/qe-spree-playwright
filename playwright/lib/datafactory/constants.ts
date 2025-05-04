@@ -34,13 +34,14 @@ export const apiRoutes = {
     addToCart: '/api/v2/storefront/cart/add_item',
     validate: '/api/v2/storefront/checkout/validate_order_for_payment?skip_state=true',
     checkout: '/api/v2/storefront/checkout',
-    checkoutNext: 'checkout/next',
+    checkoutNext: '/api/v2/storefront/checkout/next',
     checkoutAdvance: '/api/v2/storefront/checkout/advance',
     checkoutComplete: '/api/v2/storefront/checkout/complete',
     shippingRates: '/api/v2/storefront/checkout/shipping_rates',
     shippingMethod: '/api/v2/storefront/checkout/select_shipping_method',
     createPayment: '/api/v2/storefront/checkout/create_payment',
     paymentMethods: '/api/v2/storefront/checkout/payment_methods',
+    retrieveOrders: '/api/v2/storefront/account/orders',
   },
   // Platform API used for accessing admin platform
   platform: {

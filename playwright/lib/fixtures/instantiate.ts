@@ -12,6 +12,7 @@ export type TestOptions = {
   productsPage: ProductsPage;
   productDetailsPage: ProductDetailsPage;
   userClient: UserClient;
+  cartClient: CartClient;
   // testUser: User;
 };
 
@@ -42,8 +43,8 @@ export const test = base.extend<TestOptions>({
     const client = new UserClient(request);
     await use(client);
   },
-  // userCart: async ({ request }, use) => {
-  //   const client = new UserCart(request);
+  // cartClient: async ({ request }, use) => {
+  //   const client = new UserClient(request);
   //   await use(client);
   // },
 });

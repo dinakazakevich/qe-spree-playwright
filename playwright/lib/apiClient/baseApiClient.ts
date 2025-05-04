@@ -69,6 +69,9 @@ export class BaseApiClient {
     const response = await this.request.post(url, mergedOptions);
     console.log(response.status());
 
+    const responseJson = await response.json();
+    console.log('ResponseJson:', responseJson);
+    console.log(response.status());
     return response;
   }
 
@@ -98,6 +101,9 @@ export class BaseApiClient {
     const response = await this.request.patch(url, mergedOptions);
     // expect(response.ok()).toBeTruthy();
     console.log(response.status());
+    const responseJson = await response.json();
+    console.log('ResponseJson:', responseJson);
+    console.log(response.status());
     return response;
   }
 
@@ -125,6 +131,9 @@ export class BaseApiClient {
     console.log('Body:', JSON.stringify(mergedOptions.data, null, 2));
     const response = await this.request.delete(url, mergedOptions);
     expect(response.ok()).toBeTruthy();
+    console.log(response.status());
+    const responseJson = await response.json();
+    console.log('ResponseJson:', responseJson);
     console.log(response.status());
     return response;
   }

@@ -63,6 +63,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
       // dependencies: ['auth-setup'],
     },
+    {
+      name: 'api-tests',
+      use: {},
+    },
 
     // {
     //   name: 'firefox',

@@ -1,5 +1,6 @@
 import { test, expect } from '../lib/fixtures/authenticate';
 import { generateUser } from '../lib/datafactory/testData';
+import { apiRoutes } from '../lib/datafactory/constants';
 
 test.describe('Checkout flow:', () => {
   const testUser = generateUser();
@@ -15,9 +16,6 @@ test.describe('Checkout flow:', () => {
     await authenticatedUserClient.createCart();
 
     // Add a random product in a random quality of 1-10 to cart
-    await authenticatedUserClient.addProductToCart();
-
-    // Add another random product in a random quality of 1-10 to cart
     await authenticatedUserClient.addProductToCart();
 
     // Add customer details: billing and shipping address
