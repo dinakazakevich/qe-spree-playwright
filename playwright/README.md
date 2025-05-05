@@ -1,18 +1,20 @@
 # Spree E-commerce Test Plan: What Actually Matters
 
 ## What We're Testing
-Spree is a modular e-commerce platform with core, API, admin, storefront, emails, and payment components. It handles multi-vendor, multi-store, and multi-currency setups. The setup works within the existing Rails/Spree architecture while adding JavaScript-based testing through Playwright and TypeScript. Test data management is addressed through fixtures and setup scripts. 
+
+Spree is a modular e-commerce platform with core, API, admin, storefront, emails, and payment components. It handles multi-vendor, multi-store, and multi-currency setups. The setup works within the existing Rails/Spree architecture while adding JavaScript-based testing through Playwright and TypeScript. Test data management is addressed through fixtures and setup scripts.
 
 ## Retrospective: Building the Framework, Testing the Thinking, Approach
 
-This quality engineering assignment began with a simple goal: design a test framework that’s both practical and sustainable. Instead of rushing into test cases, I spent time exploring the product and designing the skeleton for the future automation framework: page, component and api-service object models, test data generation utilities. 
+This quality engineering assignment began with a simple goal: design a test framework that’s both practical and sustainable. Instead of rushing into test cases, I spent time exploring the product and designing the skeleton for the future automation framework: page, component and api-service object models, test data generation utilities.
 
 **Framework Highlights:**
-- Modern Architecture: Uses TypeScript, POM, COM, implements fixtures, API-first approach
-- Robust Configuration: flexible environment support, CI/CD integration   
-- Good Practices: Environment variables, test data generation, clear organization 
 
-**Project structure:** 
+- Modern Architecture: Uses TypeScript, POM, COM, implements fixtures, API-first approach
+- Robust Configuration: flexible environment support, CI/CD integration
+- Good Practices: Environment variables, test data generation, clear organization
+
+**Project structure:**
 
 - Dedicated Playwright sub-directory:
   - It makes it easier to isolate its `package.json` dependencies from the rest of the project. This results in less dependency conflicts if the project is also using Typescript, in case of a Ruby project, this risk is minimal.
@@ -20,64 +22,68 @@ This quality engineering assignment began with a simple goal: design a test fram
   - It helps prevent global type definition conflicts due to pollution of global namespace by e2e framework with stuff like `describe` `it` `expect`. It is best to keep the e2e `tsconfig.json` and `node_modules` in this special `e2e` folder.
 - POM
   - Component Objects: shared UI components are imported to page objects via BasePage class
-  - Page Objects: provide extensive methods for interactive with pages 
-  - API client Class that exports most common set of user actions as operations  
-  - Fixtures: for instantiating Page Objects and provided authenticated browser and request context 
-- Basic datafactory 
-  - Handles dynamic test data generation 
-  - Stores reusable test data in constants.ts 
-CI/CD 
+  - Page Objects: provide extensive methods for interactive with pages
+  - API client Class that exports most common set of user actions as operations
+  - Fixtures: for instantiating Page Objects and provided authenticated browser and request context
+- Basic datafactory
+  - Handles dynamic test data generation
+  - Stores reusable test data in constants.ts
+    CI/CD
   - Dedicated docker-compose file for the CI/CD github workflow that spins up individual containers for the application web service, the database, redis service, and also a dedicated one for playwright
-  - A simple workflow for starting an running the selected number of Playwright checks against that setup. 
-  - Linter, prettier, and type check before any E2E tests are run. 
+  - A simple workflow for starting an running the selected number of Playwright checks against that setup.
+  - Linter, prettier, and type check before any E2E tests are run.
 
-**Challenges:** 
-- No docker-compose configuration file for setting up test environment in CI/CD 
+**Challenges:**
+
+- No docker-compose configuration file for setting up test environment in CI/CD
 - Ruby: I needed some time to ramp up on Ruby architecture before adding Playwright
 - Lack of proper semantic HTML in many components, very few test-data-ids
-- Very concise requirements outlined in the assignment, had to improvise 
+- Very concise requirements outlined in the assignment, had to improvise
 
 **What could be improved:**
+
 - Browser coverage: Currently only Chrome is enabled in the configuration
 - Mock Server Limitations: Mock server implementation is basic
 - Configuration Gaps: Limited retry strategies, no explicit test grouping or tagging
 - Adding images to sample data
 - Consider caching browser binaries
-- Manage environment variables and secrets better in CI 
-- Consider caching re-usable docker images if they are stable in CI 
+- Manage environment variables and secrets better in CI
+- Consider caching re-usable docker images if they are stable in CI
 
-
-## Platform limitations 
+## Platform limitations
 
 **Server-Side Rendering (SSR) Constraints**: Spree's reliance on server-side rendering complicates the interception and mocking of HTTP traffic during testing. This architecture limits the effectiveness of frontend test automation tools that depend on client-side interactions.
 
-**Customization Complexity**: While Spree offers extensive customization capabilities, implementing these often requires deep Ruby on Rails expertise. This necessity can slow down automation development and increase the learning curve for QA teams. 
+**Customization Complexity**: While Spree offers extensive customization capabilities, implementing these often requires deep Ruby on Rails expertise. This necessity can slow down automation development and increase the learning curve for QA teams.
 
-**Scalability Considerations**: Although Spree can handle significant traffic and product volumes, scaling the platform requires careful architectural planning. Automation scripts must account for potential performance bottlenecks and ensure reliability under load. 
+**Scalability Considerations**: Although Spree can handle significant traffic and product volumes, scaling the platform requires careful architectural planning. Automation scripts must account for potential performance bottlenecks and ensure reliability under load.
 
-**Sample data missing images**: I noticed that the sample data set is missing product images. I found an existing issue in the original project https://github.com/spree/spree/issues/10865. Spree no longer offers images within their sample app due to licensing and copy-right concerns. 
+**Sample data missing images**: I noticed that the sample data set is missing product images. I found an existing issue in the original project https://github.com/spree/spree/issues/10865. Spree no longer offers images within their sample app due to licensing and copy-right concerns.
 
 ## Testing Priority Outline
 
-Below I outline the testing priorities for the Spree Commerce platform, focusing on highest-risk areas first based on user traffic, revenue impact, security concerns, and feature complexity. Unfortunately, I ran out ot available time to implement all of them but the overview might give you my thinking and approach. Depending on the resources available, either only high-risk or high-risk to medium-risk scenarios could be good candidates for automation. Also things like static code checks can be very beneficial while being very low effort and cost additions. 
+Below I outline the testing priorities for the Spree Commerce platform, focusing on highest-risk areas first based on user traffic, revenue impact, security concerns, and feature complexity. Unfortunately, I ran out ot available time to implement all of them but the overview might give you my thinking and approach. Depending on the resources available, either only high-risk or high-risk to medium-risk scenarios could be good candidates for automation. Also things like static code checks can be very beneficial while being very low effort and cost additions.
 
 1. Product Catalog & Discovery (High)
-**Rationale**: Directly affects revenue by impacting user conversion and referral rates
+   **Rationale**: Directly affects revenue by impacting user conversion and referral rates
+
 - Search functionality, category navigation and filtering
 - Product detail page accuracy
 - Non-functional testing: image loading and optimization, performance under load, SEO elements and metadata, mobile responsiveness
 
 2. Payment Processing (Critical)
-**Rationale**: Core revenue functionality with security implications
-- Payment gateway integrations (Stripe, PayPal) mocking gateway service 
+   **Rationale**: Core revenue functionality with security implications
+
+- Payment gateway integrations (Stripe, PayPal) mocking gateway service
 - Card tokenization, PCI compliance, multi-factor payment confirmation
 - Transaction state management including refund and partial payment handling
 - Non-functional testing: concurrent payment stress testing, error recovery scenarios, security of payment data flow
 
 3. Checkout & Order Management (High)
-**Rationale**: Order lifecycle directly impacts customer satisfaction and revenue
+   **Rationale**: Order lifecycle directly impacts customer satisfaction and revenue
+
 - Complete checkout flow end-to-end
-- Guest checkout vs logged-in experience, merging guess and authenticated sessions 
+- Guest checkout vs logged-in experience, merging guess and authenticated sessions
 - Cart data persistence across sessions
 - Order status transitions
 - Inventory synchronization
@@ -85,7 +91,8 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
 - Return and exchange processing
 
 4. User Account Management (Medium)
-**Rationale**: Affects user retention and repeat purchase behavior
+   **Rationale**: Affects user retention and repeat purchase behavior
+
 - Registration and authentication
 - Password reset and security
 - Order history and account details
@@ -95,7 +102,8 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
 - Permission boundaries
 
 5. Admin Operations (Medium)
-**Rationale**: Impacts operational efficiency and inventory accuracy
+   **Rationale**: Impacts operational efficiency and inventory accuracy
+
 - Order processing workflows, inventory and product management
 - Multi-store configuration
 - Reports and analytics accuracy
@@ -104,7 +112,8 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
 - Dashboard performance
 
 6. Security & Compliance (High)
-**Rationale**: Automated static analysis checks are low effort but high impact 
+   **Rationale**: Automated static analysis checks are low effort but high impact
+
 - OWASP Top 10 vulnerability scanning
 - API authentication and rate limiting
 - Data integrity validation
@@ -114,7 +123,8 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
 - Accessibility compliance (WCAG)
 
 7. Localization & International (Low)
-**Rationale**: Affects total addressable market (TAM), higher priority for international platforms
+   **Rationale**: Affects total addressable market (TAM), higher priority for international platforms
+
 - Multi-currency support
 - Language handling
 - Regional tax calculations
@@ -147,9 +157,10 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
 
 ## Assignments
 
-**3-5 high priority scenarios** 
-- Authentication and authorization as an admin user vs as non-admin user. 
-- Checkout for a guess user 
+**3-5 high priority scenarios**
+
+- Authentication and authorization as an admin user vs as non-admin user.
+- Checkout for a guess user
 - Order persistence on the admin-side
 
 **Assignments: API mocking**
@@ -169,31 +180,34 @@ What I’m still sitting with is this: mocking works well when we’re testing h
 
 Curious how others have approached this—especially in SSR contexts where visibility and control over request flow isn’t always straightforward. When is mocking helpful in API testing, and when does it just give the illusion of coverage?
 
+**CI implementation**
 
-**CI implementation** 
 - Both local development testing and CI pipeline testing are covered
 - The approach follows DevOps best practices by automating the test process and integrating with your CI/CD workflow
 
-**Usage of AI in the project***
+**Usage of AI in the project\***
 
-I mostly relied on AI when getting familiar with Ruby architecture, I have never worked with a Ruby project so I needed some guidance on what package managers are used, what libraries exist for unit testing, how the gem-based architecture works since I figured most of the logic lived in the parent Spree repository and there was minimal backend logic in the Starter app. 
+I mostly relied on AI when getting familiar with Ruby architecture, I have never worked with a Ruby project so I needed some guidance on what package managers are used, what libraries exist for unit testing, how the gem-based architecture works since I figured most of the logic lived in the parent Spree repository and there was minimal backend logic in the Starter app.
 
 Examples pr prompts:
+
 ```
-Act as an experienced Ruby engineer, explain to me in very simple terms the most common structure of Ruby applications. 
+Act as an experienced Ruby engineer, explain to me in very simple terms the most common structure of Ruby applications.
 ```
 
-Debugging API response JSONs for mock services. 
+Debugging API response JSONs for mock services.
+
 ```
-Analyze these two large json files, one produced a 200 OK response, the other 400 Bad Request, highlight the differences. 
+Analyze these two large json files, one produced a 200 OK response, the other 400 Bad Request, highlight the differences.
 ```
 
-As I've never setup a docker compose instance on a CI, I needed some quick entry points to understand what I need, what Github actions I can use. 
+As I've never setup a docker compose instance on a CI, I needed some quick entry points to understand what I need, what Github actions I can use.
+
 ```
-Act as an experienced DevOps, ramp me up on what options exist for setting up docker containers that run on a CI pipeline. 
+Act as an experienced DevOps, ramp me up on what options exist for setting up docker containers that run on a CI pipeline.
 ```
 
-# Running Playwright test against a local instance of the application 
+# Running Playwright test against a local instance of the application
 
 Explain what other scenarios could be included.
 Explain how you would document the requirements and how to ensure a confident release process.
@@ -208,13 +222,13 @@ This project uses [Spree Commerce](https://spreecommerce.org) - the open-source 
 
 Please follow [Spree Quickstart guide](https://spreecommerce.org/docs/developer/getting-started/quickstart) to setup your Spree application using the Spree starter.
 
-To run the new docker-compose-test instance locally 
+To run the new docker-compose-test instance locally
 
-```bash 
+```bash
 # Stop and remove all containers, networks, and volumes
 docker compose -f docker-compose-test.yml down -v
 
-# Clean up orphan containers 
+# Clean up orphan containers
 docker compose down --volumes --remove-orphans
 
 # Prune containers
@@ -233,18 +247,17 @@ docker compose -f docker-compose-test.yml run playwright
 docker compose -f docker-compose-test.yml logs -f web
 ```
 
+To run the CI/CD locally use;
 
-To run the CI/CD locally use; 
-
-```bash 
+```bash
 brew install act
-act push 
+act push
 act push
 ```
 
 OR for MacOS
 
-```bash 
+```bash
 brew install act
 act push --container-architecture linux/amd6
 ```

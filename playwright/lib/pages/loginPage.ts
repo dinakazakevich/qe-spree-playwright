@@ -13,6 +13,7 @@ export class LoginPage extends Page {
   async goto() {
     await this.page.goto('/users/sign_in');
   }
+
   async loginSuccess() {
     await expect(this.page.getByText(messages.login.success)).toBeVisible();
   }

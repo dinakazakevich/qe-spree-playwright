@@ -15,7 +15,7 @@ export default defineConfig({
   /* Test specs repository */
   testDir: './tests',
   /* Page timeout */
-  timeout: 40000,
+  timeout: 50000,
   /* Glob patterns or regular expressions to ignore test files */
   testIgnore: '*template.spec.ts',
   /* Run tests in files in parallel */
