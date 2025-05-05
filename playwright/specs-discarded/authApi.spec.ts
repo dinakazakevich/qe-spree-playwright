@@ -1,5 +1,5 @@
 import { test } from '../lib/fixtures/authenticate';
-import { createCookies } from '../lib/datafactory/auth';
+import { createCookies } from '../lib/helpers/auth';
 import { adminAccessTokenFile, adminUser, generateUser } from '../lib/datafactory/testData';
 
 test.describe('authenticate as admin and save the session token', () => {

@@ -1,15 +1,6 @@
 import { request, type BrowserContext, expect, test } from '@playwright/test';
 import { User } from '../types/types';
-import { apiRoutes } from './constants';
-
-// Migrated to the UserClient class
-// export async function createUserViaAPI(testUser: User): Promise<void> {
-//   const context = await request.newContext();
-//   await context.post(apiRoutes.createUser, {
-//     data: testUser,
-//   });
-//   await context.dispose();
-// }
+import { apiRoutes } from '../datafactory/constants';
 
 export async function checkUserExistsViaAPI(testUser: User) {
   const context = await request.newContext();
@@ -42,12 +33,12 @@ export async function checkUserExistsViaAPI(testUser: User) {
 
 export async function createCookies(testUser: User) {
   // Use provided credentials or defaults
-  // if (!testUser.email) {
-  //   testUser.email = 'spree@example.com';
-  // }
-  // if (!testUser.password) {
-  //   testUser.password = 'spree123';
-  // }
+  if (!testUser.email) {
+    testUser.email = 'spree@example.com';
+  }
+  if (!testUser.password) {
+    testUser.password = 'spree123';
+  }
 
   const formData = new URLSearchParams();
   formData.append('grant_type', 'password');

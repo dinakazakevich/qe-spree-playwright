@@ -1,6 +1,6 @@
-import { test as setup, expect } from '../lib/fixtures/authenticate';
-import { getCookies } from '../lib/datafactory/auth';
-import { generateUser } from '../lib/datafactory/testData';
+import { test as setup, expect } from '../../lib/fixtures/authenticate';
+import { getCookies } from '../../lib/helpers/auth';
+import { generateUser } from '../../lib/datafactory/testData';
 
 const adminFile = 'playwright/.auth/admin.json';
 
