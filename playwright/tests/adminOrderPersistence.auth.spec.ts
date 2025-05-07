@@ -24,7 +24,7 @@ test('admin user can see newly placed orders in the admin dashboard', async ({
   await homePage.page.locator('#main-sidebar').getByRole('link', { name: 'Orders' }).click();
 
   await expect(homePage.page.getByRole('table')).toBeVisible();
-  
+
   const firstTableRow = homePage.page.getByRole('row', { name: orderNumber });
 
   await expect(firstTableRow).toBeVisible();

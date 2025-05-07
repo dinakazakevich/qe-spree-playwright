@@ -8,7 +8,7 @@ test('has title', async ({ homePage }) => {
   const user = generateUser();
   await homePage.navBar.navToAccount();
   await homePage.loginForm.signupLink.click();
-  await homePage.signupForm.signUp(user);
+  await homePage.signupForm.signup(user);
   await homePage.signupSuccess();
 
   await expect(homePage.page.getByText(messages.signup.success)).toBeVisible();

@@ -44,10 +44,9 @@ test('guest checkout flow', async ({ homePage, productsPage, productDetailsPage,
   await checkoutPage.fillPaymentDetail();
   await checkoutPage.page.getByRole('button', { name: 'Pay' }).click();
 
-  // This is a necessary wait since the confirmation page takes longer than out timeout. 
+  // This is a necessary wait since the confirmation page takes longer than out timeout.
   // Ideally this needs to be mocked which can be seen in the /mockedPaymentCheckout.na.spec.ts
   await checkoutPage.page.waitForURL('**/checkout/**/complete');
-
 
   // Assert payment is successful, confirmation message is shown
   const orderConfirmation = checkoutPage.page.getByRole('heading', { name: /Thanks .* for your order!/ });

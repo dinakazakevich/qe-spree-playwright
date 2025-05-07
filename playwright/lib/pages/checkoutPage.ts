@@ -28,7 +28,6 @@ export class CheckoutPage extends Page {
   }
 
   async fillPaymentDetail() {
-    
     await this.page.getByRole('textbox', { name: 'Card Number' }).focus();
     await this.page.getByRole('textbox', { name: 'Card Number' }).pressSequentially('4111111111111111');
 
