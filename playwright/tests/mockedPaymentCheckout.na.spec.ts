@@ -12,9 +12,6 @@ test('checkout flow with mocked payment confirmation', async ({
 
   await checkoutPage.page.route('*/**/checkout/**/update/payment', async (route, request) => {
     if (request.method() === 'POST') {
-      console.log('Intercepted POST request:', request.url());
-      console.log('Post data:', request.postData());
-
       await route.fulfill({
         status: 200,
         contentType: 'text/html',

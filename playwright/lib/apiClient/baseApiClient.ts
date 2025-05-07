@@ -30,16 +30,9 @@ export class BaseApiClient {
         ...options.headers,
       },
     };
-    console.log('📤 Sending GET request');
-    console.log('URL:', url);
-    console.log('Headers:', mergedOptions.headers);
 
     const response = await this.request.get(url, mergedOptions);
-    // expect(response.ok()).toBeTruthy();
-    const responseJson = await response.json();
-    console.log('ResponseJson:', responseJson);
-    console.log(response.status());
-
+    expect(response.ok()).toBeTruthy();
     return response;
   }
 
@@ -61,17 +54,8 @@ export class BaseApiClient {
         ...options.headers,
       },
     };
-    console.log('📤 Sending POST request');
-    console.log('URL:', url);
-    console.log('Headers:', mergedOptions.headers);
-    console.log('Body:', JSON.stringify(mergedOptions.data, null, 2));
 
     const response = await this.request.post(url, mergedOptions);
-    console.log(response.status());
-
-    const responseJson = await response.json();
-    console.log('ResponseJson:', responseJson);
-    console.log(response.status());
     return response;
   }
 
@@ -94,16 +78,8 @@ export class BaseApiClient {
         ...options.headers,
       },
     };
-    console.log('📤 Sending PATCH request');
-    console.log('URL:', url);
-    console.log('Headers:', mergedOptions.headers);
-    console.log('Body:', JSON.stringify(mergedOptions.data, null, 2));
     const response = await this.request.patch(url, mergedOptions);
-    // expect(response.ok()).toBeTruthy();
-    console.log(response.status());
-    const responseJson = await response.json();
-    console.log('ResponseJson:', responseJson);
-    console.log(response.status());
+    expect(response.ok()).toBeTruthy();
     return response;
   }
 
@@ -125,16 +101,8 @@ export class BaseApiClient {
         ...options.headers,
       },
     };
-    console.log('📤 Sending DELETE request');
-    console.log('URL:', url);
-    console.log('Headers:', mergedOptions.headers);
-    console.log('Body:', JSON.stringify(mergedOptions.data, null, 2));
     const response = await this.request.delete(url, mergedOptions);
     expect(response.ok()).toBeTruthy();
-    console.log(response.status());
-    const responseJson = await response.json();
-    console.log('ResponseJson:', responseJson);
-    console.log(response.status());
     return response;
   }
 }

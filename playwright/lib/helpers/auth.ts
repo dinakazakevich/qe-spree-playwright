@@ -1,4 +1,4 @@
-import { request, type BrowserContext, expect, test } from '@playwright/test';
+import { request, type BrowserContext, expect } from '@playwright/test';
 import { User } from '../types/types';
 import { apiRoutes } from '../datafactory/constants';
 

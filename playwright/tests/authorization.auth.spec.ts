@@ -49,9 +49,9 @@ test.describe('authentication and authorization scenarios', () => {
       // await homePage.cartSidebar.assertEmpty();
     });
 
-    test('loading another customers cart', async () => {
-      // I ended up no writing a test for this one since the application only identifies ownership of the cart by
-      // the cart token, if you have another customer's token, it wil load their cart so this test doesn't make any sense
-    });
+    // test('loading another customers cart', async () => {
+    //   // I ended up no writing a test for this one since the application only identifies ownership of the cart by
+    //   // the cart token, if you have another customer's token, it wil load their cart so this test doesn't make any sense
+    // });
   });
 });

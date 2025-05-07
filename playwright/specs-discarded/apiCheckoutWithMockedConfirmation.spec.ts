@@ -29,42 +29,20 @@ test.describe('Checkout flow:', () => {
     // Add payment details
     await authenticatedUserClient.addPaymentDetails(true); // Use valid card details
 
-    console.log('cartToken', cartToken);
-
     await loginPage.goto();
 
-    // const context = checkoutPage.page.context();
-
-    // await context.route('**/confirm', async (route, request) => {
-    //   if (request.method() === 'POST') {
-    //   console.log('Intercepted POST request:', request.url());
-    //   console.log('Post data:', request.postData());
-
-    //   await route.fulfill({
-    //     status: 200,
-    //     contentType: 'text/html',
-    //     body: successResponse,
-    //   });
-    //   } else {
-    //     console.log('⛔ Skipped:', request.method(), request.url());
-    //     await route.continue();
-    //   }
-    // });
+    //  context = checkoutPage.page.context();
 
     await checkoutPage.page.route('**/checkout/**/payment', async (route, request) => {
-      // if (request.method() === 'GET') {
-      console.log('Intercepted GET request:', request.url());
-      console.log('Post data:', request.postData());
-
-      await route.fulfill({
-        status: 200,
-        contentType: 'text/html',
-        body: successResponse,
-      });
-      //   } else {
-      //     console.log('⛔ Skipped:', request.method(), request.url());
-      //     await route.continue();
-      //   }
+      if (request.method() === 'GET') {
+        await route.fulfill({
+          status: 200,
+          contentType: 'text/html',
+          body: successResponse,
+        });
+      } else {
+        await route.continue();
+      }
     });
 
     await checkoutPage.page.waitForTimeout(3000);
@@ -96,7 +74,6 @@ test.describe('Checkout flow:', () => {
 
     await checkoutPage.page.getByRole('button', { name: 'Pay' }).click();
     await checkoutPage.page.getByRole('button', { name: 'Pay' }).click();
-    console.log(checkoutPage.page.url());
 
     await checkoutPage.page.getByRole('button', { name: 'Pay' }).click();
 
@@ -104,18 +81,5 @@ test.describe('Checkout flow:', () => {
 
     // Assert that the mocked order confirmation page with 'Strawberry' client name loaded
     await expect(checkoutPage.page.getByText('Thanks Strawberry for your order!')).toBeVisible();
-
-    // // Proceed with checkout
-    // await authenticatedUserClient.completeCheckout();
-
-    // // Retrieve all customer's orders
-    // const response = await authenticatedUserClient.retrieveAllOrders();
-
-    // // Assert that all customer's orders contain the latest order
-    // let allOrders: number[] = [];
-    // for (let i = 0; i < response.data.length; i++) {
-    //   allOrders.push(response.data[i].id);
-    // }
-    // expect(allOrders).toContain(authenticatedUserClient.latestOrderId);
   });
 });

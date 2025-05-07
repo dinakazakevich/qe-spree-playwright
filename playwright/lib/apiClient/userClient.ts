@@ -127,17 +127,6 @@ export class UserClient extends BaseApiClient {
     // Retrieve the new cart item total
     const newCartJson = await newCart.json();
     const newCartTotal = newCartJson.data.attributes.item_total;
-
-    // const nextResponse = await this.patch(apiRoutes.storefront.checkoutNext, {
-    //   headers: { 'X-Spree-Order-Token': this.cartToken },
-    // });
-
-    // // Retrieve that current cart state
-    // const nextResponseJson = await nextResponse.json();
-    // const cartState = nextResponseJson.data.attributes.state;
-
-    // Compare the pre-existing cart item total with the new one after the product was added
-    // return newCartTotal === existingCartTotal + itemPrice * itemPrice && cartState === 'address';
     return newCartTotal === existingCartTotal + itemPrice * itemPrice;
   }
 
@@ -156,8 +145,8 @@ export class UserClient extends BaseApiClient {
   }
 
   async checkoutNext() {
-    // Retrieve that currnt cart state
-    const nextResponse = await this.patch(apiRoutes.storefront.checkoutNext, {
+    // Retrieve that current cart state
+    await this.patch(apiRoutes.storefront.checkoutNext, {
       headers: { 'X-Spree-Order-Token': this.cartToken },
     });
   }
@@ -228,12 +217,6 @@ export class UserClient extends BaseApiClient {
       data: validPaymentDetails,
       headers: { 'X-Spree-Order-Token': this.cartToken },
     });
-    // Retrieve that current cart state
-    // const nextResponse = await this.patch(apiRoutes.storefront.checkoutNext, {
-    //   headers: { 'X-Spree-Order-Token': this.cartToken },
-    // });
-    // const nextResponseJson = await nextResponse.json();
-    // return nextResponseJson.data.attributes.state === 'confirm';
   }
   async completeCheckout() {
     const completeCheckout = await this.patch(apiRoutes.storefront.checkoutComplete, {

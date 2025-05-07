@@ -7,6 +7,7 @@ export class AccountPage extends Page {
   public readonly confirmButton: Locator = this.page.getByRole('button', { name: 'Delete' });
   public readonly addressDeletionConfirmation: Locator = this.page.getByText('Address has been successfully removed.');
   public readonly logoutButton: Locator = this.page.getByRole('button', { name: 'Logout' });
+
   async goto() {
     await this.page.goto('/account');
   }

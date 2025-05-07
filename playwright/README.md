@@ -6,12 +6,12 @@ Spree is a modular e-commerce platform with core, API, admin, storefront, emails
 
 ## Retrospective: Building the Framework, Testing the Thinking, Approach
 
-This quality engineering assignment began with a simple goal: design a test framework that’s both practical and sustainable. Instead of rushing into test cases, I spent time exploring the product and designing the skeleton for the future automation framework: page, component and api-service object models, test data generation utilities.
+This quality engineering assignment began with a simple goal: design a test framework that’s both practical and sustainable. Instead of rushing into test cases, I spent time exploring the product and designing the skeleton for the future automation framework: page, component and API-service object models, test data generation utilities.
 
 **Framework Highlights:**
 
 - Modern Architecture: Uses TypeScript, POM, COM, implements fixtures, API-first approach
-- Robust Configuration: flexible environment support, CI/CD integration
+- Robust Configuration: flexible environment support, CI integration
 - Good Practices: Environment variables, test data generation, clear organization
 
 **Project structure:**
@@ -22,20 +22,20 @@ This quality engineering assignment began with a simple goal: design a test fram
   - It helps prevent global type definition conflicts due to pollution of global namespace by e2e framework
 - POM
   - Component Objects: shared UI components are imported to page objects via BasePage class
-  - Page Objects: provide extensive methods for interactive with pages
+  - Page Objects: provide extensive methods for interacting with pages
   - API client Class that exports most common set of user actions as operations
-  - Fixtures: for instantiating Page Objects and provided authenticated browser and request context
+  - Fixtures: for instantiating Page Objects and providing authenticated browser and request context
 - Basic datafactory
   - Handles dynamic test data generation
   - Stores reusable test data in constants.ts
 - CI
   - Dedicated docker-compose file for the CI github workflow that spins up individual containers for the application web service, the database, redis service, and also a dedicated one for playwright
-  - A simple workflow for starting an running the selected number of Playwright checks against that setup.
+  - A simple workflow for starting and running the selected number of Playwright checks against that setup.
   - Linter, prettier, and type check before any E2E tests are run.
 
 **Challenges:**
 
-- No docker-compose configuration file for setting up test environment in CI/CD
+- No docker-compose configuration file for setting up test environment in CI
 - Ruby: I needed some time to ramp up on Ruby architecture before adding Playwright
 - Lack of proper semantic HTML in many components, very few test-data-ids
 - Very concise requirements outlined in the assignment, had to improvise
@@ -62,7 +62,7 @@ This quality engineering assignment began with a simple goal: design a test fram
 
 ## Testing Priority Outline
 
-Below I outline the testing priorities for the Spree Commerce platform, focusing on highest-risk areas first based on user traffic, revenue impact, security concerns, and feature complexity. Unfortunately, I ran out ot available time to implement all of them but the overview might give you my thinking and approach. Depending on the resources available, either only high-risk or high-risk to medium-risk scenarios could be good candidates for automation. Also things like static code checks can be very beneficial while being very low effort and cost additions.
+Below I outline the testing priorities for the Spree Commerce platform, focusing on highest-risk areas first based on user traffic, revenue impact, security concerns, and feature complexity. Unfortunately, I ran out of available time to implement all of them but the overview might give you my thinking and approach. Depending on the resources available, either only high-risk or high-risk to medium-risk scenarios could be good candidates for automation. Also things like static code checks can be very beneficial while being very low effort and cost additions.
 
 1. Product Catalog & Discovery (High)
    **Rationale**: Directly affects revenue by impacting user conversion and referral rates
@@ -83,7 +83,7 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
    **Rationale**: Order lifecycle directly impacts customer satisfaction and revenue
 
 - Complete checkout flow end-to-end
-- Guest checkout vs logged-in experience, merging guess and authenticated sessions
+- Guest checkout vs logged-in experience, merging guest and authenticated sessions
 - Cart data persistence across sessions
 - Order status transitions
 - Inventory synchronization
@@ -138,7 +138,7 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
 - **Unit Tests**: Core business logic and model validations
 - **Integration Tests**: API endpoints, module interactions
 - **End-to-End Tests**: Critical business flows (checkout, user registration)
-- **Security Scans**: Integrated into CI/CD pipeline
+- **Security Scans**: Integrated into CI pipeline
 - **Performance Tests**: Load testing for high-traffic areas
 
 ## Test Environment Requirements
@@ -160,7 +160,7 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
 **3-5 high priority scenarios**
 
 - Authentication and authorization as an admin user vs as non-admin user.
-- Checkout for a guess user
+- Checkout for a guest user
 - Order persistence on the admin-side
 
 **Assignments: API mocking**
@@ -189,7 +189,7 @@ Curious how others have approached this—especially in SSR contexts where visib
 
 I mostly relied on AI when getting familiar with Ruby architecture, I have never worked with a Ruby project so I needed some guidance on what package managers are used, what libraries exist for unit testing, how the gem-based architecture works since I figured most of the logic lived in the parent Spree repository and there was minimal backend logic in the Starter app.
 
-Examples pr prompts:
+Prompt examples:
 
 ```
 Act as an experienced Ruby engineer, explain to me in very simple terms the most common structure of Ruby applications.
@@ -206,6 +206,11 @@ As I've never setup a docker compose instance on a CI, I needed some quick entry
 ```
 Act as an experienced DevOps, ramp me up on what options exist for setting up docker containers that run on a CI pipeline.
 ```
+
+**Documentation**
+For documenting requirements, the projects I've been working on used everything from Notion and Trello to Atlassian Jira and Confluence solutions. I personally lean towards more light-weight options whenever possible so I'd recommend starting with Notion and using a lot of visuals like Whimsical App and/or X-mind mind maps app, diagrams and of course Figma for designs.
+
+For capturing test related information, I believe this kind of READMEs works for automation frameworks, and I love to writes code that is self-explanatory and self documenting. I believe having a single source of truth is a must for any team that wants to be efficient. For capturing test strategies, mind maps and checklists have worked best for me. For test sessions and day-to-day notes, I'm using note-taking apps like Logseq or RoamResearch.
 
 # Running Playwright test against a local instance of the application
 
@@ -225,6 +230,19 @@ Please follow [Spree Quickstart guide](https://spreecommerce.org/docs/developer/
 To run the new docker-compose-test instance locally
 
 ```bash
+# Start services
+docker compose -f docker-compose-test.yml up -d
+
+# Run Playwright tests
+docker compose -f docker-compose-test.yml run playwright
+
+# Check logs
+docker compose -f docker-compose-test.yml logs -f web
+```
+
+To clear the docker-compose-test instance artifacts locally
+
+```bash
 # Stop and remove all containers, networks, and volumes
 docker compose -f docker-compose-test.yml down -v
 
@@ -237,14 +255,6 @@ docker container prune -f
 # Prune images
 docker image prune -f
 
-# Start services
-docker compose -f docker-compose-test.yml up -d
-
-# Run Playwright tests
-docker compose -f docker-compose-test.yml run playwright
-
-# Check logs
-docker compose -f docker-compose-test.yml logs -f web
 ```
 
 To run the CI locally use;

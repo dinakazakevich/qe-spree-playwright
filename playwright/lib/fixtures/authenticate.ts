@@ -34,21 +34,13 @@ export const test = base.extend<AuthenticatedFixtures>({
   authenticatedUserClient: async ({ userClient, testUser }, use) => {
     const authResponse = await userClient.authenticate(testUser);
     const authData = await authResponse.json();
-    console.log('authData:', authData);
     expect(authResponse.ok()).toBeTruthy();
     userClient.accessToken = authData.access_token;
-    const access_token_value = userClient.accessToken;
-    console.log('access_token_value:', access_token_value);
     await use(userClient);
   },
   authenticatedHomePage: async ({ loginPage, homePage, testUser, context }, use) => {
     await loginPage.goto();
     await loginPage.loginForm.doLogin(testUser);
-    // await loginPage.loginSuccess();
-    // await loginPage.page.context().storageState({ path: adminFile });
-    // await homePage.goto();
-    // await homePage.navBar.navToAccount();
-    // await homePage.loginForm.doLogin(testUser);
 
     // Confirm login is successful
     await homePage.loginSuccess();
