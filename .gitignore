@@ -4,6 +4,7 @@
 !/log/.keep
 !/tmp/.keep
 /.idea
+/.vscode
 
 # Ignore storage (uploaded files in development and any SQLite databases).
 /storage/*
@@ -20,6 +21,7 @@
 /playwright/playwright/.cache/
 /playwright/.auth
 /playwright/storage
+/playwright/screenshots
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

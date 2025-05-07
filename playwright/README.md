@@ -64,14 +64,14 @@ This quality engineering assignment began with a simple goal: design a test fram
 
 Below I outline the testing priorities for the Spree Commerce platform, focusing on highest-risk areas first based on user traffic, revenue impact, security concerns, and feature complexity. Unfortunately, I ran out of available time to implement all of them but the overview might give you my thinking and approach. Depending on the resources available, either only high-risk or high-risk to medium-risk scenarios could be good candidates for automation. Also things like static code checks can be very beneficial while being very low effort and cost additions.
 
-1. Product Catalog & Discovery (High)
+1. Product Catalog & Discovery (High) <br>
    **Rationale**: Directly affects revenue by impacting user conversion and referral rates
 
 - Search functionality, category navigation and filtering
 - Product detail page accuracy
 - Non-functional testing: image loading and optimization, performance under load, SEO elements and metadata, mobile responsiveness
 
-2. Payment Processing (Critical)
+2. Payment Processing (Critical) <br>
    **Rationale**: Core revenue functionality with security implications
 
 - Payment gateway integrations (Stripe, PayPal) mocking gateway service
@@ -79,21 +79,21 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
 - Transaction state management including refund and partial payment handling
 - Non-functional testing: concurrent payment stress testing, error recovery scenarios, security of payment data flow
 
-3. Checkout & Order Management (High)
+3. Checkout & Order Management (High) <br>
    **Rationale**: Order lifecycle directly impacts customer satisfaction and revenue
 
-- Complete checkout flow end-to-end
+- Complete checkout flow end-to-end :heavy_check_mark:
 - Guest checkout vs logged-in experience, merging guest and authenticated sessions
-- Cart data persistence across sessions
-- Order status transitions
-- Inventory synchronization
+- Cart data persistence across sessions :heavy_check_mark:
+- Order status transitions :heavy_check_mark:
+- Inventory synchronization 
 - Email notifications
 - Return and exchange processing
 
-4. User Account Management (Medium)
+4. User Account Management (High) <br>
    **Rationale**: Affects user retention and repeat purchase behavior
 
-- Registration and authentication
+- Registration and authentication :heavy_check_mark:
 - Password reset and security
 - Order history and account details
 - Saved payment methods
@@ -101,17 +101,17 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
 - Address book management
 - Permission boundaries
 
-5. Admin Operations (Medium)
+5. Admin Operations (Medium) <br>
    **Rationale**: Impacts operational efficiency and inventory accuracy
 
-- Order processing workflows, inventory and product management
+- Order processing workflows, inventory and product management 
 - Multi-store configuration
 - Reports and analytics accuracy
-- User role permissions
+- User role permissions :heavy_check_mark:
 - Bulk operations handling
 - Dashboard performance
 
-6. Security & Compliance (High)
+6. Security & Compliance (High) <br>
    **Rationale**: Automated static analysis checks are low effort but high impact
 
 - OWASP Top 10 vulnerability scanning
@@ -122,7 +122,7 @@ Below I outline the testing priorities for the Spree Commerce platform, focusing
 - XSS prevention
 - Accessibility compliance (WCAG)
 
-7. Localization & International (Low)
+7. Localization & International (Low) <br>
    **Rationale**: Affects total addressable market (TAM), higher priority for international platforms
 
 - Multi-currency support
@@ -182,8 +182,12 @@ Curious how others have approached this—especially in SSR contexts where visib
 
 **CI implementation**
 
+- Disclaimer: One of the tests keeps failing when run by CI, I'm still investigating it, it passes when I run it locally.
 - Both local development testing and CI pipeline testing are covered
 - The approach follows DevOps best practices by automating the test process and integrating with your CI/CD workflow
+
+**Final E2E flow for both local and CI** 
+![alt text](<Screenshot 2025-05-07 at 11.13.48 PM.png>)
 
 **Usage of AI in the project\***
 
