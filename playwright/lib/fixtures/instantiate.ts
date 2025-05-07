@@ -4,6 +4,9 @@ import { LoginPage } from '../pages/loginPage';
 import { ProductsPage } from '../pages/productsPage';
 import { ProductDetailsPage } from '../pages/productsDetailsPage';
 import { UserClient } from '../apiClient/userClient';
+import { CheckoutPage } from '../pages/checkoutPage';
+import { AccountPage } from '../pages/accountPage';
+import { User } from '../types/types';
 
 export type TestOptions = {
   loginPage: LoginPage;
@@ -11,6 +14,9 @@ export type TestOptions = {
   productsPage: ProductsPage;
   productDetailsPage: ProductDetailsPage;
   userClient: UserClient;
+  checkoutPage: CheckoutPage;
+  accountPage: AccountPage;
+  userParams?: Partial<User>; // Optional override
 };
 
 export const test = base.extend<TestOptions>({
@@ -27,10 +33,16 @@ export const test = base.extend<TestOptions>({
   productDetailsPage: async ({ page }, use) => {
     await use(new ProductDetailsPage(page));
   },
+  checkoutPage: async ({ page }, use) => {
+    await use(new CheckoutPage(page));
+  },
+  accountPage: async ({ page }, use) => {
+    await use(new AccountPage(page));
+  },
   // Instantiate API client object
   userClient: async ({ request }, use) => {
-    const client = new UserClient(request);
-    await use(client);
+    // const client = new UserClient(request);
+    await use(new UserClient(request));
   },
 });
 

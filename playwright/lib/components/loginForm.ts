@@ -20,11 +20,10 @@ export class LoginForm extends PageObject {
   }
 
   async doLogin(testUser: User) {
-    await this.fillEmail(testUser);
-    await this.fillPassword(testUser);
+    await this.emailInput.fill(testUser.email);
+    await this.passwordInput.fill(testUser.password);
     await this.loginButton.click();
   }
-
   // TODO: add goto password reset and switch between login/signup
   // TODO: add tests for negative scenarios, error handling etc.
 }

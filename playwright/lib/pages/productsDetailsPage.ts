@@ -11,8 +11,14 @@ export class ProductDetailsPage extends Page {
   }
 
   async selectSize(size: string) {
-    await this.page.getByRole('button', { name: 'Please choose Size' }).click();
+    await this.page.getByRole('button', { name: 'Please select' }).click();
+    // if (!this.page.locator('label').filter({ hasText: size })) {
+    //   await this.page.getByRole('button', { name: 'Please select' }).click();
+    // }
     await this.page.locator('label').filter({ hasText: size }).click();
+    // if (this.page.locator('label').filter({ hasText: size })) {
+    //   await this.page.locator('label').filter({ hasText: size }).click();
+    // }
   }
 
   async addToCart() {

@@ -40,7 +40,8 @@ export class CartComponent extends PageObject {
   }
   async getCartTotal() {
     const cartTotal = await this.host.locator('span.shopping-cart-total-amount').textContent();
-    return cartTotal;
+    const cartTotalAmount = parseFloat(cartTotal?.replace('$', '').trim() || '0');
+    return cartTotalAmount;
   }
   async decreaseItemCount(productName: string) {
     // Decreases the number of items of a selected product
@@ -66,6 +67,6 @@ export class CartComponent extends PageObject {
   }
   // TODO: add method returning total amount in the cart
   async proceedToCheckout() {
-    await this.host.getByRole('button', { name: 'Checkout' }).click();
+    await this.host.getByRole('link', { name: 'Checkout' }).click();
   }
 }

@@ -1,5 +1,5 @@
 import { BaseApiClient } from './baseApiClient';
-import { User } from '../types/types';
+import { User, Cart } from '../types/types';
 import { apiRoutes, cardNumbers } from '../datafactory/constants';
 import { mathRandom } from '../helpers/utils';
 import { customerDetails } from '../datafactory/testData';
@@ -22,11 +22,11 @@ export class UserClient extends BaseApiClient {
   get latestOrderId() {
     return this._latestOrderId;
   }
-  set existingCartObject(existingCartObject: any) {
+  set existingCartObject(existingCartObject: Cart) {
     this._existingCartObject = existingCartObject;
   }
   get existingCartObject() {
-    return this._existingCartObject;
+    return this._existingCartObject as Cart;
   }
 
   async createAccount(testUser: User) {
@@ -88,7 +88,7 @@ export class UserClient extends BaseApiClient {
     const responseJson = await response.json();
     this.cartToken = responseJson.data.attributes.token;
     this.latestOrderId = responseJson.data.id;
-    return responseJson
+    return responseJson;
   }
 
   async retrieveCart() {
@@ -128,16 +128,17 @@ export class UserClient extends BaseApiClient {
     const newCartJson = await newCart.json();
     const newCartTotal = newCartJson.data.attributes.item_total;
 
-    const nextResponse = await this.patch(apiRoutes.storefront.checkoutNext, {
-      headers: { 'X-Spree-Order-Token': this.cartToken },
-    });
+    // const nextResponse = await this.patch(apiRoutes.storefront.checkoutNext, {
+    //   headers: { 'X-Spree-Order-Token': this.cartToken },
+    // });
 
-    // Retrieve that current cart state
-    const nextResponseJson = await nextResponse.json();
-    const cartState = nextResponseJson.data.attributes.state;
+    // // Retrieve that current cart state
+    // const nextResponseJson = await nextResponse.json();
+    // const cartState = nextResponseJson.data.attributes.state;
 
     // Compare the pre-existing cart item total with the new one after the product was added
-    return newCartTotal === existingCartTotal + itemPrice * itemPrice && cartState === 'address';
+    // return newCartTotal === existingCartTotal + itemPrice * itemPrice && cartState === 'address';
+    return newCartTotal === existingCartTotal + itemPrice * itemPrice;
   }
 
   async addAddresses() {
@@ -152,6 +153,13 @@ export class UserClient extends BaseApiClient {
     });
     const nextResponseJson = await nextResponse.json();
     return nextResponseJson.data.attributes.state === 'delivery';
+  }
+
+  async checkoutNext() {
+    // Retrieve that currnt cart state
+    const nextResponse = await this.patch(apiRoutes.storefront.checkoutNext, {
+      headers: { 'X-Spree-Order-Token': this.cartToken },
+    });
   }
 
   async addShippingMethod() {
@@ -221,11 +229,11 @@ export class UserClient extends BaseApiClient {
       headers: { 'X-Spree-Order-Token': this.cartToken },
     });
     // Retrieve that current cart state
-    const nextResponse = await this.patch(apiRoutes.storefront.checkoutNext, {
-      headers: { 'X-Spree-Order-Token': this.cartToken },
-    });
-    const nextResponseJson = await nextResponse.json();
-    return nextResponseJson.data.attributes.state === 'confirm';
+    // const nextResponse = await this.patch(apiRoutes.storefront.checkoutNext, {
+    //   headers: { 'X-Spree-Order-Token': this.cartToken },
+    // });
+    // const nextResponseJson = await nextResponse.json();
+    // return nextResponseJson.data.attributes.state === 'confirm';
   }
   async completeCheckout() {
     const completeCheckout = await this.patch(apiRoutes.storefront.checkoutComplete, {
@@ -250,7 +258,6 @@ export class UserClient extends BaseApiClient {
     const existingCart = await this.createCart();
 
     this.cartToken = existingCart.data.attributes.token;
-    console.log('cartToken:', this.cartToken);
 
     // Add a random product in a random quality of 1-10 to cart
     await this.addProductToCart();

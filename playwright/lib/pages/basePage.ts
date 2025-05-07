@@ -16,7 +16,7 @@ export abstract class Page {
     this.navBar = new NavigationBar(this.page.getByRole('navigation', { name: 'Top' }));
     this.loginForm = new LoginForm(this.page.locator('#login'));
     this.cartSidebar = new CartComponent(this.page.locator('#slideover-cart'));
-    this.signupForm = new SignupForm(this.page.locator('#slideover-account', { hasText: 'Password Confirmation' }));
+    this.signupForm = new SignupForm(this.page.locator('#login', { hasText: 'Password Confirmation' }));
   }
   async close() {
     await this.page.close();

@@ -9,7 +9,7 @@ test.describe('Checkout flow:', () => {
     // DONE: Authenticate and manage user sessions with API requests.
 
     // Place an order so that the customer has multiple order history
-    await authenticatedUserClient.placeOrder();
+    // await authenticatedUserClient.placeOrder(); // uncomment if you want the user to have more than 1 order in history
 
     // Create a new cart parse it and set the cart token
     await authenticatedUserClient.createCart();

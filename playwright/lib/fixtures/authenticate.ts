@@ -13,7 +13,7 @@ type AuthenticatedFixtures = {
 };
 
 export const test = base.extend<AuthenticatedFixtures>({
-  userParams: [undefined, { option: true }],
+  userParams: [undefined, { scope: 'test' }],
 
   testUser: async ({ userParams, userClient }, use) => {
     const defaultUser = { email: 'default@example.com', password: 'spree123' };
@@ -41,10 +41,15 @@ export const test = base.extend<AuthenticatedFixtures>({
     console.log('access_token_value:', access_token_value);
     await use(userClient);
   },
-  authenticatedHomePage: async ({ homePage, testUser, context }, use) => {
-    await homePage.goto();
-    await homePage.navBar.navToAccount();
-    await homePage.loginForm.doLogin(testUser);
+  authenticatedHomePage: async ({ loginPage, homePage, testUser, context }, use) => {
+
+    await loginPage.goto();
+    await loginPage.loginForm.doLogin(testUser);
+    // await loginPage.loginSuccess();
+    // await loginPage.page.context().storageState({ path: adminFile });
+    // await homePage.goto();
+    // await homePage.navBar.navToAccount();
+    // await homePage.loginForm.doLogin(testUser);
 
     // Confirm login is successful
     await homePage.loginSuccess();

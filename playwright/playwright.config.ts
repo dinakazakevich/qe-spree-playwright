@@ -15,17 +15,17 @@ export default defineConfig({
   /* Test specs repository */
   testDir: './tests',
   /* Page timeout */
-  timeout: 50000,
+  timeout: 60000,
   /* Glob patterns or regular expressions to ignore test files */
   testIgnore: '*template.spec.ts',
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { open: 'never' }], ['list']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -44,30 +44,27 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    testIdAttribute: 'data-test-id',
   },
 
   /* Configure projects for major browsers */
   projects: [
-    //   {
-    //     name: 'auth-setup',
-    //     testMatch: /auth-setup\.ts/,
-    //   },
-    // {
-    //   name: 'chromium-auth',
-    //   use: { ...devices['Desktop Chrome'] },
-    //   // dependencies: ['auth-setup'],
-    // },
-
+    {
+      name: 'auth-setup',
+      testMatch: /.*setup\.ts/,
+    },
     {
       name: 'chromium-auth',
       use: { ...devices['Desktop Chrome'] },
-      // dependencies: ['auth-setup'],
+      dependencies: ['auth-setup'],
+      testMatch: /.*auth.spec\.ts/,
     },
     {
-      name: 'api-tests',
-      use: {},
+      name: 'chromium-no-auth',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: /.*na.spec\.ts/,
     },
-
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },

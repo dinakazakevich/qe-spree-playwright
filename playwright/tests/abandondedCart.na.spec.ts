@@ -2,10 +2,13 @@ import { test, expect } from '../lib/fixtures/authenticate';
 import { CART_STORAGE } from '../lib/datafactory/constants';
 import { CartComponent } from '../lib/components/cartComponent';
 import { generateUser } from '../lib/datafactory/testData';
+import { networkInterfaces } from 'os';
 
 test.use({ userParams: generateUser() });
 test('abandoned cart scenario', async ({ browser, authenticatedHomePage, productsPage, productDetailsPage }) => {
   // Authentication is handled by the authenticate.ts fixture, can also be changed to pick up from .auth directory
+  await authenticatedHomePage.goto();
+
   await authenticatedHomePage.page.goto('/products');
 
   // Selects a random product by random product on the Shop All page
@@ -39,6 +42,7 @@ test('abandoned cart scenario', async ({ browser, authenticatedHomePage, product
 
   // Go to homepage and open the cart sidebar
   await page2.goto('/');
+
   await page2.getByRole('link', { name: 'Cart' }).click();
 
   // // Make sure it is not empty

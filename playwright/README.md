@@ -19,7 +19,7 @@ This quality engineering assignment began with a simple goal: design a test fram
 - Dedicated Playwright sub-directory:
   - It makes it easier to isolate its `package.json` dependencies from the rest of the project. This results in less dependency conflicts if the project is also using Typescript, in case of a Ruby project, this risk is minimal.
   - It is easy to move the project to another root directory or a separate repository
-  - It helps prevent global type definition conflicts due to pollution of global namespace by e2e framework with stuff like `describe` `it` `expect`. It is best to keep the e2e `tsconfig.json` and `node_modules` in this special `e2e` folder.
+  - It helps prevent global type definition conflicts due to pollution of global namespace by e2e framework
 - POM
   - Component Objects: shared UI components are imported to page objects via BasePage class
   - Page Objects: provide extensive methods for interactive with pages
@@ -28,8 +28,8 @@ This quality engineering assignment began with a simple goal: design a test fram
 - Basic datafactory
   - Handles dynamic test data generation
   - Stores reusable test data in constants.ts
-    CI/CD
-  - Dedicated docker-compose file for the CI/CD github workflow that spins up individual containers for the application web service, the database, redis service, and also a dedicated one for playwright
+- CI
+  - Dedicated docker-compose file for the CI github workflow that spins up individual containers for the application web service, the database, redis service, and also a dedicated one for playwright
   - A simple workflow for starting an running the selected number of Playwright checks against that setup.
   - Linter, prettier, and type check before any E2E tests are run.
 
@@ -247,7 +247,7 @@ docker compose -f docker-compose-test.yml run playwright
 docker compose -f docker-compose-test.yml logs -f web
 ```
 
-To run the CI/CD locally use;
+To run the CI locally use;
 
 ```bash
 brew install act

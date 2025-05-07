@@ -8,10 +8,11 @@ export const adminUser: User = {
 
 export const adminAccessTokenFile = 'playwright/.auth/adminAccessToken.json';
 
+// faker.internet.password({ length: 12 })
 export function generateUser(): User {
   return {
     email: faker.internet.email(),
-    password: faker.internet.password({ length: 12 }),
+    password: 'spree123',
   };
 }
 
