@@ -27,3 +27,4 @@
 # Ignore local environment secrets
 /.secrets
 /playwright/.env
+.DS_Store
