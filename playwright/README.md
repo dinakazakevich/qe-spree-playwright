@@ -187,7 +187,7 @@ Curious how others have approached this—especially in SSR contexts where visib
 - The approach follows DevOps best practices by automating the test process and integrating with your CI/CD workflow
 
 **Final E2E flow for both local and CI** 
-![alt text](<Screenshot 2025-05-07 at 11.13.48 PM.png>)
+![alt text](lib/localTestRunResults.png)
 
 **Usage of AI in the project\***
 
