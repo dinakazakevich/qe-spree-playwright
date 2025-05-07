@@ -7,7 +7,6 @@ test('admin user can see newly placed orders in the admin dashboard', async ({
   loginPage,
   homePage,
   authenticatedUserClient,
-  browser,
 }) => {
   // Authentication is handled by the authenticate.ts fixture, can also be changed to pick up from .auth directory
 

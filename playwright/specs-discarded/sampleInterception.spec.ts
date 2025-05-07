@@ -1,5 +1,4 @@
 import { test, expect } from '../lib/fixtures/instantiate';
-import { CheckoutPage } from '../lib/pages/checkoutPage';
 import { faker } from '@faker-js/faker';
 
 // eslint-disable-next-line quotes

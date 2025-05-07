@@ -1,9 +1,7 @@
 import { test, expect } from '../lib/fixtures/instantiate';
-import { CheckoutPage } from '../lib/pages/checkoutPage';
 import { faker } from '@faker-js/faker';
 import { successResponse } from '../lib/datafactory/mockCheckoutConfirmation';
 
-// eslint-disable-next-line quotes
 test('checkout flow with mocked payment confirmation', async ({
   homePage,
   productsPage,

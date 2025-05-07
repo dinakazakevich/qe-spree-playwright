@@ -44,7 +44,7 @@ export async function getAuthenticityToken(sessionStoragePath: string, testUser:
     data: payload.toString(),
   });
   console.log('step5:', 'request sent');
-  console.log('responseStatus', await response.status());
+  console.log('responseStatus', response.status());
 
   // console.log('responseAuth', await response.text())
 

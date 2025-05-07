@@ -13,7 +13,7 @@ export default [
       "tsconfig.json",
       "eslint.config.mjs",
       "playwright/utils/templateSpec.ts",
-      "playwright/utils/templateSpec.ts"
+      "playwright/utils/templateSpec.ts",
       "playwright/lib/datafactory/mockOrderConfirmation.ts"
   ]),
     files: ['**/*.ts'],

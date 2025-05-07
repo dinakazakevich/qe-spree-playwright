@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 import { Page } from './basePage';
-import { messages } from '../datafactory/constants';
-import { Page as PlaywrightPage, Locator } from '@playwright/test';
+import { Locator } from '@playwright/test';
 
 export class AccountPage extends Page {
   public readonly deleteIcon: Locator = this.page.locator('[data-test-id="delete_address"]');

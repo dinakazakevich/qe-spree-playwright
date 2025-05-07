@@ -1,10 +1,8 @@
-import { test as setup, expect } from '../../lib/fixtures/authenticate';
-import { getCookies } from '../../lib/helpers/auth';
+import { test as setup } from '../../lib/fixtures/authenticate';
 import { generateUser } from '../../lib/datafactory/testData';
-import test from 'node:test';
 
 const adminFile = 'playwright/.auth/admin.json';
-const testUserFile = `playwright/.auth/user.json`;
+const testUserFile = 'playwright/.auth/user.json';
 
 setup.describe('admin authentication', () => {
   setup.use({

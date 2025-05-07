@@ -1,4 +1,4 @@
-import { test, expect } from '../lib/fixtures/authenticate';
+import { test } from '../lib/fixtures/authenticate';
 
 const adminUser = {
   email: 'spree@example.com',

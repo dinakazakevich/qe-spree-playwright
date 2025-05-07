@@ -1,8 +1,6 @@
 // Discarded experiment of merging api checkout test + mocking the last checkout step.
 import { test, expect } from '../lib/fixtures/authenticate';
 import { generateUser } from '../lib/datafactory/testData';
-import { getAuthenticityToken } from '../lib/helpers/getAuthenticityToken';
-import { USER_SESSION_STORAGE } from '../lib/datafactory/constants';
 import { successResponse } from '../lib/datafactory/mockCheckoutConfirmation';
 
 test.describe('Checkout flow:', () => {
@@ -10,13 +8,7 @@ test.describe('Checkout flow:', () => {
 
   test.use({ userParams: testUser });
   // Authentication is done via the authenticate.ts fixture
-  test('entire checkout flow with API, mock the ', async ({
-    browser,
-    authenticatedUserClient,
-    loginPage,
-    checkoutPage,
-  }) => {
-    // // Create a new cart parse it and set the cart token
+  test('entire checkout flow with API, mock the ', async ({ authenticatedUserClient, loginPage, checkoutPage }) => {
     await authenticatedUserClient.createCart();
 
     const cart = await authenticatedUserClient.retrieveCart();
@@ -108,7 +100,7 @@ test.describe('Checkout flow:', () => {
 
     await checkoutPage.page.getByRole('button', { name: 'Pay' }).click();
 
-    await checkoutPage.page.getByText('Thanks');
+    checkoutPage.page.getByText('Thanks');
 
     // Assert that the mocked order confirmation page with 'Strawberry' client name loaded
     await expect(checkoutPage.page.getByText('Thanks Strawberry for your order!')).toBeVisible();

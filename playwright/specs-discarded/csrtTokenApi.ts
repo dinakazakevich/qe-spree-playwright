@@ -1,6 +1,6 @@
 // This is an unsuccessful attempt to use CSRF token for api
 import { apiRoutes } from '../lib/datafactory/constants';
-import { test, expect } from '../lib/fixtures/instantiate';
+import { test } from '../lib/fixtures/instantiate';
 import { JSDOM } from 'jsdom';
 import * as fs from 'fs';
 import { generateUser } from '../lib/datafactory/testData';

@@ -2,7 +2,6 @@ import { test, expect } from '../lib/fixtures/authenticate';
 import { CART_STORAGE } from '../lib/datafactory/constants';
 import { CartComponent } from '../lib/components/cartComponent';
 import { generateUser } from '../lib/datafactory/testData';
-import { networkInterfaces } from 'os';
 
 test.use({ userParams: generateUser() });
 test('abandoned cart scenario', async ({ browser, authenticatedHomePage, productsPage, productDetailsPage }) => {

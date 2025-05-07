@@ -1,5 +1,4 @@
 import { Page } from './basePage';
-import { type Page as PlaywrightPage } from 'playwright';
 
 export class ProductDetailsPage extends Page {
   async goto(url: string) {
