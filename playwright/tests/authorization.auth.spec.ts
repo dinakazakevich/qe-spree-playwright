@@ -22,7 +22,7 @@ test.describe('authentication and authorization scenarios', () => {
       await loginPage.page.goto('/admin');
 
       // Assert the Admin panel loaded
-      expect(loginPage.page.url()).toBe('http://localhost:3000/admin/forbidden');
+      expect(loginPage.page.url()).toBe('*/**/admin/forbidden');
     });
     test('session and cart context is cleared from the browsers on logout', async ({
       productsPage,

@@ -25,7 +25,7 @@ test('checkout flow with mocked payment confirmation', async ({
     }
   });
 
-  await homePage.page.goto('http://localhost:3000/products');
+  await homePage.page.goto('/products');
 
   // Select a random product
   await productsPage.selectProduct();
