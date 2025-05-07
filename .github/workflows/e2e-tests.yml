@@ -41,6 +41,7 @@ jobs:
   playwright:
     name: Playwright Tests
     runs-on: ubuntu-latest
+    needs: static-analysis
     
     steps:
       - name: Checkout code
