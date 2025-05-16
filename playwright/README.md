@@ -229,9 +229,9 @@ This project uses [Spree Commerce](https://spreecommerce.org) - the open-source 
 
 ## Local Installation
 
-Please follow [Spree Quickstart guide](https://spreecommerce.org/docs/developer/getting-started/quickstart) to setup your Spree application using the Spree starter.
+Please follow [Spree Quickstart guide](https://spreecommerce.org/docs/developer/getting-started/quickstart) to set up your Spree application using the Spree starter.
 
-After following the above, use the steps blow to run Playwright tests against the development instance running locally 
+After following the above, use the steps below to run Playwright tests against the development instance running locally 
 
 ```
 npx playwright test
