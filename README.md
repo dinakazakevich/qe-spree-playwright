@@ -19,6 +19,10 @@ This starter uses:
 
 Please follow [Spree Quickstart guide](https://spreecommerce.org/docs/developer/getting-started/quickstart) to setup your Spree application using the Spree starter.
 
+## Basic Playwright end-to-end framework
+- Directory [playwright](https://github.com/dinakazakevich/qe-spree-playwright/tree/main/playwright)
+- Detailed [documentation on the framework](https://github.com/dinakazakevich/qe-spree-playwright/blob/main/playwright/README.md)
+
 ## Deployment
 
 Please follow [Deployment guide](https://spreecommerce.org/docs/developer/deployment/render) to quickly deploy your production-ready Spree application.
