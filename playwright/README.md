@@ -58,11 +58,11 @@ This quality engineering assignment began with a simple goal: design a test fram
 
 **Scalability Considerations**: Although Spree can handle significant traffic and product volumes, scaling the platform requires careful architectural planning. Automation scripts must account for potential performance bottlenecks and ensure reliability under load.
 
-**Sample data missing images**: I noticed that the sample data set is missing product images. I found an existing issue in the original project https://github.com/spree/spree/issues/10865. Spree no longer offers images within their sample app due to licensing and copy-right concerns.
+**Sample data missing images**: I noticed that the sample data set is missing product images. I found an existing issue in the original project https://github.com/spree/spree/issues/10865. Spree no longer offers images within their sample app due to licensing and copy-right concerns. This can be fixed by uploading images after the sample data is loaded, you can use [free images from Unsplash](https://unsplash.com/).
 
 ## Testing Priority Outline
 
-Below I outline the testing priorities for the Spree Commerce platform, focusing on highest-risk areas first based on user traffic, revenue impact, security concerns, and feature complexity. Unfortunately, I ran out of available time to implement all of them but the overview might give you my thinking and approach. Depending on the resources available, either only high-risk or high-risk to medium-risk scenarios could be good candidates for automation. Also things like static code checks can be very beneficial while being very low effort and cost additions.
+Below, I outline the testing priorities for the Spree Commerce platform, focusing on highest-risk areas first based on user traffic, revenue impact, security concerns, and feature complexity. Unfortunately, I ran out of available time to implement all of them but the overview might give you my thinking and approach. Depending on the resources available, either only high-risk or high-risk to medium-risk scenarios could be good candidates for automation. Also things like static code checks can be very beneficial while being very low effort and cost additions.
 
 1. Product Catalog & Discovery (High) <br>
    **Rationale**: Directly affects revenue by impacting user conversion and referral rates
@@ -230,6 +230,22 @@ This project uses [Spree Commerce](https://spreecommerce.org) - the open-source 
 ## Local Installation
 
 Please follow [Spree Quickstart guide](https://spreecommerce.org/docs/developer/getting-started/quickstart) to setup your Spree application using the Spree starter.
+
+After following the above, use the steps blow to run Playwright tests against the development instance running locally 
+
+```
+npx playwright test
+```
+
+To run tests in the playwright UI mode
+```
+npx playwright test --ui 
+```
+
+To run tests in a specific .spec.ts file
+```
+npx playwright test name-of-the-file.spec.ts
+`` 
 
 To run the new docker-compose-test instance locally
 
