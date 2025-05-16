@@ -245,7 +245,7 @@ npx playwright test --ui
 To run tests in a specific .spec.ts file
 ```
 npx playwright test name-of-the-file.spec.ts
-`` 
+```
 
 To run the new docker-compose-test instance locally
 
