@@ -21,7 +21,7 @@ Please follow [Spree Quickstart guide](https://spreecommerce.org/docs/developer/
 
 ## Basic Playwright end-to-end framework
 - Directory [playwright](https://github.com/dinakazakevich/qe-spree-playwright/tree/main/playwright)
-- Detailed [documentation on the framework](https://github.com/dinakazakevich/qe-spree-playwright/blob/main/playwright/README.md)
+- Detailed [documentation on the framework and approach](https://github.com/dinakazakevich/qe-spree-playwright/blob/main/playwright/README.md)
 
 ## Deployment
 
